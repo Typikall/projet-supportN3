@@ -1,0 +1,348 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"font",
+				"font-size"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"contents": "[admexsip@noefy1n7 log]$ sudo grep -i dhcp messages|tail\n2016-03-11T15:05:45.449717+01:00 noefy1n7 dhcpd: DHCPDISCOVER from 00:1a:64:27:5b:09 via 130.98.194.3: unknown client\n2016-03-11T15:05:46.252464+01:00 noefy1n7 dhcpd: DHCPDISCOVER from 00:1a:64:d3:6e:9a via 130.98.170.5: unknown client\n2016-03-11T15:05:48.469099+01:00 noefy1n7 dhcpd: DHCPDISCOVER from 00:50:56:62:15:da via 10.120.128.3: unknown client\n2016-03-11T15:05:50.289186+01:00 noefy1n7 dhcpd: DHCPDISCOVER from 00:1a:64:d3:6e:9a via 130.98.170.5: unknown client\n2016-03-11T15:05:50.529581+01:00 noefy1n7 dhcpd: DHCPDISCOVER from 00:21:5e:5b:64:76 via eth0: unknown client\n2016-03-11T15:05:50.529624+01:00 noefy1n7 dhcpd: DHCPDISCOVER from 00:21:5e:5b:64:76 via 10.117.0.1: unknown client\n2016-03-11T15:05:52.787032+01:00 noefy1n7 dhcpd: DHCPDISCOVER from 00:1a:64:6a:12:ec via 10.120.143.3: unknown network segment\n2016-03-11T15:05:53.786866+01:00 noefy1n7 sudo: admexsip : TTY=pts/1 ; PWD=/var/log ; USER=root ; COMMAND=/bin/grep -i dhcp messages\n2016-03-11T15:05:54.548568+01:00 noefy1n7 dhcpd: DHCPDISCOVER from d4:85:64:c9:17:e2 via 10.200.46.3: unknown client\n2016-03-11T15:05:55.689863+01:00 noefy1n7 dhcpd: DHCPDISCOVER from 00:21:5e:29:f7:5a via 10.200.122.3: unknown client\n\n[admexsip@noefy1n7 log]$ sudo grep -i dhcp messages|grep -i 00:50:56:82:20:68\n[admexsip@noefy1n7 log]$\n",
+			"file": "/Z/Mydoc/rapport_service.txt",
+			"file_size": 6443,
+			"file_write_time": 131019003720000000,
+			"settings":
+			{
+				"buffer_size": 1354,
+				"line_ending": "Windows",
+				"name": "Ci-dessous tous les services qui sont en running:"
+			}
+		},
+		{
+			"file": "/C/Users/PR271F5N/Documents/ConEmuPack.150813g/ConEmu.xml",
+			"settings":
+			{
+				"buffer_size": 40715,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/PR271F5N/Documents/ConsoleZ.x86.1.13.0.15044/console.xml",
+			"settings":
+			{
+				"buffer_size": 16683,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 115.0,
+		"selected_items":
+		[
+			[
+				"Package Control: lis",
+				"Package Control: List Packages"
+			],
+			[
+				"Package Control: list",
+				"Package Control: List Unmanaged Packages"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: i",
+				"Package Control: Install Package"
+			],
+			[
+				"",
+				"Package Control: Discover Packages"
+			],
+			[
+				"Package Control: list packa",
+				"Package Control: List Packages"
+			],
+			[
+				"Package Control: ins",
+				"Package Control: Install Package"
+			],
+			[
+				"pa",
+				"Package Control: List Packages"
+			]
+		],
+		"width": 408.0
+	},
+	"console":
+	{
+		"height": 125.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/Users/PR271F5N/AppData/Local/Temp/Sudoers_apr-1.txt",
+		"/C/Users/PR271F5N/AppData/Local/Temp/sudoers_276-1.txt",
+		"/C/Users/PR271F5N/AppData/Roaming/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/C/Users/PR271F5N/Documents/PortableGit/README.portable",
+		"/C/Users/PR271F5N/AppData/Local/Programs/ConsoleZ.x86.1.13.0.15044/console .xml",
+		"/Z/Mydoc/outils/Console/ConsoleZ.x86.1.13.0.15044/console.xml",
+		"/C/Users/PR271F5N/AppData/Local/Programs/ConsoleZ.x86.1.13.0.15044/console.xml",
+		"/C/Users/PR271F5N/prakotoarisoa/webprojet/webapp/server/server.js",
+		"/C/Users/PR271F5N/prakotoarisoa/webprojet/webapp/index.html",
+		"/C/Users/PR271F5N/prakotoarisoa/webprojet/webapp/scripts/toto.c",
+		"/C/Users/PR271F5N/prakotoarisoa/webprojet/webapp/style/style.css",
+		"/C/Users/PR271F5N/prakotoarisoa/Tuto_web.sublime-project",
+		"/C/Users/PR271F5N/prakotoarisoa/project/webapp/index.html",
+		"/C/Users/PR271F5N/AppData/Roaming/Sublime Text 2/Packages/User/JSON.sublime-settings",
+		"/C/Users/PR271F5N/prakotoarisoa/project/Dockerfile",
+		"/C/Users/PR271F5N/prakotoarisoa/project/webapp/toto.c",
+		"/C/Users/PR271F5N/project/toto",
+		"/C/Users/PR271F5N/Documents/main.css",
+		"/Z/Mydoc/Journees_Docker_17-18Fev2016/api/curl.sh",
+		"/C/Users/PR271F5N/AppData/Roaming/Sublime Text 2/Packages/User/Package Control.sublime-settings",
+		"/C/Users/PR271F5N/AppData/Roaming/Sublime Text 2/Packages/Package Control/Package Control.sublime-settings",
+		"/C/Users/PR271F5N/AppData/Roaming/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+		"/C/Users/PR271F5N/AppData/Roaming/Sublime Text 2/Packages/User/Emmet.sublime-settings",
+		"/C/Users/PR271F5N/Documents/titi.html",
+		"/Z/Mydoc/Journees_Docker_17-18Fev2016/installation/README.md",
+		"/Z/Mydoc/Journees_Docker_17-18Fev2016/installation/docker-proxy.conf",
+		"/Z/Mydoc/Journees_Docker_17-18Fev2016/certificats/README.md",
+		"/Z/Mydoc/Journees_Docker_17-18Fev2016/dnsdock/docker-compose.yml",
+		"/Z/Mydoc/Journees_Docker_17-18Fev2016/data/web/build.sh",
+		"/Z/Mydoc/Journees_Docker_17-18Fev2016/openldap/Makefile",
+		"/Z/Mydoc/Journees_Docker_17-18Fev2016/openldap/docker-compose.yml",
+		"/Z/Mydoc/Journees_Docker_17-18Fev2016/installation/docker-storage-setup",
+		"/Z/Mydoc/Journees_Docker_17-18Fev2016/installation/hosts",
+		"/Z/Mydoc/Journees_Docker_17-18Fev2016/dockerisation/cowsay/Dockerfile",
+		"/Z/Mydoc/Journees_Docker_17-18Fev2016/dockerisation/cowsay/Makefile",
+		"/C/Users/PR271F5N/prakotoarisoa/myC/toto.c",
+		"/C/Users/PR271F5N/prakotoarisoa/console.xml",
+		"/C/Users/PR271F5N/AppData/Roaming/Console/console.xml",
+		"/C/Users/PR271F5N/Documents/clayst26.rtf",
+		"/C/Users/PR271F5N/Documents/ttt.csv",
+		"/C/Users/PR271F5N/Documents/access.redhat.com _ CVE-2014-9683.pdf",
+		"/C/Users/PR271F5N/Documents/firmware2_ILO_Log.png",
+		"/C/Users/PR271F5N/Documents/rapport_noeyy799.rtf",
+		"/C/Users/PR271F5N/AppData/Local/Temp/core",
+		"/C/Users/PR271F5N/Documents/index.html",
+		"/C/Users/PR271F5N/Documents/GID_UID.pdf",
+		"/C/Users/PR271F5N/Documents/Signature.doc"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"term",
+			"xterm",
+			"cygwin",
+			"term",
+			"cac",
+			"root",
+			"/root",
+			"root",
+			"cac",
+			"root",
+			"cac",
+			">",
+			"true"
+		],
+		"highlight": false,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": true,
+		"replace_history":
+		[
+		],
+		"reverse": true,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "/Z/Mydoc/rapport_service.txt",
+					"settings":
+					{
+						"buffer_size": 1354,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1354,
+								1354
+							]
+						],
+						"settings":
+						{
+							"auto_name": "Ci-dessous tous les services qui sont en running:",
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/C/Users/PR271F5N/Documents/ConEmuPack.150813g/ConEmu.xml",
+					"settings":
+					{
+						"buffer_size": 40715,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								995,
+								995
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/C/Users/PR271F5N/Documents/ConsoleZ.x86.1.13.0.15044/console.xml",
+					"settings":
+					{
+						"buffer_size": 16683,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1007,
+								1007
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.git":
+	{
+		"height": 116.0
+	},
+	"replace":
+	{
+		"height": 62.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+			[
+				"",
+				"/C/Users/PR271F5N/prakotoarisoa/webprojet/webapp/webapp.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 257.0,
+	"status_bar_visible": true
+}

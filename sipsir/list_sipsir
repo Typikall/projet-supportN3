@@ -1,0 +1,25 @@
+#------------------------------------------------------------------------------------------------------------------
+#    IP		| FQDN			     |  OS  | ZONE DESERVI	|  ZONE D'EMPLACEMENT	|   Commentaire	  | 
+#------------------------------------------------------------------------------------------------------------------
+10.117.0.221 	| noefy1n7.noe.edf.fr.       |LINUX |ZHB,ZSI,ZSA,DMZ    |	RIN		|	SIP	  |
+10.117.0.222 	| noefy1n8.noe.edf.fr. 	     |LINUX |DMZB		|	RIN		|	SIP	  |	
+10.200.146.195 	| pcyfy635.pcy.edfgdf.fr.    |LINUX |ZHB,ZSI,ZSA,DMZH   |	RIN		|	SIP	  |
+10.200.146.196	| pcyfy636.pcy.edfgdf.fr.    |LINUX |DMZB		|	RIN		|	SIP	  |
+10.117.0.223 	| noefy1n9.noe.edf.fr.       |LINUX |       -           |	RIN		|	SIR	  |
+10.200.146.178	| pcyfy05x.pcy.edfgdf.fr.    |LINUX |       -	        |	RIN		| Moteur Slave	  |
+10.117.0.99	| noefy05x.noe.edf.fr.       |LINUX |	    - 		|	RIN		| Moteur Master	  |
+10.200.146.170  | pcyfz117p6.pcy.edfgdf.fr.  |AIX   |ZHB,ZSI BASSE	|	RIN		|	SIP       |
+10.200.146.175  | pcyfz306p6.pcy.edfgdf.fr.  |AIX   |ZSA,ZSI HAUTE	|	RIN		|	SIP       |
+10.117.0.116    | noefy01o.noe.edf.fr.	     |AIX   |ZHB,ZSI BASSE	|	RIN		|	SIP       |
+10.117.0.121    | noefy05t.noe.edf.fr.	     |AIX   |ZSA,ZSI HAUTE	|	RIN		|	SIP       |
+10.117.0.115    | noefy01n.noe.edf.fr.	     |AIX   |			|	RIN		|	SIR       |
+#------------------------------------------------------------------------------------------------------------------ 
+10.117.0.221 	| noefy1n7-pra.noe.edf.fr.   |LINUX |ZHB,ZSI,ZSA,DMZH   |	RIB		|    SIP-PRA	  |
+10.200.146.195 	| pcyfy635-pra.pcy.edfgdf.fr.|LINUX |ZHB,ZSI,ZSA,DMZ    |	RIB		|    SIP-PRA	  |
+10.117.0.99	| noefy05x-pra.noe.edfgdf.fr.|LINUX |	    -		|	RIB		|Moteur Master PRA|
+10.200.146.178	| pcyfy05x-pra.pcy.edfgdf.fr.|LINUX |	    -	        |	RIB		|Moteur Master PRA|
+10.117.0.116    | noefy01o-pra.noe.edf.fr.   |AIX   |			|	RIB		|    SIP-PRA      |
+10.117.0.121    | noefy05t-pra.noe.edf.fr.   |AIX   |			|	RIB		|    SIP-PRA      |
+10.117.146.170  | pcyfz117p6-pra.noe.edf.fr. |AIX   |ZHB,ZSI BASSE	|	RIB		|    SIP-PRA      |
+10.117.146.175  | pcyfz306p6-pra.noe.edf.fr. |AIX   |ZSA,ZSI HAUTE 	|	RIB		|    SIP-PRA      |
+#------------------------------------------------------------------------------------------------------------------ 
