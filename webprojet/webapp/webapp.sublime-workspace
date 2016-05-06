@@ -12,31 +12,91 @@
 	"buffers":
 	[
 		{
-			"contents": "[admexsip@noefy1n7 log]$ sudo grep -i dhcp messages|tail\n2016-03-11T15:05:45.449717+01:00 noefy1n7 dhcpd: DHCPDISCOVER from 00:1a:64:27:5b:09 via 130.98.194.3: unknown client\n2016-03-11T15:05:46.252464+01:00 noefy1n7 dhcpd: DHCPDISCOVER from 00:1a:64:d3:6e:9a via 130.98.170.5: unknown client\n2016-03-11T15:05:48.469099+01:00 noefy1n7 dhcpd: DHCPDISCOVER from 00:50:56:62:15:da via 10.120.128.3: unknown client\n2016-03-11T15:05:50.289186+01:00 noefy1n7 dhcpd: DHCPDISCOVER from 00:1a:64:d3:6e:9a via 130.98.170.5: unknown client\n2016-03-11T15:05:50.529581+01:00 noefy1n7 dhcpd: DHCPDISCOVER from 00:21:5e:5b:64:76 via eth0: unknown client\n2016-03-11T15:05:50.529624+01:00 noefy1n7 dhcpd: DHCPDISCOVER from 00:21:5e:5b:64:76 via 10.117.0.1: unknown client\n2016-03-11T15:05:52.787032+01:00 noefy1n7 dhcpd: DHCPDISCOVER from 00:1a:64:6a:12:ec via 10.120.143.3: unknown network segment\n2016-03-11T15:05:53.786866+01:00 noefy1n7 sudo: admexsip : TTY=pts/1 ; PWD=/var/log ; USER=root ; COMMAND=/bin/grep -i dhcp messages\n2016-03-11T15:05:54.548568+01:00 noefy1n7 dhcpd: DHCPDISCOVER from d4:85:64:c9:17:e2 via 10.200.46.3: unknown client\n2016-03-11T15:05:55.689863+01:00 noefy1n7 dhcpd: DHCPDISCOVER from 00:21:5e:29:f7:5a via 10.200.122.3: unknown client\n\n[admexsip@noefy1n7 log]$ sudo grep -i dhcp messages|grep -i 00:50:56:82:20:68\n[admexsip@noefy1n7 log]$\n",
-			"file": "/Z/Mydoc/rapport_service.txt",
-			"file_size": 6443,
-			"file_write_time": 131019003720000000,
+			"file": "/C/Users/PR271F5N/Documents/Manipulation d'un LV",
 			"settings":
 			{
-				"buffer_size": 1354,
+				"buffer_size": 318,
 				"line_ending": "Windows",
-				"name": "Ci-dessous tous les services qui sont en running:"
+				"name": "Manipulation d'un LV"
 			}
 		},
 		{
-			"file": "/C/Users/PR271F5N/Documents/ConEmuPack.150813g/ConEmu.xml",
+			"file": "/C/Users/PR271F5N/Documents/git-prompt.sh",
 			"settings":
 			{
-				"buffer_size": 40715,
+				"buffer_size": 16872,
+				"line_ending": "Windows",
+				"name": "# bash/zsh git prompt support"
+			}
+		},
+		{
+			"contents": "<<html>\n<head>\n	<meta charset=\"UTF-8\">\n	<title>Document</title>\n</head>\n<body>\n	Hello !!!\n</body>\n</html>",
+			"file": "/C/Users/PR271F5N/Documents/index.html",
+			"file_size": 2,
+			"file_write_time": 131045793015717864,
+			"settings":
+			{
+				"buffer_size": 105,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "/C/Users/PR271F5N/Documents/ConsoleZ.x86.1.13.0.15044/console.xml",
+			"contents": "\nOriginaux :\n\n[-SIPSIR-][pcyfy635.pcy.edfgdf.fr]/tmp/ssl#ls -al private_keys public_keys\nprivate_keys:\ntotal 12\ndrwxr-x--- 2 puppet root 4096 Jun 17 2014 .\ndrwxrwx--x 8 puppet root 4096 Apr 21 08:42 ..\n-rw------- 1 puppet root 887 Apr 23 2013 pcyfy635.pcy.edfgdf.fr.pem\nlrwxrwxrwx 1 root root 59 Apr 21 08:42 pcyfy635.pem -> /var/lib/puppet/ssl/private_keys/pcyfy635.pcy.edfgdf.fr.pem\n\npublic_keys:\ntotal 12\ndrwxr-xr-x 2 puppet root 4096 Jul 18 2013 .\ndrwxrwx--x 8 puppet root 4096 Apr 21 08:42 ..\n-rw-r--r-- 1 puppet root 251 Apr 23 2013 pcyfy635.pcy.edfgdf.fr.pem \n14:30:08◄originaux \n14:30:49◄je recopie les 2 dossiers alors \n14:30:59◄ou plutot les 2 fichiers \n14:31:13◄/var/lib/puppet/ssl/private_key/pcyfy635.pcy.edfgdf.fr.pem\n\n\n[admexsip@pcyfy635 ~]$ sudo ls -ltr /var/lib/puppet/ssl/certs\ntotal 8\nlrwxrwxrwx 1 root   root  52 Nov 26  2014 pcyfy635.pem -> /var/lib/puppet/ssl/certs/pcyfy635.pcy.edfgdf.fr.pem\n-rw-r--r-- 1 puppet root 855 Apr 21 08:51 ca.pem\n-rw-r--r-- 1 puppet root 883 Apr 21 08:51 pcyfy635.pcy.edfgdf.fr.pem\n",
 			"settings":
 			{
-				"buffer_size": 16683,
+				"buffer_size": 1033,
 				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "Mise en place ACL sur les répertoires et fichier sur souche RHEL:\n\nIl existe deux types d'ACL : access ACL et default ACL\n- access ACL : une liste de controle d'acces appliqué à un fichier ou à un répertoire\n- default ACL : une liste de controle d'accès appliqué uniquement aux répertoires. Si un fichier dans un repertoire n'a pas d'ACL alors le default ACL sur se répertoire sera appliqué sur le fichier.\nLes ACL peuvent êtres configurés par user ou par groupe  ou par mask (ensemble )\nDeux utilitaires pour gérer les ACL : \n- getfacl: visualiser les ACL mis en place\n- setfacl: ajouter, modifier et supprimer un ACL \n\nSyntaxe : \n\ngetfacl <fic> => visulise les ACL appliqués sur fic\ngetfacl <rep> => visualise les ACL sur rep. Les default ACL sont préfixés par \"default\"\nsetfacl -m <rules> <fic ou rep> => Ajoute un ACL à un fichier ou un répertoire\n    <rules> :\n        u:<uid>:<perm> => ajoute un ACL pour un utilisateur\n        g:<gid>:<perm> => ajouite un ACL pour un groupe\n    <perm> => une combinaison de  r (read) , w (write) et x (execute)\nsetfacl -x <rules> <fic or rep> => supprime l'ACL sur le fichier ou le répertoire\nsetfacl -m  d:<uid or gid>:<perm> <rep> => configure le default ACL sur le répertoire\n\nExemples :\n- configure le default ACL sur rep1 avec la permission \"rw\" à admin:\n    root@localhost # : setfacl -m d:admin:rw rep1\n\n- Affiche le default ACL sur rep1 :\n    root@localhost # : getfacl rep1/\n                        # file: rep1/\n                        # owner: root\n                        # group: root\n                        user::rwx\n                        group::r-x\n                        other::r-x\n                        default:user::rwx\n                        default:user:admin:rw-\n                        default:group::r-x\n                        default:mask::rwx\n                        default:other::r-x\n\n- Ajoute un ACL au ficher fic avec la permission \"rw\" à admin et \"r\" pour admsrv\n    root@localhost # : setfacl -m u:admin:rw fic1\n                        setfacl -m u:admsrv:r fic1\n\n- Visualise les ACLs pour fic1\n    root@localhost # : getfacl fic1\n                        # file: fic1\n                        # owner: root\n                        # group: root\n                        user::rw-\n                        user:admsrv:r--\n                        user:admin:rw-\n                        group::r--\n                        mask::rw-\n                        other::r--\n",
+			"file": "/Z/Mydoc/Memo/ACL.doc",
+			"file_size": 2463,
+			"file_write_time": 131051868110000000,
+			"settings":
+			{
+				"buffer_size": 2441,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/C/Users/PR271F5N/model_spec.spec",
+			"settings":
+			{
+				"buffer_size": 7896,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "How to create and host a yum repository over httpd \nCréer un dépot RPM YUM avec httpd - Rhedat rhel\n\n1-Set up apache :\nConfigurer Apache\n\n    # yum install httpd\n    # mkdir /var/www/html/myrepo\n\nCréer le metadata avec createrepo\ncreaterepo est un utilitaire chez redhat, permet de créer un repository \n\n2-On a system of the same release as the repository, gather the rpms and create the repository metadata with createrepo :\n\n\n    # yum install createrepo\n    # mkdir myrepo\n    # cp /mysourcerpms/mes.rpms myrepo\n    # cd /path/to/myrepo\n    # createrepo /path/to/myrepo\n\nPI: Mieux vaut toujours utiliser le chemin absolu\n    The RHEL5 version of createrepo require a full path be given as an option or the repository will not be created correctly . To avoid problems, make sure you always use a full path.\n\n3-Copy the folder to your apache server using the method of your choice.\n    For convenience, the content of /path/to/myrepo has been copied to /var/www/html/myrepo, including the repodata folder it should now include.\nCopier le contenu de  /path/to/myrepo dans  var/www/html/myrepo\n\n    # chmod o+r /var/www/html/myrepo -R\n    # chcon -R httpd_sys_content_t /var/www/html/myrepo\n\n    The chcon command is only required if SELinux is in enforcing mode.\n\n4-Configure the clients with a new /etc/yum.repos.d/myrepo.repo\nConfiguer le client avec le nouveau repository\n\n    [myrepo]\n    name=my custom repo\n    baseurl=http://myapacheserver/myrepo\n    enabled=1\n    gpgcheck=0\n\n    Depending on your setup, you may want to enable gpgcheck - if for exemple you are sharing content provided by Red Hat from the main repositories (released content, not beta or fasttrack) , the options to configure correctly gpg checks would be\nPI: Si les rpms fournis ont été signés alors il faut mettre gpgcheck=1 et founir avec la clé comme le montre l'exemple ci-dessous :\n\n    gpgcheck=1 \n    gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release\n\n    The keys are by default installed on systems by a Red Hat release package for your type of installation. For more information on the creation of .repo files, you can check man yum.conf under the section [repository] OPTIONS.\n\ncreaterepo doit être lancé sur le système qui a la même version du dépot cibles. \nExemple :\nlancer createrepo sur rhel5 pour un dépot rhel5 \nlancer createrepo sur rhel6 pour un dépot rhel6\n\nThe steps contained in this article work for any release, but the createrepo command must be ran with the createrepo of the RHEL major release for its repository - this is due to format differences in rpm between major releases. This means you need to run createrepo on RHEL5 for a RHEL5 repository, on RHEL6 for a RHEL6 repository and so on.",
+			"file": "/Z/Mydoc/Memo/redhat/How to create and host a yum repository over httpd",
+			"file_size": 2234,
+			"file_write_time": 131044054530000000,
+			"settings":
+			{
+				"buffer_size": 2706,
+				"line_ending": "Windows",
+				"name": "Superblock EXT4 d'une partition LVM corrompu après"
+			}
+		},
+		{
+			"contents": "     La version 3.0 de sipsir-client est bien prise en charge par l'OI de migration et sera migree ...       ###\n### Info:       prerequis Etape 2 ===> Verification du nom de la machine locale ###\n### Info:       FQDN du serveur OK : pcyfy635.pcy.edfgdf.fr     ###\n### Info:       prerequis Etape 3 ===> Verification de la presence de certificats pcyfy635.pcy.edfgdf.fr.pem    ###\n### Info:       Analyse du repertoire /var/lib/puppet/ssl/certs/ ...    ###\n### Alert:      Un certificat pcyfy635.pcy.edfgdf.fr.pem a ete trouve dans le repertoire /var/lib/puppet/ssl/certs/     ###\n### Alert:      Check de la presence d'un certificat pcyfy635.pem       ###\n### Info:       Un certificat pcyfy635.pem e ete trouve ...     ###\n### Info:       Aucun lien symbolique ne sera cree en post-installation car les deux certificats sont presents ...      ###\n### Info:       Analyse du repertoire /var/lib/puppet/ssl/private_keys/ ...     ###\n### Alert:      Un certificat pcyfy635.pcy.edfgdf.fr.pem a ete trouve dans le repertoire /var/lib/puppet/ssl/private_keys/      ###\n### Alert:      Check de la presence d'un certificat pcyfy635.pem       ###\n### Info:       Un certificat pcyfy635.pem e ete trouve ...     ###\n### Info:       Aucun lien symbolique ne sera cree en post-installation car les deux certificats sont presents ...      ###\n### Info:       Globalisation de la variable SSL_CERT =>        ###\n### Info:       Globalisation de la variable SSL_PRIVATE_KEYS =>        ###\n### Info:       prerequis Etape 4 ===> Verification du repertoire /mnt/cdrom    ###\n### Info:       Le repertoire /mnt/cdrom est present ...        ###\n### Info:       Verification si le repertoire /mnt/cdrom est vide       ###\n",
+			"settings":
+			{
+				"buffer_size": 1705,
+				"line_ending": "Windows",
+				"name": "La version 3.0 de sipsir-client est bien pris"
+			}
+		},
+		{
+			"contents": "pwd=`pwd`\ncp as /etc/init.d\nchmod 700 /etc/init.d/as\ncp rc.as /etc\nchmod 744 /etc/rc.as\n\n\ncd /etc/rc3.d\nln -s /etc/init.d/as S20as\ncd /etc/rc0.d\nln -s /etc/init.d/as K80as\ncd $pwd\n 	\n 	00:50:56:99:00:35\n",
+			"file": "/C/Users/PR271F5N/Documents/log_install_svr_alfa.txt",
+			"file_size": 57588,
+			"file_write_time": 131056321476699908,
+			"settings":
+			{
+				"buffer_size": 203,
+				"line_ending": "Unix"
 			}
 		}
 	],
@@ -96,6 +156,17 @@
 	},
 	"file_history":
 	[
+		"/Z/Mydoc/rapport_service.txt",
+		"/Z/Mydoc/synchro.sh",
+		"/Z/Mydoc/Journees_Docker_17-18Fev2016/installation/docker-storage-setup",
+		"/Z/Mydoc/Journees_Docker_17-18Fev2016/installation/README.md",
+		"/Z/Mydoc/Journees_Docker_17-18Fev2016/installation/hosts",
+		"/Z/Mydoc/Journees_Docker_17-18Fev2016/monitoring/readme-sysdig.txt",
+		"/Z/Mydoc/Journees_Docker_17-18Fev2016/installation/docker-proxy.conf",
+		"/Z/Mydoc/Nouveau Document Microsoft Office Word 97 - 2003.doc",
+		"/Z/Mydoc/Depot rhel4.doc",
+		"/C/Users/PR271F5N/Documents/ConEmuPack.150813g/ConEmu.xml",
+		"/C/Users/PR271F5N/Documents/ConsoleZ.x86.1.13.0.15044/console.xml",
 		"/C/Users/PR271F5N/AppData/Local/Temp/Sudoers_apr-1.txt",
 		"/C/Users/PR271F5N/AppData/Local/Temp/sudoers_276-1.txt",
 		"/C/Users/PR271F5N/AppData/Roaming/Sublime Text 2/Packages/User/Preferences.sublime-settings",
@@ -120,15 +191,11 @@
 		"/C/Users/PR271F5N/AppData/Roaming/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
 		"/C/Users/PR271F5N/AppData/Roaming/Sublime Text 2/Packages/User/Emmet.sublime-settings",
 		"/C/Users/PR271F5N/Documents/titi.html",
-		"/Z/Mydoc/Journees_Docker_17-18Fev2016/installation/README.md",
-		"/Z/Mydoc/Journees_Docker_17-18Fev2016/installation/docker-proxy.conf",
 		"/Z/Mydoc/Journees_Docker_17-18Fev2016/certificats/README.md",
 		"/Z/Mydoc/Journees_Docker_17-18Fev2016/dnsdock/docker-compose.yml",
 		"/Z/Mydoc/Journees_Docker_17-18Fev2016/data/web/build.sh",
 		"/Z/Mydoc/Journees_Docker_17-18Fev2016/openldap/Makefile",
 		"/Z/Mydoc/Journees_Docker_17-18Fev2016/openldap/docker-compose.yml",
-		"/Z/Mydoc/Journees_Docker_17-18Fev2016/installation/docker-storage-setup",
-		"/Z/Mydoc/Journees_Docker_17-18Fev2016/installation/hosts",
 		"/Z/Mydoc/Journees_Docker_17-18Fev2016/dockerisation/cowsay/Dockerfile",
 		"/Z/Mydoc/Journees_Docker_17-18Fev2016/dockerisation/cowsay/Makefile",
 		"/C/Users/PR271F5N/prakotoarisoa/myC/toto.c",
@@ -190,28 +257,138 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 8,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "/Z/Mydoc/rapport_service.txt",
+					"file": "/C/Users/PR271F5N/Documents/Manipulation d'un LV",
 					"settings":
 					{
-						"buffer_size": 1354,
+						"buffer_size": 318,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1354,
-								1354
+								318,
+								318
 							]
 						],
 						"settings":
 						{
-							"auto_name": "Ci-dessous tous les services qui sont en running:",
+							"auto_name": "Manipulation d'un LV",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/C/Users/PR271F5N/Documents/git-prompt.sh",
+					"settings":
+					{
+						"buffer_size": 16872,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								16872
+							]
+						],
+						"settings":
+						{
+							"auto_name": "# bash/zsh git prompt support",
+							"syntax": "Packages/ShellScript/Shell-Unix-Generic.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 6870.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/C/Users/PR271F5N/Documents/index.html",
+					"settings":
+					{
+						"buffer_size": 105,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								105,
+								0
+							]
+						],
+						"settings":
+						{
+							"auto_name": "",
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"settings":
+					{
+						"buffer_size": 1033,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1033,
+								1033
+							]
+						],
+						"settings":
+						{
+							"auto_name": "",
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "/Z/Mydoc/Memo/ACL.doc",
+					"settings":
+					{
+						"buffer_size": 2441,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								2441
+							]
+						],
+						"settings":
+						{
 							"syntax": "Packages/Text/Plain text.tmLanguage",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
@@ -223,25 +400,55 @@
 					"type": "text"
 				},
 				{
-					"buffer": 1,
-					"file": "/C/Users/PR271F5N/Documents/ConEmuPack.150813g/ConEmu.xml",
+					"buffer": 5,
+					"file": "/C/Users/PR271F5N/model_spec.spec",
 					"settings":
 					{
-						"buffer_size": 40715,
+						"buffer_size": 7896,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								995,
-								995
+								977,
+								977
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/XML/XML.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 864.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "/Z/Mydoc/Memo/redhat/How to create and host a yum repository over httpd",
+					"settings":
+					{
+						"buffer_size": 2706,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								539,
+								539
+							]
+						],
+						"settings":
+						{
+							"auto_name": "Superblock EXT4 d'une partition LVM corrompu après",
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -250,24 +457,50 @@
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "/C/Users/PR271F5N/Documents/ConsoleZ.x86.1.13.0.15044/console.xml",
+					"buffer": 7,
 					"settings":
 					{
-						"buffer_size": 16683,
+						"buffer_size": 1705,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1007,
-								1007
+								1705,
+								1705
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/XML/XML.tmLanguage",
+							"auto_name": "La version 3.0 de sipsir-client est bien pris",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "/C/Users/PR271F5N/Documents/log_install_svr_alfa.txt",
+					"settings":
+					{
+						"buffer_size": 203,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								202,
+								185
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
