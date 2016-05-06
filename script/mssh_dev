@@ -1,0 +1,5 @@
+#!/bin/bash
+PROF_DIR=~/prakotoarisoa/myprofile
+scp ${PROF_DIR}/.bash_profile :$1:. 1>/dev/null
+#ssh $1 "if [ -f ~/.profile ];then echo ok;else echo ko;fi"
+ssh $1
