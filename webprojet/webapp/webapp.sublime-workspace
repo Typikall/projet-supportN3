@@ -30,32 +30,22 @@
 			}
 		},
 		{
-			"contents": "<<html>\n<head>\n	<meta charset=\"UTF-8\">\n	<title>Document</title>\n</head>\n<body>\n	Hello !!!\n</body>\n</html>",
-			"file": "/C/Users/PR271F5N/Documents/index.html",
-			"file_size": 2,
-			"file_write_time": 131045793015717864,
+			"contents": "Bonjour,\n\nNous vous sollicitons par rapport à une demande (I01049996) concernant l'installtion d'une souche centos 7.1 via le SIP NOE.\nLa souche est présent dans le portail mais quand on instancie une installation, la machine reste toujours en statut \"libéré\" au lieu de passer en statut \"actif\".\nNous avons vérifié et la log dit que \"le pofil : 7.1.0N3_centos n'est pas déclaré \".\nAprès vérifiction encore avec cobbler et effectivement il n'y a pas encore de profil pour la souche centos 7.1. Et il en est de même pour le SIP PACY.\nPouvez vous ajouter ce nouveau profil s'il vous plaît.\n\n\n=====LOG SIP=============\ninstclient_HOSTNAMESIP = noefy1n7.noe.edf.fr\ninstclient_HOSTNAMECLIENT = noeyycfn.noe.edf.fr\ninstclient_DATE_DEB = 20160506_120905\ninstclient_SYNC = OUI\ninstclient_ARGS = -W pr271f5n@sx400002 -n noeyycfn.noe.edf.fr -x ISRV005151941 -e 00:50:56:82:5a:1d -i 10.122.1.50 -S 7.1.0N1_centos -m 255.255.255.0\ninstclient_MSG_RET = Le profil n'est pas declare\ninstclient_ARGS_RET = Erreur\ninstclient_DATE_FIN = 20160506_120908\ninstclient_STATUS = 176\n[admexsip@noefy1n7 ~]$ who\nPR271F5N pts/0        2016-05-06 12:10 (192.168.182.168)\n[admexsip@noefy1n7 ~]$ sudo cat /appli/sipsir/log/instclient/noefy1n7.noe.edf.fr_noeyycfp.noe.edf.fr_20160504_182120.log\ninstclient_HOSTNAMESIP = noefy1n7.noe.edf.fr\ninstclient_HOSTNAMECLIENT = noeyycfp.noe.edf.fr\ninstclient_DATE_DEB = 20160504_182120\ninstclient_SYNC = OUI\ninstclient_ARGS = -W rl3287bn@sx400002 -n noeyycfp.noe.edf.fr -x ISRV005151943 -e 00:50:56:82:5a:5e -i 10.122.1.64 -S 7.1.0N3_centos -m 255.255.255.0\ninstclient_MSG_RET = Le profil n'est pas declare\ninstclient_ARGS_RET = Erreur\ninstclient_DATE_FIN = 20160504_182122\ninstclient_STATUS = 176\n[admexsip@noefy1n7 ~]$\n\n\n=====VERIF COBBLER=============\n[admexsip@noefy1n7 ~]$ sudo cobbler profile list |grep centos\n   5.11.0N1_centos\n   5.11.0N3_centos\n   6.6.0N1_centos\n   6.6.0N1_centos_standard-caccia1.2_rhel_6\n   6.6.0N1_centos_standard1.4_rhel_6\n   6.6.0N3_centos\n   6.6.0N3_centos_standard-caccia1.2_rhel_6\n   6.6.0N3_centos_standard1.4_rhel_6\n",
 			"settings":
 			{
-				"buffer_size": 105,
-				"line_ending": "Windows"
+				"buffer_size": 2062,
+				"line_ending": "Windows",
+				"name": "Bonjour,"
 			}
 		},
 		{
-			"contents": "\nOriginaux :\n\n[-SIPSIR-][pcyfy635.pcy.edfgdf.fr]/tmp/ssl#ls -al private_keys public_keys\nprivate_keys:\ntotal 12\ndrwxr-x--- 2 puppet root 4096 Jun 17 2014 .\ndrwxrwx--x 8 puppet root 4096 Apr 21 08:42 ..\n-rw------- 1 puppet root 887 Apr 23 2013 pcyfy635.pcy.edfgdf.fr.pem\nlrwxrwxrwx 1 root root 59 Apr 21 08:42 pcyfy635.pem -> /var/lib/puppet/ssl/private_keys/pcyfy635.pcy.edfgdf.fr.pem\n\npublic_keys:\ntotal 12\ndrwxr-xr-x 2 puppet root 4096 Jul 18 2013 .\ndrwxrwx--x 8 puppet root 4096 Apr 21 08:42 ..\n-rw-r--r-- 1 puppet root 251 Apr 23 2013 pcyfy635.pcy.edfgdf.fr.pem \n14:30:08◄originaux \n14:30:49◄je recopie les 2 dossiers alors \n14:30:59◄ou plutot les 2 fichiers \n14:31:13◄/var/lib/puppet/ssl/private_key/pcyfy635.pcy.edfgdf.fr.pem\n\n\n[admexsip@pcyfy635 ~]$ sudo ls -ltr /var/lib/puppet/ssl/certs\ntotal 8\nlrwxrwxrwx 1 root   root  52 Nov 26  2014 pcyfy635.pem -> /var/lib/puppet/ssl/certs/pcyfy635.pcy.edfgdf.fr.pem\n-rw-r--r-- 1 puppet root 855 Apr 21 08:51 ca.pem\n-rw-r--r-- 1 puppet root 883 Apr 21 08:51 pcyfy635.pcy.edfgdf.fr.pem\n",
-			"settings":
-			{
-				"buffer_size": 1033,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"contents": "Mise en place ACL sur les répertoires et fichier sur souche RHEL:\n\nIl existe deux types d'ACL : access ACL et default ACL\n- access ACL : une liste de controle d'acces appliqué à un fichier ou à un répertoire\n- default ACL : une liste de controle d'accès appliqué uniquement aux répertoires. Si un fichier dans un repertoire n'a pas d'ACL alors le default ACL sur se répertoire sera appliqué sur le fichier.\nLes ACL peuvent êtres configurés par user ou par groupe  ou par mask (ensemble )\nDeux utilitaires pour gérer les ACL : \n- getfacl: visualiser les ACL mis en place\n- setfacl: ajouter, modifier et supprimer un ACL \n\nSyntaxe : \n\ngetfacl <fic> => visulise les ACL appliqués sur fic\ngetfacl <rep> => visualise les ACL sur rep. Les default ACL sont préfixés par \"default\"\nsetfacl -m <rules> <fic ou rep> => Ajoute un ACL à un fichier ou un répertoire\n    <rules> :\n        u:<uid>:<perm> => ajoute un ACL pour un utilisateur\n        g:<gid>:<perm> => ajouite un ACL pour un groupe\n    <perm> => une combinaison de  r (read) , w (write) et x (execute)\nsetfacl -x <rules> <fic or rep> => supprime l'ACL sur le fichier ou le répertoire\nsetfacl -m  d:<uid or gid>:<perm> <rep> => configure le default ACL sur le répertoire\n\nExemples :\n- configure le default ACL sur rep1 avec la permission \"rw\" à admin:\n    root@localhost # : setfacl -m d:admin:rw rep1\n\n- Affiche le default ACL sur rep1 :\n    root@localhost # : getfacl rep1/\n                        # file: rep1/\n                        # owner: root\n                        # group: root\n                        user::rwx\n                        group::r-x\n                        other::r-x\n                        default:user::rwx\n                        default:user:admin:rw-\n                        default:group::r-x\n                        default:mask::rwx\n                        default:other::r-x\n\n- Ajoute un ACL au ficher fic avec la permission \"rw\" à admin et \"r\" pour admsrv\n    root@localhost # : setfacl -m u:admin:rw fic1\n                        setfacl -m u:admsrv:r fic1\n\n- Visualise les ACLs pour fic1\n    root@localhost # : getfacl fic1\n                        # file: fic1\n                        # owner: root\n                        # group: root\n                        user::rw-\n                        user:admsrv:r--\n                        user:admin:rw-\n                        group::r--\n                        mask::rw-\n                        other::r--\n",
+			"contents": "qla2xxx [0000:04:00.1]-0063:2: Failed to load firmware image (ql2500_fw.bin).\nqla2xxx [0000:04:00.1]-0090:2: Fimware image unavailable.\nqla2xxx [0000:04:00.1]-0091:2: Firmware images can be retrieved from: ftp://ftp.qlogic.com/outgoing/linux/firmware/.\nscsi2 : qla2xxx\nqla2xxx [0000:04:00.1]-00fb:2: QLogic HPAJ764A - HP 8Gb Dual Channel PCI-e 2.0 FC HBA.\nqla2xxx [0000:04:00.1]-00fc:2: ISP2532: PCIe (5.0GT/s x4) @ 0000:04:00.1 hdma+ host#=2 fw=5.09.00 (8080).\n  alloc irq_desc for 40 on node 0\n  alloc kstat_irqs on node 0\nalloc irq_2_iommu on node 0\nqla2xxx 0000:07:00.0: PCI INT A -> GSI 40 (level, low) -> IRQ 40\nqla2xxx [0000:07:00.0]-001d: Found an ISP2532 irq 40 iobase 0xffffc90016dac000.\n  alloc irq_desc for 91 on node 0\n  alloc kstat_irqs on node 0\nalloc irq_2_iommu on node 0\nqla2xxx 0000:07:00.0: irq 91 for MSI/MSI-X\n  alloc irq_desc for 92 on node 0\n  alloc kstat_irqs on node 0\nalloc irq_2_iommu on node 0\nqla2xxx 0000:07:00.0: irq 92 for MSI/MSI-X\nqla2xxx 0000:07:00.0: setting latency timer to 64\nqla2xxx 0000:07:00.0: firmware: requesting ql2500_fw.bin\nqla2xxx [0000:07:00.0]-0063:3: Failed to load firmware image (ql2500_fw.bin).\nqla2xxx [0000:07:00.0]-0090:3: Fimware image unavailable.\nqla2xxx [0000:07:00.0]-0091:3: Firmware images can be retrieved from: ftp://ftp.qlogic.com/outgoing/linux/firmware/.\nscsi3 : qla2xxx\nqla2xxx [0000:07:00.0]-00fb:3: QLogic HPAJ764A - HP 8Gb Dual Channel PCI-e 2.0 FC HBA.\nqla2xxx [0000:07:00.0]-00fc:3: ISP2532: PCIe (5.0GT/s x4) @ 0000:07:00.0 hdma+ host#=3 fw=5.09.00 (8080).\n  alloc irq_desc for 44 on node 0\n  alloc kstat_irqs on node 0\nalloc irq_2_iommu on node 0\n",
 			"file": "/Z/Mydoc/Memo/ACL.doc",
 			"file_size": 2463,
 			"file_write_time": 131051868110000000,
 			"settings":
 			{
-				"buffer_size": 2441,
+				"buffer_size": 1626,
 				"line_ending": "Unix"
 			}
 		},
@@ -80,23 +70,34 @@
 			}
 		},
 		{
-			"contents": "     La version 3.0 de sipsir-client est bien prise en charge par l'OI de migration et sera migree ...       ###\n### Info:       prerequis Etape 2 ===> Verification du nom de la machine locale ###\n### Info:       FQDN du serveur OK : pcyfy635.pcy.edfgdf.fr     ###\n### Info:       prerequis Etape 3 ===> Verification de la presence de certificats pcyfy635.pcy.edfgdf.fr.pem    ###\n### Info:       Analyse du repertoire /var/lib/puppet/ssl/certs/ ...    ###\n### Alert:      Un certificat pcyfy635.pcy.edfgdf.fr.pem a ete trouve dans le repertoire /var/lib/puppet/ssl/certs/     ###\n### Alert:      Check de la presence d'un certificat pcyfy635.pem       ###\n### Info:       Un certificat pcyfy635.pem e ete trouve ...     ###\n### Info:       Aucun lien symbolique ne sera cree en post-installation car les deux certificats sont presents ...      ###\n### Info:       Analyse du repertoire /var/lib/puppet/ssl/private_keys/ ...     ###\n### Alert:      Un certificat pcyfy635.pcy.edfgdf.fr.pem a ete trouve dans le repertoire /var/lib/puppet/ssl/private_keys/      ###\n### Alert:      Check de la presence d'un certificat pcyfy635.pem       ###\n### Info:       Un certificat pcyfy635.pem e ete trouve ...     ###\n### Info:       Aucun lien symbolique ne sera cree en post-installation car les deux certificats sont presents ...      ###\n### Info:       Globalisation de la variable SSL_CERT =>        ###\n### Info:       Globalisation de la variable SSL_PRIVATE_KEYS =>        ###\n### Info:       prerequis Etape 4 ===> Verification du repertoire /mnt/cdrom    ###\n### Info:       Le repertoire /mnt/cdrom est present ...        ###\n### Info:       Verification si le repertoire /mnt/cdrom est vide       ###\n",
+			"contents": "Bonjour,\n\nIl semble que l'OI ne sera pas encore disponible avant l'été. En effet, exceptionnellement, nous vous préconisons une mise à via un script élaboré par l'expertise  et que nous vous accompagnerions pendant la réalisation.\nD'abord des vérifications seront réalisés par l'expertise afin de s'assurer qu'il aura pas de problème lors du passage du script. \nPuis nous vous proposons d'effectuer la migration sur  les environnements considéré comme pas critique.Une fois validée, nous pourrons passer aux autres.\nToutefois, avant de commencer nous vous recommandons de respecter les  prérequis suivants pour être en sécurité:\n- s'assurer que les machines possèdent  une sauvegarde (donnée et système) à jour  et fonctionnelle, sinon pas de migration\n- prevenir les entités concernés car l'application sera coupé avant et pendant\n- arrêt de l'application (jour de la migration).\n- à l'issu de cette action un reboot sera planifié donc en cas de problème ou plantage, nous fournir les accès ILO\n- nous fournir les droits root sur les machines à migrer.\n\nSi c'est OK pour vous, merci de nous donner une date pour la première vague de migration afin qu'on puisse reserver une ressource de notre côté dans la mesure du possible. \n\nPouvez vous nous faire un retour sur cette proposition.\n\nCordialement,\nL'équipe Support Serveur N3\nTAG SSN3 : SSN3-PR-Q-LIN-S3",
 			"settings":
 			{
-				"buffer_size": 1705,
+				"buffer_size": 1355,
 				"line_ending": "Windows",
-				"name": "La version 3.0 de sipsir-client est bien pris"
+				"name": "Bonjour,"
 			}
 		},
 		{
-			"contents": "pwd=`pwd`\ncp as /etc/init.d\nchmod 700 /etc/init.d/as\ncp rc.as /etc\nchmod 744 /etc/rc.as\n\n\ncd /etc/rc3.d\nln -s /etc/init.d/as S20as\ncd /etc/rc0.d\nln -s /etc/init.d/as K80as\ncd $pwd\n 	\n 	00:50:56:99:00:35\n",
+			"contents": "Nom 	PCY04CRL\nFonction 	Back-Office\nIP 	10.203.5.24\nHaute dispo 	oui\n	\nNom 	PCY_DP1a_R35\nTechnologie 	Gi\nUnité 	5\nModule 	0\nPort 	15\nDébit 	AUTO\n	\nVLAN ID 	53\nIP 	10.203.5.0\nMasque 	255.255.255.0\nPasserelle 	10.203.5.3\nDescription 	V53_BC-BO-PCY->SM2 \n\n\nNom 	PCY02RSZ\nFonction 	Back-Office\nIP 	10.203.140.16\nHaute dispo 	oui\n	\nNom 	PCY_DVd_PFC-1K\nTechnologie 	Veth\nUnité 	0\nModule 	n.c\nPort 	130\nDébit 	AUTO\n	\nVLAN ID 	787\nIP 	10.203.140.0\nMasque 	255.255.255.0\nPasserelle 	10.203.140.3\nDescription 	V787_DCO_BO-CLUS_PFC_UC1-UC2\n\nBonjour,\n\nCi-dessous notre analyse de la situation:\nNous avons compris que vous voulez configuré la seconde interface eth1 de pcyyyrsz pour servir de backoffice. \nD'abord nous avons vérifé que c'est la  connexion front c'est-à-dire de pcyyyRSZ  avec l'IP 10.203.139.17 vers le pcyyyCRL qui fonctionne en ce moment  car dans le Front pcyyycrl est joingnable via l'IP 10.203.68.15.\n[root@pcyyyrsz sysconfig]# netstat -puta |grep crl\ntcp        0      0 pcyyyrsz.adam.adroot.:60243 pcy00crl.pcy.edfgdf.f:54233 ESTABLISHED 44271/java\ntcp        0      0 pcyyyrsz.adam.adroot.:60237 pcy00crl.pcy.edfgdf.f:54233 ESTABLISHED 44271/java\ntcp        0      0 pcyyyrsz.adam.adroot.:60240 pcy00crl.pcy.edfgdf.f:54233 ESTABLISHED 44271/java\ntcp        0      0 pcyyyrsz.adam.adroot.:60239 pcy00crl.pcy.edfgdf.f:54233 ESTABLISHED 44271/java\ntcp        0      0 pcyyyrsz.adam.adroot.:60241 pcy00crl.pcy.edfgdf.f:54233 ESTABLISHED 44271/java\ntcp        0      0 pcyyyrsz.adam.adroot.:60245 pcy00crl.pcy.edfgdf.f:54233 ESTABLISHED 44271/java\ntcp        0      0 pcyyyrsz.adam.adroot.:60244 pcy00crl.pcy.edfgdf.f:54233 ESTABLISHED 44271/java\ntcp        0      0 pcyyyrsz.adam.adroot.:60242 pcy00crl.pcy.edfgdf.f:54233 ESTABLISHED 44271/java\ntcp        0      0 pcyyyrsz.adam.adroot.:60238 pcy00crl.pcy.edfgdf.f:54233 ESTABLISHED 44271/java\ntcp        0      0 pcyyyrsz.adam.adroot.:60246 pcy00crl.pcy.edfgdf.f:54233 ESTABLISHED 44271/java\n\nDans le BO le eth1 de pcyyrsz est configuré avec l'IP 10.203.140.16 (VLAN 787 )et sur pcyyycrl eth9 : 10.203.5.24 (VLAN 53);\nCerte une route est configuré sur pcyyyrsz pour joindre pcyyycrl en utilisant la gateway 10.203.140.3 mais ce dernier n'est même pas joignable.\n[root@pcyyyrsz sysconfig]# ping -I eth1 10.203.140.3\nPING 10.203.140.3 (10.203.140.3) from 10.203.140.16 eth1: 56(84) bytes of data.\nFrom 10.203.140.16 icmp_seq=2 Destination Host Unreachable\nFrom 10.203.140.16 icmp_seq=3 Destination Host Unreachable\nFrom 10.203.140.16 icmp_seq=4 Destination Host Unreachable\n\nConclusion :\n- la gateway 10.203.140.3 n'est-elle pas opérationnelle ?\n- si oui alors le routage entre le VLAN 787 et le VLAN 53 n'est pas au point\n- une fois que ces points sont OK merci aussi de procéder à l'ouverture des flux de votre application entre ces deux VLAN. \n",
 			"file": "/C/Users/PR271F5N/Documents/log_install_svr_alfa.txt",
 			"file_size": 57588,
 			"file_write_time": 131056321476699908,
 			"settings":
 			{
-				"buffer_size": 203,
+				"buffer_size": 2804,
 				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "",
+			"file": "/C/Users/PR271F5N/Documents/mytext.la",
+			"file_size": 0,
+			"file_write_time": 131070147468160726,
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Windows"
 			}
 		}
 	],
@@ -156,6 +157,7 @@
 	},
 	"file_history":
 	[
+		"/C/Users/PR271F5N/Documents/index.html",
 		"/Z/Mydoc/rapport_service.txt",
 		"/Z/Mydoc/synchro.sh",
 		"/Z/Mydoc/Journees_Docker_17-18Fev2016/installation/docker-storage-setup",
@@ -207,7 +209,6 @@
 		"/C/Users/PR271F5N/Documents/firmware2_ILO_Log.png",
 		"/C/Users/PR271F5N/Documents/rapport_noeyy799.rtf",
 		"/C/Users/PR271F5N/AppData/Local/Temp/core",
-		"/C/Users/PR271F5N/Documents/index.html",
 		"/C/Users/PR271F5N/Documents/GID_UID.pdf",
 		"/C/Users/PR271F5N/Documents/Signature.doc"
 	],
@@ -257,7 +258,7 @@
 	"groups":
 	[
 		{
-			"selected": 8,
+			"selected": 6,
 			"sheets":
 			[
 				{
@@ -318,49 +319,22 @@
 				},
 				{
 					"buffer": 2,
-					"file": "/C/Users/PR271F5N/Documents/index.html",
 					"settings":
 					{
-						"buffer_size": 105,
+						"buffer_size": 2062,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								105,
-								0
+								996,
+								996
 							]
 						],
 						"settings":
 						{
-							"auto_name": "",
-							"syntax": "Packages/HTML/HTML.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"settings":
-					{
-						"buffer_size": 1033,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1033,
-								1033
-							]
-						],
-						"settings":
-						{
-							"auto_name": "",
+							"auto_name": "Bonjour,",
 							"syntax": "Packages/Text/Plain text.tmLanguage",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
@@ -372,19 +346,19 @@
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 3,
 					"file": "/Z/Mydoc/Memo/ACL.doc",
 					"settings":
 					{
-						"buffer_size": 2441,
+						"buffer_size": 1626,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								2441
+								1597,
+								1597
 							]
 						],
 						"settings":
@@ -400,7 +374,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 4,
 					"file": "/C/Users/PR271F5N/model_spec.spec",
 					"settings":
 					{
@@ -422,13 +396,13 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 864.0,
+						"translation.y": 288.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 5,
 					"file": "/Z/Mydoc/Memo/redhat/How to create and host a yum repository over httpd",
 					"settings":
 					{
@@ -439,8 +413,8 @@
 						"selection":
 						[
 							[
-								539,
-								539
+								808,
+								808
 							]
 						],
 						"settings":
@@ -457,23 +431,23 @@
 					"type": "text"
 				},
 				{
-					"buffer": 7,
+					"buffer": 6,
 					"settings":
 					{
-						"buffer_size": 1705,
+						"buffer_size": 1355,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1705,
-								1705
+								1355,
+								1355
 							]
 						],
 						"settings":
 						{
-							"auto_name": "La version 3.0 de sipsir-client est bien pris",
+							"auto_name": "Bonjour,",
 							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
 						"translation.x": 0.0,
@@ -483,25 +457,51 @@
 					"type": "text"
 				},
 				{
-					"buffer": 8,
+					"buffer": 7,
 					"file": "/C/Users/PR271F5N/Documents/log_install_svr_alfa.txt",
 					"settings":
 					{
-						"buffer_size": 203,
+						"buffer_size": 2804,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								202,
-								185
+								289,
+								289
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/Text/Plain text.tmLanguage",
 							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "/C/Users/PR271F5N/Documents/mytext.la",
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
