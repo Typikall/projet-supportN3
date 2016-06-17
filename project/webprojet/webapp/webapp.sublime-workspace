@@ -1,0 +1,555 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"font",
+				"font-size"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "/C/Users/PR271F5N/Documents/Manipulation d'un LV",
+			"settings":
+			{
+				"buffer_size": 319,
+				"line_ending": "Windows",
+				"name": "Manipulation d'un LV"
+			}
+		},
+		{
+			"file": "/Z/Mydoc/Memo/ACL.doc",
+			"settings":
+			{
+				"buffer_size": 2888,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/C/Users/PR271F5N/model_spec.spec",
+			"settings":
+			{
+				"buffer_size": 7896,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "How to create and host a yum repository over httpd \nCréer un dépot RPM YUM avec httpd - Rhedat rhel\n\n1-Set up apache :\nConfigurer Apache\n\n    # yum install httpd\n    # mkdir /var/www/html/myrepo\n\nCréer le metadata avec createrepo\ncreaterepo est un utilitaire chez redhat, permet de créer un repository \n\n2-On a system of the same release as the repository, gather the rpms and create the repository metadata with createrepo :\n\n\n    # yum install createrepo\n    # mkdir myrepo\n    # cp /mysourcerpms/mes.rpms myrepo\n    # cd /path/to/myrepo\n    # createrepo /path/to/myrepo\n\nPI: Mieux vaut toujours utiliser le chemin absolu\n    The RHEL5 version of createrepo require a full path be given as an option or the repository will not be created correctly . To avoid problems, make sure you always use a full path.\n\n3-Copy the folder to your apache server using the method of your choice.\n    For convenience, the content of /path/to/myrepo has been copied to /var/www/html/myrepo, including the repodata folder it should now include.\nCopier le contenu de  /path/to/myrepo dans  var/www/html/myrepo\n\n    # chmod o+r /var/www/html/myrepo -R\n    # chcon -R httpd_sys_content_t /var/www/html/myrepo\n\n    The chcon command is only required if SELinux is in enforcing mode.\n\n4-Configure the clients with a new /etc/yum.repos.d/myrepo.repo\nConfiguer le client avec le nouveau repository\n\n    [myrepo]\n    name=my custom repo\n    baseurl=http://myapacheserver/myrepo\n    enabled=1\n    gpgcheck=0\n\n    Depending on your setup, you may want to enable gpgcheck - if for exemple you are sharing content provided by Red Hat from the main repositories (released content, not beta or fasttrack) , the options to configure correctly gpg checks would be\nPI: Si les rpms fournis ont été signés alors il faut mettre gpgcheck=1 et founir avec la clé comme le montre l'exemple ci-dessous :\n\n    gpgcheck=1 \n    gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release\n\n    The keys are by default installed on systems by a Red Hat release package for your type of installation. For more information on the creation of .repo files, you can check man yum.conf under the section [repository] OPTIONS.\n\ncreaterepo doit être lancé sur le système qui a la même version du dépot cibles. \nExemple :\nlancer createrepo sur rhel5 pour un dépot rhel5 \nlancer createrepo sur rhel6 pour un dépot rhel6\n\nThe steps contained in this article work for any release, but the createrepo command must be ran with the createrepo of the RHEL major release for its repository - this is due to format differences in rpm between major releases. This means you need to run createrepo on RHEL5 for a RHEL5 repository, on RHEL6 for a RHEL6 repository and so on.",
+			"file": "/Z/Mydoc/Memo/redhat/How to create and host a yum repository over httpd",
+			"file_size": 2234,
+			"file_write_time": 131044054530000000,
+			"settings":
+			{
+				"buffer_size": 2706,
+				"line_ending": "Windows",
+				"name": "Superblock EXT4 d'une partition LVM corrompu après"
+			}
+		},
+		{
+			"contents": "Bonjour,\n\n\nNous avons vérifié et pour nous pas besoin d'agrandir le disque rootvg. \nNous avons remarqué que des données sont présent alors qu'ils ne devront pas y être :\n lv_omnivision            root_vg     -wi-ao 320.00m\n lv_omnivision_invest     root_vg     -wi-ao 608.00m\n lvteledist               root_vg     -wi-ao   2.00g\nSi ces trois LV occupent  environ 3G qui devrait être pour le système.\nIl faut pas aussi oublier que la modification de la taille de rootgvg implique aussi la modification du rootvg_alt.\nDonc nous vous recommandons de déplacer ces LV dans le datavg pour pouvoir gagner de l'espace pour le rootvg.\n\n\nCordialement,\nL'équipe Support Serveur N3\nTAG SSN3 : SSN3-PR-Q-LIN-S3\n\nPR271F5N@noefy4m9> sudo /sbin/lvs |grep \"root_vg\"\n  lv_home                  root_vg     -wi-ao   1.00g\n  lv_legato                root_vg     -wi-ao   1.09g\n  lv_omnivision            root_vg     -wi-ao 320.00m\n  lv_omnivision_invest     root_vg     -wi-ao 608.00m\n  lv_root                  root_vg     -wi-ao   4.00g\n  lv_swap                  root_vg     -wi-ao   1.03g\n  lv_tmp                   root_vg     -wi-ao   1.00g\n  lv_var                   root_vg     -wi-ao   2.00g\n  lvteledist               root_vg     -wi-ao   2.00g\n  lv_home_alt              root_vg_alt -wi-a-   1.00g\n  lv_legato_alt            root_vg_alt -wi-a-   1.09g\n  lv_omnivision_alt        root_vg_alt -wi-a- 320.00m\n  lv_omnivision_invest_alt root_vg_alt -wi-a- 608.00m\n  lv_root_alt              root_vg_alt -wi-a-   4.00g\n  lv_swap_alt              root_vg_alt -wi-a-   1.03g\n  lv_tmp_alt               root_vg_alt -wi-a-   1.00g\n  lv_var_alt               root_vg_alt -wi-a-   2.00g\n  lvteledist_alt           root_vg_alt -wi-a-   2.00g\n",
+			"settings":
+			{
+				"buffer_size": 1721,
+				"line_ending": "Windows",
+				"name": "Bonjour,"
+			}
+		},
+		{
+			"contents": "#Nettoyer le cache de sssd toutes les nuits àh30 vous pouvez ajouter la ligne suivante en crontab de root\n30 00 * * * /sbin/service sssd stop && \\rm -f /var/lib/sss/db/*.ldb && /sbin/service sssd start\n\n00 01 * * * /usr/local/inventiv/scripts/inventaire.sh >/dev/null 2>&1\n00 20 * * * /usr/local/inventiv/scripts/abonnement.sh >/dev/null 2>&1\n30 00 * * * /sbin/service sssd stop && rm -f /var/lib/sss/db/*.ldb && /sbin/service sssd start\n##Sauvegarde EVAGD\n##00 01 * * * /exploit/svgde/sauvegarde.ksh appli.cfg\n30 01 * * * /exploit/svgde/sauvegarde.ksh SI019.cfg\n30 23 * * 0 /outillage/PraSys/bin/systeme_alterne.sh /dev/sdb >/dev/null 2>&1\n20 10 * * * /appli/aql/batches/purge3s/Purge3S.ksh\n\n\nJun  2 00:30:01 pcyyycs1 sssd[pam]: Shutting down\nJun  2 00:30:01 pcyyycs1 sssd[nss]: Shutting down\nJun  2 00:30:01 pcyyycs1 sssd[be[CACCIA]]: Shutting down\nJun  2 01:00:24 pcyyycs1 sudo:     root : TTY=unknown ; PWD=/usr/local/inventiv/generic ; USER=webadm ; COMMAND=/usr/bin/test -x /logiciels/bea/weblogic_11gR1PS6/utils/bsu/bsu.s\n\n\nPR271F5N@pcyyycs1.pcy.edfgdf.fr> sudo grep \"Jun  2\" /var/log/messages-20160605|grep \"sssd\"|more\nJun  2 00:30:01 pcyyycs1 sssd[pam]: Shutting down\nJun  2 00:30:01 pcyyycs1 sssd[nss]: Shutting down\nJun  2 00:30:01 pcyyycs1 sssd[be[CACCIA]]: Shutting down\nJun  2 11:48:27 pcyyycs1 sssd: Starting up\nJun  2 11:48:27 pcyyycs1 sssd[be[CACCIA]]: Starting up\nJun  2 11:48:27 pcyyycs1 sssd[nss]: Starting up\nJun  2 11:48:27 pcyyycs1 sssd[pam]: Starting up\nJun  2 11:50:00 pcyyycs1 sssd[be[CACCIA]]: Shutting down\nJun  2 11:50:00 pcyyycs1 sssd[be[CACCIA]]: Starting up\nPR271F5N@pcyyycs1.pcy.edfgdf.fr> ls -ltr /etc/*ldap*\n-rw-r-----  1 root root  3181 Jan 23  2013 /etc/sudo-ldap.conf.caccia-20150428154610\n-r--------  1 root root 10266 Apr 28  2015 /etc/sudo-ldap.conf.caccia-20150429134243\n-r--------  1 root root 10220 Apr 29  2015 /etc/sudo-ldap.conf.caccia-20150429134733\n-r--------  1 root root 10224 Apr 29  2015 /etc/sudo-ldap.conf.caccia-20160520173254\n-r--------  1 root root 10224 May 20 17:32 /etc/sudo-ldap.conf.caccia-20160602114825\n-r--------  1 root root 10224 Jun  2 11:48 /etc/sudo-ldap.conf.caccia-20160603113810\n-r--------. 1 root root 10224 Jun  3 11:38 /etc/sudo-ldap.conf\n\n/etc/openldap:\ntotal 24\n-rw-r--r--  1 root root  280 Apr 22  2013 ldap.conf.caccia-20150428154610\ndrwxr-xr-x. 2 root root 4096 Apr 22  2013 certs\ndrwxr-xr-x  2 root root 4096 Apr 28  2015 cacerts\n-rw-r--r--  1 root root  283 Apr 28  2015 ldap.conf.caccia-20150429134243\n-rw-r--r--  1 root root  398 Apr 29  2015 ldap.conf.caccia-20150429134733\n-rw-r--r--  1 root root  368 Apr 29  2015 ldap.conf\n\n\n\n",
+			"file": "/C/Users/PR271F5N/Documents/log_install_svr_alfa.txt",
+			"file_size": 57588,
+			"file_write_time": 131056321476699908,
+			"settings":
+			{
+				"buffer_size": 2616,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "[root@clay71avm ~]# free -tm\n             total       used       free     shared    buffers     cached\nMem:          1877       1481        395          0        104        362\n-/+ buffers/cache:       1013        863\nSwap:         1055          0       1055\nTotal:        2933       1481       1451\n[root@clay71avm ~]# vmstat 1\nprocs -----------memory---------- ---swap-- -----io---- --system-- -----cpu-----\n r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa st\n 1  0      0 405068 107504 371520    0    0     1     1   19   29  0  0 100  0  0\n 0  0      0 405060 107504 371520    0    0     0    12   34   46  0  0 100  0  0\n 0  0      0 405060 107504 371520    0    0     0     0   22   33  0  0 100  0  0\n 0  0      0 405060 107504 371520    0    0     0     0   22   32  0  1 99  0  0\n 0  0      0 405060 107504 371520    0    0     0     0   20   30  0  0 100  0  0\n^C\n[root@clay71avm ~]#\n",
+			"file": "/C/Users/PR271F5N/Documents/mytext.la",
+			"file_size": 0,
+			"file_write_time": 131070147468160726,
+			"settings":
+			{
+				"buffer_size": 923,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/PR271F5N/AppData/Roaming/Sublime Text 2/Packages/Package Control/Package Control.sublime-settings",
+			"settings":
+			{
+				"buffer_size": 7379,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 400.0,
+		"selected_items":
+		[
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ins",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: in",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: package",
+				"Package Control: List Packages"
+			],
+			[
+				"Package Control: install",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: lis",
+				"Package Control: List Packages"
+			],
+			[
+				"Package Control: list",
+				"Package Control: List Unmanaged Packages"
+			],
+			[
+				"Package Control: i",
+				"Package Control: Install Package"
+			],
+			[
+				"",
+				"Package Control: Discover Packages"
+			],
+			[
+				"Package Control: list packa",
+				"Package Control: List Packages"
+			],
+			[
+				"pa",
+				"Package Control: List Packages"
+			]
+		],
+		"width": 408.0
+	},
+	"console":
+	{
+		"height": 125.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/Users/PR271F5N/Documents/git-prompt.sh",
+		"/C/Users/PR271F5N/prakotoarisoa/project/node/test.js",
+		"/C/Users/PR271F5N/prakotoarisoa/project/node/server.js",
+		"/C/Users/PR271F5N/Documents/index.html",
+		"/Z/Mydoc/rapport_service.txt",
+		"/Z/Mydoc/synchro.sh",
+		"/Z/Mydoc/Journees_Docker_17-18Fev2016/installation/docker-storage-setup",
+		"/Z/Mydoc/Journees_Docker_17-18Fev2016/installation/README.md",
+		"/Z/Mydoc/Journees_Docker_17-18Fev2016/installation/hosts",
+		"/Z/Mydoc/Journees_Docker_17-18Fev2016/monitoring/readme-sysdig.txt",
+		"/Z/Mydoc/Journees_Docker_17-18Fev2016/installation/docker-proxy.conf",
+		"/Z/Mydoc/Nouveau Document Microsoft Office Word 97 - 2003.doc",
+		"/Z/Mydoc/Depot rhel4.doc",
+		"/C/Users/PR271F5N/Documents/ConEmuPack.150813g/ConEmu.xml",
+		"/C/Users/PR271F5N/Documents/ConsoleZ.x86.1.13.0.15044/console.xml",
+		"/C/Users/PR271F5N/AppData/Local/Temp/Sudoers_apr-1.txt",
+		"/C/Users/PR271F5N/AppData/Local/Temp/sudoers_276-1.txt",
+		"/C/Users/PR271F5N/AppData/Roaming/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/C/Users/PR271F5N/Documents/PortableGit/README.portable",
+		"/C/Users/PR271F5N/AppData/Local/Programs/ConsoleZ.x86.1.13.0.15044/console .xml",
+		"/Z/Mydoc/outils/Console/ConsoleZ.x86.1.13.0.15044/console.xml",
+		"/C/Users/PR271F5N/AppData/Local/Programs/ConsoleZ.x86.1.13.0.15044/console.xml",
+		"/C/Users/PR271F5N/prakotoarisoa/webprojet/webapp/server/server.js",
+		"/C/Users/PR271F5N/prakotoarisoa/webprojet/webapp/index.html",
+		"/C/Users/PR271F5N/prakotoarisoa/webprojet/webapp/scripts/toto.c",
+		"/C/Users/PR271F5N/prakotoarisoa/webprojet/webapp/style/style.css",
+		"/C/Users/PR271F5N/prakotoarisoa/Tuto_web.sublime-project",
+		"/C/Users/PR271F5N/prakotoarisoa/project/webapp/index.html",
+		"/C/Users/PR271F5N/AppData/Roaming/Sublime Text 2/Packages/User/JSON.sublime-settings",
+		"/C/Users/PR271F5N/prakotoarisoa/project/Dockerfile",
+		"/C/Users/PR271F5N/prakotoarisoa/project/webapp/toto.c",
+		"/C/Users/PR271F5N/project/toto",
+		"/C/Users/PR271F5N/Documents/main.css",
+		"/Z/Mydoc/Journees_Docker_17-18Fev2016/api/curl.sh",
+		"/C/Users/PR271F5N/AppData/Roaming/Sublime Text 2/Packages/User/Package Control.sublime-settings",
+		"/C/Users/PR271F5N/AppData/Roaming/Sublime Text 2/Packages/Package Control/Package Control.sublime-settings",
+		"/C/Users/PR271F5N/AppData/Roaming/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+		"/C/Users/PR271F5N/AppData/Roaming/Sublime Text 2/Packages/User/Emmet.sublime-settings",
+		"/C/Users/PR271F5N/Documents/titi.html",
+		"/Z/Mydoc/Journees_Docker_17-18Fev2016/certificats/README.md",
+		"/Z/Mydoc/Journees_Docker_17-18Fev2016/dnsdock/docker-compose.yml",
+		"/Z/Mydoc/Journees_Docker_17-18Fev2016/data/web/build.sh",
+		"/Z/Mydoc/Journees_Docker_17-18Fev2016/openldap/Makefile",
+		"/Z/Mydoc/Journees_Docker_17-18Fev2016/openldap/docker-compose.yml",
+		"/Z/Mydoc/Journees_Docker_17-18Fev2016/dockerisation/cowsay/Dockerfile",
+		"/Z/Mydoc/Journees_Docker_17-18Fev2016/dockerisation/cowsay/Makefile",
+		"/C/Users/PR271F5N/prakotoarisoa/myC/toto.c",
+		"/C/Users/PR271F5N/prakotoarisoa/console.xml",
+		"/C/Users/PR271F5N/AppData/Roaming/Console/console.xml",
+		"/C/Users/PR271F5N/Documents/clayst26.rtf",
+		"/C/Users/PR271F5N/Documents/ttt.csv",
+		"/C/Users/PR271F5N/Documents/access.redhat.com _ CVE-2014-9683.pdf",
+		"/C/Users/PR271F5N/Documents/firmware2_ILO_Log.png",
+		"/C/Users/PR271F5N/Documents/rapport_noeyy799.rtf",
+		"/C/Users/PR271F5N/AppData/Local/Temp/core",
+		"/C/Users/PR271F5N/Documents/GID_UID.pdf",
+		"/C/Users/PR271F5N/Documents/Signature.doc"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"term",
+			"xterm",
+			"cygwin",
+			"term",
+			"cac",
+			"root",
+			"/root",
+			"root",
+			"cac",
+			"root",
+			"cac",
+			">",
+			"true"
+		],
+		"highlight": false,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": true,
+		"replace_history":
+		[
+		],
+		"reverse": true,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 7,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "/C/Users/PR271F5N/Documents/Manipulation d'un LV",
+					"settings":
+					{
+						"buffer_size": 319,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								88,
+								88
+							]
+						],
+						"settings":
+						{
+							"auto_name": "Manipulation d'un LV",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/Z/Mydoc/Memo/ACL.doc",
+					"settings":
+					{
+						"buffer_size": 2888,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2888,
+								2888
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 198.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/C/Users/PR271F5N/model_spec.spec",
+					"settings":
+					{
+						"buffer_size": 7896,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1159,
+								1159
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/Z/Mydoc/Memo/redhat/How to create and host a yum repository over httpd",
+					"settings":
+					{
+						"buffer_size": 2706,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1374,
+								1374
+							]
+						],
+						"settings":
+						{
+							"auto_name": "Superblock EXT4 d'une partition LVM corrompu après",
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 54.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"settings":
+					{
+						"buffer_size": 1721,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1720,
+								0
+							]
+						],
+						"settings":
+						{
+							"auto_name": "Bonjour,",
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "/C/Users/PR271F5N/Documents/log_install_svr_alfa.txt",
+					"settings":
+					{
+						"buffer_size": 2616,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2616,
+								2616
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "/C/Users/PR271F5N/Documents/mytext.la",
+					"settings":
+					{
+						"buffer_size": 923,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								923,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "/C/Users/PR271F5N/AppData/Roaming/Sublime Text 2/Packages/Package Control/Package Control.sublime-settings",
+					"settings":
+					{
+						"buffer_size": 7379,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 864.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.git":
+	{
+		"height": 116.0
+	},
+	"replace":
+	{
+		"height": 62.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+			[
+				"",
+				"/C/Users/PR271F5N/prakotoarisoa/project/webprojet/webapp/webapp.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 257.0,
+	"status_bar_visible": true
+}

@@ -1,0 +1,13 @@
+{
+  "author": "Ollie Parsley <ollie@ollieparsley.com> (http://ollieparsley.com)",
+  "name": "ollie-github-example",
+  "description": "Get a list of github user repos",
+  "version": "0.0.1",
+  "main": "github.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "optionalDependencies": {},
+  "engines": {
+    "node": "*"
+  }
+}

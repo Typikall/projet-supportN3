@@ -1,0 +1,13 @@
+var os = require('os');
+osname = os.hostname();
+osplatform = os.platform();
+ostype = os.type();
+osversion = os.release();
+oscpu = os.cpus();
+osfreememo = os.freemem();
+console.log("Hostname = " + osname);
+console.log("Platforme = " + osplatform);
+console.log("Type = " + ostype);
+console.log("Version = " + osversion);
+console.log(oscpu);
+console.log("Free memory = " + osfreememo);

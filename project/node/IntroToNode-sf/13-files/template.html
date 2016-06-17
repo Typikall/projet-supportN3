@@ -1,0 +1,22 @@
+<html>
+	<head>
+		<title>Real-time bieber tweets</title>
+		<script src="/socket.io/socket.io.js"></script>
+	</head>
+	<body>
+		<h1>Real-time bieber tweets</h1>
+
+		<ul id="tweets"></ul>
+		
+		<script type="text/javascript">
+			var socket = io.connect('http://bieber-tweets.nodester.com');	
+			var ul = document.getElementById("tweets");
+			socket.on('tweet', function (tweet) {
+				var li = document.createElement("li");
+				li.innerHTML = "<strong>" + tweet.user.screen_name + ": </strong> " + tweet.text;
+				ul.insertBefore(li, ul.getElementsByTagName("li")[0]);
+			});
+		</script>
+	
+	</body>
+</html>
