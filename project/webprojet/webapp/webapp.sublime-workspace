@@ -69,21 +69,24 @@
 			}
 		},
 		{
-			"contents": "[root@clay71avm ~]# free -tm\n             total       used       free     shared    buffers     cached\nMem:          1877       1481        395          0        104        362\n-/+ buffers/cache:       1013        863\nSwap:         1055          0       1055\nTotal:        2933       1481       1451\n[root@clay71avm ~]# vmstat 1\nprocs -----------memory---------- ---swap-- -----io---- --system-- -----cpu-----\n r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa st\n 1  0      0 405068 107504 371520    0    0     1     1   19   29  0  0 100  0  0\n 0  0      0 405060 107504 371520    0    0     0    12   34   46  0  0 100  0  0\n 0  0      0 405060 107504 371520    0    0     0     0   22   33  0  0 100  0  0\n 0  0      0 405060 107504 371520    0    0     0     0   22   32  0  1 99  0  0\n 0  0      0 405060 107504 371520    0    0     0     0   20   30  0  0 100  0  0\n^C\n[root@clay71avm ~]#\n",
+			"contents": "",
 			"file": "/C/Users/PR271F5N/Documents/mytext.la",
 			"file_size": 0,
 			"file_write_time": 131070147468160726,
 			"settings":
 			{
-				"buffer_size": 923,
+				"buffer_size": 0,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "/C/Users/PR271F5N/AppData/Roaming/Sublime Text 2/Packages/Package Control/Package Control.sublime-settings",
+			"contents": "sudo docker run -d --name \"origin\" --privileged --pid=host --net=host -v /:/rootfs:ro -v /var/run:/var/run:rw -v /sys:/sys -v /var/lib/docker:/var/lib/docker:rw -v /var/lib/origin/openshift.local.volumes:/var/lib/origin/openshift.local.volumes \\\n        openshift/origin start\n",
+			"file": "/Z/Mydoc/Journees_Docker_17-18Fev2016/installation/docker-proxy.conf",
+			"file_size": 182,
+			"file_write_time": 131000258670000000,
 			"settings":
 			{
-				"buffer_size": 7379,
+				"buffer_size": 277,
 				"line_ending": "Unix"
 			}
 		}
@@ -156,6 +159,7 @@
 	},
 	"file_history":
 	[
+		"/C/Users/PR271F5N/AppData/Roaming/Sublime Text 2/Packages/Package Control/Package Control.sublime-settings",
 		"/C/Users/PR271F5N/Documents/git-prompt.sh",
 		"/C/Users/PR271F5N/prakotoarisoa/project/node/test.js",
 		"/C/Users/PR271F5N/prakotoarisoa/project/node/server.js",
@@ -191,7 +195,6 @@
 		"/C/Users/PR271F5N/Documents/main.css",
 		"/Z/Mydoc/Journees_Docker_17-18Fev2016/api/curl.sh",
 		"/C/Users/PR271F5N/AppData/Roaming/Sublime Text 2/Packages/User/Package Control.sublime-settings",
-		"/C/Users/PR271F5N/AppData/Roaming/Sublime Text 2/Packages/Package Control/Package Control.sublime-settings",
 		"/C/Users/PR271F5N/AppData/Roaming/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
 		"/C/Users/PR271F5N/AppData/Roaming/Sublime Text 2/Packages/User/Emmet.sublime-settings",
 		"/C/Users/PR271F5N/Documents/titi.html",
@@ -435,14 +438,14 @@
 					"file": "/C/Users/PR271F5N/Documents/mytext.la",
 					"settings":
 					{
-						"buffer_size": 923,
+						"buffer_size": 0,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								923,
+								0,
 								0
 							]
 						],
@@ -458,27 +461,26 @@
 				},
 				{
 					"buffer": 7,
-					"file": "/C/Users/PR271F5N/AppData/Roaming/Sublime Text 2/Packages/Package Control/Package Control.sublime-settings",
+					"file": "/Z/Mydoc/Journees_Docker_17-18Fev2016/installation/docker-proxy.conf",
 					"settings":
 					{
-						"buffer_size": 7379,
+						"buffer_size": 277,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								161,
+								161
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JSON.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 864.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
