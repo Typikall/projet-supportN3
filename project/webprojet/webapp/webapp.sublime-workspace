@@ -15,17 +15,9 @@
 			"file": "/C/Users/PR271F5N/Documents/Manipulation d'un LV",
 			"settings":
 			{
-				"buffer_size": 319,
+				"buffer_size": 372,
 				"line_ending": "Windows",
 				"name": "Manipulation d'un LV"
-			}
-		},
-		{
-			"file": "/Z/Mydoc/Memo/ACL.doc",
-			"settings":
-			{
-				"buffer_size": 2888,
-				"line_ending": "Unix"
 			}
 		},
 		{
@@ -49,45 +41,30 @@
 			}
 		},
 		{
-			"contents": "Bonjour,\n\n\nNous avons vérifié et pour nous pas besoin d'agrandir le disque rootvg. \nNous avons remarqué que des données sont présent alors qu'ils ne devront pas y être :\n lv_omnivision            root_vg     -wi-ao 320.00m\n lv_omnivision_invest     root_vg     -wi-ao 608.00m\n lvteledist               root_vg     -wi-ao   2.00g\nSi ces trois LV occupent  environ 3G qui devrait être pour le système.\nIl faut pas aussi oublier que la modification de la taille de rootgvg implique aussi la modification du rootvg_alt.\nDonc nous vous recommandons de déplacer ces LV dans le datavg pour pouvoir gagner de l'espace pour le rootvg.\n\n\nCordialement,\nL'équipe Support Serveur N3\nTAG SSN3 : SSN3-PR-Q-LIN-S3\n\nPR271F5N@noefy4m9> sudo /sbin/lvs |grep \"root_vg\"\n  lv_home                  root_vg     -wi-ao   1.00g\n  lv_legato                root_vg     -wi-ao   1.09g\n  lv_omnivision            root_vg     -wi-ao 320.00m\n  lv_omnivision_invest     root_vg     -wi-ao 608.00m\n  lv_root                  root_vg     -wi-ao   4.00g\n  lv_swap                  root_vg     -wi-ao   1.03g\n  lv_tmp                   root_vg     -wi-ao   1.00g\n  lv_var                   root_vg     -wi-ao   2.00g\n  lvteledist               root_vg     -wi-ao   2.00g\n  lv_home_alt              root_vg_alt -wi-a-   1.00g\n  lv_legato_alt            root_vg_alt -wi-a-   1.09g\n  lv_omnivision_alt        root_vg_alt -wi-a- 320.00m\n  lv_omnivision_invest_alt root_vg_alt -wi-a- 608.00m\n  lv_root_alt              root_vg_alt -wi-a-   4.00g\n  lv_swap_alt              root_vg_alt -wi-a-   1.03g\n  lv_tmp_alt               root_vg_alt -wi-a-   1.00g\n  lv_var_alt               root_vg_alt -wi-a-   2.00g\n  lvteledist_alt           root_vg_alt -wi-a-   2.00g\n",
+			"contents": "Créer à partir d'un rpm source\nrécupérer le rpm source puis installer\nDans cette exemple, nous utilisons le paquet tree\nwget ftp://ftp.redhat.com/pub/redhat/linux/enterprise/6Workstation/en/os/SRPMS/tree-\n1.5.3-2.el6.src.rpm\nrpm -ivh tree-1.5.3-2.el6.src.rpm\nCette commande crée un répertoire rpmbuild dans votre répertoire de travail (home directory)\nrpmbuild contient deux répertoires : \nSOURCE : contient le code source du programmme sours forme de tarball et quelques patchs\nSPEC: contient le fichier spec du programme.\nDans cette exemple nou effectueons juste une petite modification du fichier spec\n\n\n\nCréer en partant de zéro .\n\n\n      ",
 			"settings":
 			{
-				"buffer_size": 1721,
+				"buffer_size": 643,
 				"line_ending": "Windows",
-				"name": "Bonjour,"
+				"name": "Créer à partir d'un rpm source"
 			}
 		},
 		{
-			"contents": "#Nettoyer le cache de sssd toutes les nuits àh30 vous pouvez ajouter la ligne suivante en crontab de root\n30 00 * * * /sbin/service sssd stop && \\rm -f /var/lib/sss/db/*.ldb && /sbin/service sssd start\n\n00 01 * * * /usr/local/inventiv/scripts/inventaire.sh >/dev/null 2>&1\n00 20 * * * /usr/local/inventiv/scripts/abonnement.sh >/dev/null 2>&1\n30 00 * * * /sbin/service sssd stop && rm -f /var/lib/sss/db/*.ldb && /sbin/service sssd start\n##Sauvegarde EVAGD\n##00 01 * * * /exploit/svgde/sauvegarde.ksh appli.cfg\n30 01 * * * /exploit/svgde/sauvegarde.ksh SI019.cfg\n30 23 * * 0 /outillage/PraSys/bin/systeme_alterne.sh /dev/sdb >/dev/null 2>&1\n20 10 * * * /appli/aql/batches/purge3s/Purge3S.ksh\n\n\nJun  2 00:30:01 pcyyycs1 sssd[pam]: Shutting down\nJun  2 00:30:01 pcyyycs1 sssd[nss]: Shutting down\nJun  2 00:30:01 pcyyycs1 sssd[be[CACCIA]]: Shutting down\nJun  2 01:00:24 pcyyycs1 sudo:     root : TTY=unknown ; PWD=/usr/local/inventiv/generic ; USER=webadm ; COMMAND=/usr/bin/test -x /logiciels/bea/weblogic_11gR1PS6/utils/bsu/bsu.s\n\n\nPR271F5N@pcyyycs1.pcy.edfgdf.fr> sudo grep \"Jun  2\" /var/log/messages-20160605|grep \"sssd\"|more\nJun  2 00:30:01 pcyyycs1 sssd[pam]: Shutting down\nJun  2 00:30:01 pcyyycs1 sssd[nss]: Shutting down\nJun  2 00:30:01 pcyyycs1 sssd[be[CACCIA]]: Shutting down\nJun  2 11:48:27 pcyyycs1 sssd: Starting up\nJun  2 11:48:27 pcyyycs1 sssd[be[CACCIA]]: Starting up\nJun  2 11:48:27 pcyyycs1 sssd[nss]: Starting up\nJun  2 11:48:27 pcyyycs1 sssd[pam]: Starting up\nJun  2 11:50:00 pcyyycs1 sssd[be[CACCIA]]: Shutting down\nJun  2 11:50:00 pcyyycs1 sssd[be[CACCIA]]: Starting up\nPR271F5N@pcyyycs1.pcy.edfgdf.fr> ls -ltr /etc/*ldap*\n-rw-r-----  1 root root  3181 Jan 23  2013 /etc/sudo-ldap.conf.caccia-20150428154610\n-r--------  1 root root 10266 Apr 28  2015 /etc/sudo-ldap.conf.caccia-20150429134243\n-r--------  1 root root 10220 Apr 29  2015 /etc/sudo-ldap.conf.caccia-20150429134733\n-r--------  1 root root 10224 Apr 29  2015 /etc/sudo-ldap.conf.caccia-20160520173254\n-r--------  1 root root 10224 May 20 17:32 /etc/sudo-ldap.conf.caccia-20160602114825\n-r--------  1 root root 10224 Jun  2 11:48 /etc/sudo-ldap.conf.caccia-20160603113810\n-r--------. 1 root root 10224 Jun  3 11:38 /etc/sudo-ldap.conf\n\n/etc/openldap:\ntotal 24\n-rw-r--r--  1 root root  280 Apr 22  2013 ldap.conf.caccia-20150428154610\ndrwxr-xr-x. 2 root root 4096 Apr 22  2013 certs\ndrwxr-xr-x  2 root root 4096 Apr 28  2015 cacerts\n-rw-r--r--  1 root root  283 Apr 28  2015 ldap.conf.caccia-20150429134243\n-rw-r--r--  1 root root  398 Apr 29  2015 ldap.conf.caccia-20150429134733\n-rw-r--r--  1 root root  368 Apr 29  2015 ldap.conf\n\n\n\n",
-			"file": "/C/Users/PR271F5N/Documents/log_install_svr_alfa.txt",
-			"file_size": 57588,
-			"file_write_time": 131056321476699908,
+			"contents": "kernel panic\n\nLe process init n'arrive pas à se lancer \nCauses possible \n- un ou plusieurs disque ou file system introuvable \n- problème avec des librairies \n\nSolution\n- essayer de booter en mode single puis regarder ce qui a été modifié\n- booter en mode rescue si le boot single ne marche pas \n- vérifier l'état de Selinux, le désactiver temporairement ",
 			"settings":
 			{
-				"buffer_size": 2616,
-				"line_ending": "Unix"
+				"buffer_size": 354,
+				"line_ending": "Windows",
+				"name": "kernel panic"
 			}
 		},
 		{
-			"contents": "",
-			"file": "/C/Users/PR271F5N/Documents/mytext.la",
-			"file_size": 0,
-			"file_write_time": 131070147468160726,
+			"contents": "lrwxrwxrwx  1 root   root      22 Oct 11  2013 S98omniv -> /etc/init.d/omnivision\nlrwxrwxrwx  1 root   root      22 Oct 11  2013 K02omniv -> /etc/init.d/omnivision\nlrwxrwxrwx  1 root   root      54 Nov 21  2013 apache_2.2.24 -> /logiciels/apache/apa_2.2.24/bin/scripts/apache_2.2.24\n-rwx------  1 root   root     759 Dec  2  2013 as\nlrwxrwxrwx  1 root   root      58 Sep 12  2014 jboss_eap-6.1.1 -> /logiciels/jboss/jbo_eap-6.1.1/bin/scripts/jboss_eap-6.1.1\n-rwxrwxr--  1 ogdsvg nsrgrp  4790 Oct 16  2014 networker\n-rwxr-xr-x  1 root   root    2515 Jan 19  2015 nscd\n-rwxr--r--  1 root   root    1962 Feb  5  2015 nsrps\n-rwxr-xr-x  1 root   root    2335 Nov  3  2015 opsware-agent\nlrwxrwxrwx  1 root   root      52 Feb 12 18:19 jboss_eap-6.4 -> /logiciels/jboss/jboss_eap-6.4/scripts/jboss_eap-6.4\n\n\nPR271F5N@pcyyyav6.pcy.edfgdf.fr> ls -ltr /tmp/start_jboss_eap-6.4.log\n-rw-r--r-- 1 root root 245 Jun  6 08:05 /tmp/start_jboss_eap-6.4.log\n\nPR271F5N@pcyyyav6.pcy.edfgdf.fr> more /tmp/start_jboss_eap-6.4.log\n08:05:33,554 WARN  Ce domaine de JBoss n'a pas ete arrete proprement.\nCe domaine de JBoss est en cours de demarrage.\nVous pouvez suivre son evolution en executant la commande suivante :\ntail -f /var/projects/EBA/jboss_eap-6.4/aes/log/stdout.log\n\n\n[root@pcyyyav6 ~]# service --status-all\nusage: /etc/init.d/K02omniv {start|stop}\nusage: /etc/init.d/S98omniv {start|stop}\nabrt-dump-oops (pid 3436) is running...\nabrtd (pid  3428) is running...\nacpid (pid  2095) is running...\nanamon is stopped\n[ERROR] Usage: /etc/init.d/apache_2.2.24 {start|stop}\natd (pid  3455) is running...\n\n\n\nirqbalance (pid  1943) is running...\n[WARN] entry for instance : EBA is not valid\n       thank you to remove it in /logiciels/jboss/jbo_eap-6.1.1/conf/jboss_tab_eap-6.1.1 file\n[ERROR] Usage: /etc/init.d/jboss_eap-6.4 {start|stop}\nKdump is not operational\n\nComment extraire les fichiers provenant d'un rpm paquet.rpm ?\nFaire rpm2cpio paquet.rpm > paquet.cpio, pour transformer le package en archive cpio.\nIl faut ensuite extraire les fichiers de l'archive cpio avec la commande cpio :\ncpio -i --make-directories < paquet.cpio\n\n\nPR271F5N@noeyy5v7> sudo grep \"Command line\" messages.060716|grep -v \"grep\"\nMot de passe de PR271F5N:\nJul  6 14:23:03 noeyy5v7 kernel: Command line: ro root=/dev/mapper/root_vg-lv_root rd_NO_LUKS  KEYBOARDTYPE=pc KEYTABLE=fr LANG=en_US.UTF-8 rhgb rd_NO_MD quiet SYSFONT=latarcyrheb-sun16 rd_LVM_LV=root_vg/lv_root crashkernel=auto selinux=0 nmi_watchdog=1 rd_LVM_LV=root_vg/lv_swap rd_NO_DM elevator=noop\nPR271F5N@noeyy5v7> who -b\n         system boot  2016-07-06 14:19\nPR271F5N@noeyy5v7> last|grep boot\nreboot   system boot  2.6.32-358.11.1. Wed Jul  6 14:19 - 13:51 (1+23:32)\nPR271F5N@noeyy5v7>\n\n\nJul  6 14:59:56 noeyy5v7 sshd[81478]: pam_unix(sshd:session): session opened for user lynx by (uid=0)\nJul  6 14:59:56 noeyy5v7 sshd[81499]: Received disconnect from 10.121.24.117: 11: disconnected by user\nJul  6 14:59:56 noeyy5v7 sshd[81478]: pam_unix(sshd:session): session closed for user lynx\nJul  6 14:59:57 noeyy5v7 su: pam_unix(su-l:session): session opened for user oracle by (uid=0)\nJul  6 14:59:57 noeyy5v7 su: pam_unix(su-l:session): session closed for user oracle\nJul  6 14:23:03 noeyy5v7 su: pam_unix(su:session): session closed for user oracle\nJul  6 14:23:03 noeyy5v7 su: pam_sss(su:session): Request to sssd failed. Connection refused\nJul  6 14:23:13 noeyy5v7 su: pam_unix(su:session): session opened for user oracle by (uid=0)\nJul  6 14:23:15 noeyy5v7 su: pam_unix(su:session): session closed for user oracle\nJul  6 14:23:15 noeyy5v7 sshd[26969]: Server listening on 0.0.0.0 port 22.\nJul  6 14:23:15 noeyy5v7 runuser: pam_unix(runuser:session): session opened for user uuidd by (uid=0)\nJul  6 14:23:15 noeyy5v7 runuser: pam_unix(runuser:session): session closed for user uuidd\n\n\nJul  6 14:50:25 noeyy5v7 kernel: sdhf: sdhf1\nJul  6 14:50:25 noeyy5v7 kernel: sdfm: unknown partition table\nJul  6 14:50:25 noeyy5v7 kernel: sdfv: unknown partition table\nJul  6 14:50:25 noeyy5v7 kernel: sdml: unknown partition table\nJul  6 14:50:25 noeyy5v7 kernel: sdnb: unknown partition table\nJul  6 14:50:25 noeyy5v7 kernel: sdev: unknown partition table\nJul  6 14:50:25 noeyy5v7 kernel: sdfd: unknown partition table\nJul  6 14:50:25 noeyy5v7 kernel: sdlt: unknown partition table\nJul  6 14:50:25 noeyy5v7 kernel: sdmm: unknown partition table\nJul  6 14:23:03 noeyy5v7 kernel: imklog 5.8.10, log source = /proc/kmsg started.\nJul  6 14:23:03 noeyy5v7 rsyslogd: [origin software=\"rsyslogd\" swVersion=\"5.8.10\" x-pid=\"25639\" x-info=\"http://www.rsyslog.com\"] start\nJul  6 14:23:03 noeyy5v7 kernel: Initializing cgroup subsys cpuset\nJul  6 14:23:03 noeyy5v7 kernel: Initializing cgroup subsys cpu\nJul  6 14:23:03 noeyy5v7 kernel: Linux version 2.6.32-358.11.1.el6.x86_64 (mockbuild@x86-022.build.eng.bos.redhat.com) (gcc version 4.4.7 20120313 (Red Hat 4.4.7-3) (GCC) ) #1 S\nMP Wed May 15 10:48:38 EDT 2013\nJul  6 14:23:03 noeyy5v7 kernel: Command line: ro root=/dev/mapper/root_vg-lv_root rd_NO_LUKS  KEYBOARDTYPE=pc KEYTABLE=fr LANG=en_US.UTF-8 rhgb rd_NO_MD quiet SYSFONT=latarcyrh\neb-sun16 rd_LVM_LV=root_vg/lv_root crashkernel=auto selinux=0 nmi_watchdog=1 rd_LVM_LV=root_vg/lv_swap rd_NO_DM elevator=noop\nJul  6 14:23:03 noeyy5v7 kernel: KERNEL supported cpus:\nJul  6 14:23:03 noeyy5v7 kernel:  Intel GenuineIntel\nJul  6 14:23:03 noeyy5v7 kernel:  AMD AuthenticAMD\nJul  6 14:23:03 noeyy5v7 kernel:  Centaur CentaurHauls\nJul  6 14:23:03 noeyy5v7 kernel: BIOS-provided physical RAM map:\nJul  6 14:23:03 noeyy5v7 kernel: BIOS-e820: 0000000000000000 - 000000000009cc00 (usable)\n\n /bin/zcat, /usr/bin/zgrep, /usr/bin/zless, /usr/bin/readelf, /sbin/modinfo, /sbin/hpasmcli, /sbin/hplog -v, /sbin/hplog -f, /sbin/hplog -t, /sbin/hplog -p, /sbin/hplog -i,\n    /sbin/udevadm info *, /usr/bin/openssl dgst -md5 *\n    (root-temp) ALL\n    (root) /bin/su - root-temp\n    (admsip) ALL\n    (root) /bin/su - admsip\n    (root) LTV2_LOTA\n    (root) NOPASSWD: /usr/cac/bin/createhome.sh\n\n\n\n\n\n\n\n\n\n    webm-/appli/webm>ulimit -a\naddress space limit (kbytes)   (-M)  unlimited\ncore file size (blocks)        (-c)  unlimited\ncpu time (seconds)             (-t)  unlimited\ndata size (kbytes)             (-d)  unlimited\nfile size (blocks)             (-f)  unlimited\nlocks                          (-L)  unlimited\nlocked address space (kbytes)  (-l)  64\nnice                           (-e)  0\nnofile                         (-n)  65536\nnproc                          (-u)  unlimited\npipe buffer size (bytes)       (-p)  4096\nresident set size (kbytes)     (-m)  unlimited\nrtprio                         (-r)  0\nsocket buffer size (bytes)     (-b)  4096\nstack size (kbytes)            (-s)  8192\nthreads                        (-T)  not supported\nprocess size (kbytes)          (-v)  unlimited\n\n\nBonjour,\n\nComme prévu, ci-dessous notre compte rendu :\nFS :\nAu moment du problème le FS n'était pas plein, il y avait encore de l'espace et un test de création de fichier a été réalisé avec succès. Il n'était pas en read only.\nProcess: \nIl y a eu un process zombie Java. Par définition ce process ne pouvant plus  être killé puisque il est déjà mort.Cependant une entrée dans la table est nécéssaire (visible avec la commande ps) pour que son parent puisse savoir son état avant de s'arrêter complètement. \ncommande cp bloqué :\nLa commande cp fonctionne normalement; nous avons testé pendant le crash. Pas de log siginificatif pendant cette période là.\nPour le moment nous ne comprenons pas d'où vient ce problème pourtant les donées à copier ne sont pas volumineux, la memoire n'était pas saturée et la consommation de CPU était normale.\n\nLog kernel : kernel: pukvm.xpc[20245]\nCeci provoque un core dump. Il semble qu'il est utilisé par patrol et a besoin de vmware-tools et nous pensons que la mise à jour de ce dernier est nécessaire puisqu'il est obsolète.\n\nLog Kernel du 16/07: \nJul 16 06:38:30 pcyyyalu kernel: INFO: task sync:24930 blocked for more than 120 seconds.\nJul 16 06:38:30 pcyyyalu kernel: \"echo 0 > /proc/sys/kernel/hung_task_timeout_secs\" disables this message.\nJul 16 06:38:30 pcyyyalu kernel: sync          D 0000000000000005     0 24930  23553 0x00000080\nJul 16 06:38:30 pcyyyalu kernel: ffff8803439a5d38 0000000000000086 0000000000000000 0000000000000000\nJul 16 06:38:30 pcyyyalu kernel: 000000000000000e 0000000000000000 ffff8803439a5d08 ffffffff81110870\nJul 16 06:38:30 pcyyyalu kernel: ffff88037bfc3078 ffff8803439a5fd8 000000000000f4e8 ffff88037bfc3078\nJul 16 06:38:30 pcyyyalu kernel: Call Trace:\nJul 16 06:38:30 pcyyyalu kernel: [<ffffffff81110870>] ? find_get_pages_tag+0x40/0x120\nJul 16 06:38:30 pcyyyalu kernel: [<ffffffff814edf15>] schedule_timeout+0x215/0x2e0\nJul 16 06:38:30 pcyyyalu kernel: [<ffffffff81124ed0>] ? __writepage+0x0/0x40\nJul 16 06:38:30 pcyyyalu kernel: [<ffffffff814edb93>] wait_for_common+0x123/0x180\nJul 16 06:38:30 pcyyyalu kernel: [<ffffffff8105ea30>] ? default_wake_function+0x0/0x20\nJul 16 06:38:30 pcyyyalu kernel: [<ffffffff814edcad>] wait_for_completion+0x1d/0x20\nJul 16 06:38:30 pcyyyalu kernel: [<ffffffff8119fd85>] writeback_inodes_sb_nr+0x75/0xa0\nC'est une information de la part du kernel positionné par le paramètre hung_task_timeout_secs ( via sysctl) comme quoi des blocs de donnés sont en attente d'ecriture sur le disque. Il faut voir côté hyperviseur s'il n'y pas de soucis particulier.\n\n\n\nMessage-Id: <20160714165509.E3761BFE@pcyyybfn.pcy.edfgdf.fr>\nDate: Thu, 14 Jul 2016 18:55:01 +0200 (CEST)\n\n/bin/sh: line 1: 29877 Segmentation fault      (core dumped) /home/expl/scripts/purge/gestionlog_CTI.ksh > /dev/null 2>&1\n\nFrom user@localhost.pcy.edfgdf.fr  Thu Jul 14 18:55:28 2016\nReturn-Path: <user@localhost.pcy.edfgdf.fr>\nX-Original-To: root@localhost\nDelivered-To: root@localhost.pcy.edfgdf.fr\nReceived: by pcyyybfn.pcy.edfgdf.fr (Postfix, from userid 0)\n        id 6A6849A0; Thu, 14 Jul 2016 18:55:28 +0200 (CEST)\nDate: Thu, 14 Jul 2016 18:55:28 +0200\nFrom: user@localhost.pcy.edfgdf.fr\nTo: root@localhost.pcy.edfgdf.fr\nSubject: [abrt] full crash report\n\n\nSHELL=/bin/sh\nUSER=root\nPATH=/usr/bin:/bin\nPWD=/root\nSHLVL=1\nHOME=/root\nLOGNAME=root\n_=/home/expl/scripts/purge/gestionlog_CTI.ksh\n\n\nBonjour,\n\nNous avons trouvé que ksh génère un core dump tous les jours à 18:55 suite à l'execution du script gestionlog_CTI.ksh. Le programme est éxecuté par cron.\n\n\n\nJun 26 18:55:01 pcyyybfn abrt[30087]: saved core dump of pid 30084 (/bin/ksh93) to /var/spool/abrt/ccpp-2016-06-26-18:55:01-30084.new/coredump (495616 bytes)\nJun 27 18:55:02 pcyyybfn abrt[17970]: saved core dump of pid 17960 (/bin/ksh93) to /var/spool/abrt/ccpp-2016-06-27-18:55:01-17960.new/coredump (495616 bytes)\nJun 28 17:27:28 pcyyybfn abrt[8597]: saved core dump of pid 12790 (/logiciels/bo/VDP/VDP/BI4/sap_bobj/enterprise_xi40/linux_x64/WIReportServer) to /var/spool/abrt/ccpp-2016-06-28-17:27:25-12790.new/coredump (183062528 bytes)\nJun 28 17:30:07 pcyyybfn abrt[13051]: saved core dump of pid 19520 (/logiciels/patrol/Patrol3/Linux-2-6-x86-64-nptl/bin/pukvm.xpc) to /var/spool/abrt/ccpp-2016-06-28-17:30:07-19520.new/coredump (1245184 bytes)\nJun 28 18:55:01 pcyyybfn abrt[32234]: saved core dump of pid 32231 (/bin/ksh93) to /var/spool/abrt/ccpp-2016-06-28-18:55:01-32231.new/coredump (495616 bytes)\nJun 29 11:32:26 pcyyybfn abrt[9822]: saved core dump of pid 1540 (/logiciels/bo/VDP/VDP/BI4/sap_bobj/enterprise_xi40/linux_x64/WIReportServer) to /var/spool/abrt/ccpp-2016-06-29-11:32:25-1540.new/coredump (113459200 bytes)\nJun 29 13:23:07 pcyyybfn abrt[29697]: saved core dump of pid 1542 (/logiciels/bo/VDP/VDP/BI4/sap_bobj/enterprise_xi40/linux_x64/WIReportServer) to /var/spool/abrt/ccpp-2016-06-29-13:23:06-1542.new/coredump (192176128 bytes)\nJun 29 18:55:01 pcyyybfn abrt[26296]: saved core dump of pid 26293 (/bin/ksh93) to /var/spool/abrt/ccpp-2016-06-29-18:55:01-26293.new/coredump (495616 bytes)\nJun 29 22:45:07 pcyyybfn abrt[15552]: saved core dump of pid 9827 (/logiciels/bo/VDP/VDP/BI4/sap_bobj/enterprise_xi40/linux_x64/WIReportServer) to /var/spool/abrt/ccpp-2016-06-29-22:45:04-9827.new/coredump (237568000 bytes)\nJun 30 18:55:01 pcyyybfn abrt[13854]: saved core dump of pid 13851 (/bin/ksh93) to /var/spool/abrt/ccpp-2016-06-30-18:55:01-13851.new/coredump (495616 bytes)\nJul  1 18:55:01 pcyyybfn abrt[3794]: saved core dump of pid 3791 (/bin/ksh93) to /var/spool/abrt/ccpp-2016-07-01-18:55:01-3791.new/coredump (495616 bytes)\nJul  2 18:55:01 pcyyybfn abrt[17421]: saved core dump of pid 17418 (/bin/ksh93) to /var/spool/abrt/ccpp-2016-07-02-18:55:01-17418.new/coredump (495616 bytes)\n\nDate: Fri,  1 Jul 2016 18:55:01 +0200 (CEST)\n\n/bin/sh: line 1:  3791 Segmentation fault      (core dumped) /home/expl/scripts/purge/gestionlog_CTI.ksh > /dev/null 2>&1\n\nFrom user@localhost.pcy.edfgdf.fr  Fri Jul  1 18:55:49 2016\nReturn-Path: <user@localhost.pcy.edfgdf.fr>\nX-Original-To: root@localhost\nDelivered-To: root@localhost.pcy.edfgdf.fr\nReceived: by pcyyybfn.pcy.edfgdf.fr (Postfix, from userid 0)\n        id B8508B65; Fri,  1 Jul 2016 18:55:49 +0200 (CEST)\nDate: Fri, 01 Jul 2016 18:55:49 +0200\nFrom: user@localhost.pcy.edfgdf.fr\nTo: root@localhost.pcy.edfgdf.fr\nSubject: [abrt] full crash report\nMessage-ID: <5776a095.uaFdJXjTKFbYZs5b%user@localhost>\nUser-Agent: Heirloom mailx 12.4 7/29/08\nMIME-Version: 1.0\nContent-Type: text/plain; charset=us-ascii\nContent-Transfer-Encoding: 7bit\n\nDuplicate check\n=====\n\n\nCommon information\n=====\npackage\n-----\nksh-20100621-12.el6_2.1\n\narchitecture\n-----\nx86_64\n\nkernel\n-----\n2.6.32-220.17.1.el6.x86_64\n\n\n\nAdditional information\n=====\n\n\nPR271F5N@pcyyyalu.pcy.edfgdf.fr> top\ntop - 16:03:03 up 2 days,  1:40,  5 users,  load average: 4.27, 4.93, 5.09\nTasks: 789 total,   1 running, 787 sleeping,   0 stopped,   1 zombie\nCpu(s):  3.0%us,  3.9%sy,  0.3%ni, 77.3%id, 14.8%wa,  0.1%hi,  0.7%si,  0.0%st\nMem:  14266524k total, 11829248k used,  2437276k free,   301088k buffers\nSwap: 14712816k total,   970968k used, 13741848k free,  2517900k cached\n\n  PID USER      PR  NI  VIRT  RES  SHR S %CPU %MEM    TIME+  COMMAND\n20210 pcent295  20   0 3171m 200m  40m S 13.2  1.4   0:20.56 pmdtm\n 1718 root      20   0     0    0    0 D  6.6  0.0   4:19.97 jbd2/dm-35-8\n19281 pcent195  20   0 5034m 142m  40m S  6.3  1.0   0:09.83 pmdtm\n21517 root      20   0     0    0    0 D  5.3  0.0   3:35.90 flush-253:35\n21996 root      20   0 37068 1284 1020 D  3.6  0.0   1:46.68 wget\n 2625 root      20   0  301m  46m  16m S  2.3  0.3  44:26.00 sssd_be\n20031 patrol    30  10  205m  53m 2700 S  2.0  0.4  29:33.20 PatrolAgent\n11911 webm      20   0 5889m 2.3g 4620 S  0.7 16.6 100:50.19 java\n28832 PR271F5N  20   0 28024 1936 1044 R  0.7  0.0   0:00.37 top\n 2765 root      20   0     0    0    0 S  0.3  0.0   0:00.06 flush-253:23\n 5339 pcent295  20   0 4113m 444m 7660 S  0.3  3.2   4:02.94 java\n 6483 pcent295  20   0 3658m 109m 9.9m S  0.3  0.8   1:05.33 pmserver\n 8691 webm      20   0 4693m 1.3g 5124 S  0.3  9.3   6:01.03 java\n 8812 webm      20   0 4593m 398m 2540 S  0.3  2.9   8:57.30 java\n 9085 webm      20   0 5962m 860m 2016 S  0.3  6.2  12:32.91 java\n17519 webm      20   0 3198m  32m 2820 S  0.3  0.2   1:50.50 awbroker\n19212 webm      22   2  280m  18m  14m S  0.3  0.1   0:00.10 pmcmd\n29389 root      20   0  170m 1940 1584 S  0.3  0.0   3:51.06 vmtoolsd\n    1 root      20   0 23368 1176  988 S  0.0  0.0   0:56.65 init\n    2 root      20   0     0    0    0 S  0.0  0.0   0:00.16 kthreadd\n    3 root      RT   0     0    0    0 S  0.0  0.0   0:11.42 migration/0\n    4 root      20   0     0    0    0 S  0.0  0.0   0:21.70 ksoftirqd/0\n    5 root      RT   0     0    0    0 S  0.0  0.0   0:00.00 migration/0\n    6 root      RT   0     0    0    0 S  0.0  0.0   0:00.99 watchdog/0\n    7 root      RT   0     0    0    0 S  0.0  0.0   0:10.03 migration/1\n    8 root      RT   0     0    0    0 S  0.0  0.0   0:00.00 migration/1\n    9 root      20   0     0    0    0 S  0.0  0.0   0:15.03 ksoftirqd/1\n   10 root      RT   0     0    0    0 S  0.0  0.0   0:47.57 watchdog/1\n   11 root      RT   0     0    0    0 S  0.0  0.0   0:11.48 migration/2\n   12 root      RT   0     0    0    0 S  0.0  0.0   0:00.00 migration/2\n   13 root      20   0     0    0    0 S  0.0  0.0   0:15.83 ksoftirqd/2\n   14 root      RT   0     0    0    0 S  0.0  0.0   0:00.36 watchdog/2\n   15 root      RT   0     0    0    0 S  0.0  0.0   0:10.87 migration/3\n   16 root      RT   0     0    0    0 S  0.0  0.0   0:00.00 migration/3\n   17 root      20   0     0    0    0 S  0.0  0.0   0:14.66 ksoftirqd/3\n   18 root      RT   0     0    0    0 S  0.0  0.0   0:00.41 watchdog/3\n   19 root      RT   0     0    0    0 S  0.0  0.0   0:18.57 migration/4\n   20 root      RT   0     0    0    0 S  0.0  0.0   0:00.00 migration/4\n   21 root      20   0     0    0    0 S  0.0  0.0   0:14.12 ksoftirqd/4\n\n\n\n\n\n             total       used       free     shared    buffers     cached\nMem:         13932      11684       2247          0        272       2729\n-/+ buffers/cache:       8682       5249\nSwap:        14367        961      13406\nTotal:       28300      12646      15653\nPR271F5N@pcyyyalu.pcy.edfgdf.fr>\n\n\n=========messages-20160717===============\nJul 11 16:53:31 noeyy3lm sssd[pam]: Shutting down\nJul 11 16:53:31 noeyy3lm sssd[nss]: Shutting down\nJul 11 16:53:33 noeyy3lm sssd[be[CACCIA]]: Shutting down\nJul 11 16:53:36 noeyy3lm sssd: Starting up\nJul 11 16:53:36 noeyy3lm sssd[be[CACCIA]]: Starting up\nJul 11 16:53:36 noeyy3lm sssd[nss]: Starting up\nJul 11 16:53:36 noeyy3lm sssd[pam]: Starting up\nPR271F5N@noeyy3lm.noe.edf.fr> for var in $(ls sec*); do echo \"=========$var===============\"; sudo grep -i \"failed\" $var; done\n=========secure===============\n=========secure-20160626===============\n=========secure-20160703===============\n=========secure-20160710===============\n=========secure-20160717===============\nJul 11 16:36:09 noeyy3lm sshd[7477]: Failed password for SG005C4M from 172.28.17.45 port 56912 ssh2\nJul 11 16:36:19 noeyy3lm sshd[7477]: Failed password for SG005C4M from 172.28.17.45 port 56912 ssh2\nJul 11 16:36:30 noeyy3lm sshd[7477]: Failed password for SG005C4M from 172.28.17.45 port 56912 ssh2\nJul 11 16:46:08 noeyy3lm sshd[7767]: Failed password for SG005C4M from 172.28.17.45 port 57263 ssh2\n\nCVE-2016-4794\n\nJun 27 21:03:08 pcyyycnz abrt[71090]: Saved core dump of pid 71074 (/usr/bin/save) to /var/spool/abrt/ccpp-2016-06-27-21:03:08-71074 (22908928 bytes)\nJun 27 21:03:08 pcyyycnz abrt[71090]: Saved core dump of pid 71074 (/usr/bin/save) to /var/spool/abrt/ccpp-2016-06-27-21:03:08-71074 (22908928 bytes)\nJun 27 21:05:42 pcyyycnz abrt[71577]: Saved core dump of pid 71490 (/usr/bin/save) to /var/spool/abrt/ccpp-2016-06-27-21:05:42-71490 (23531520 bytes)\nJun 27 21:05:42 pcyyycnz abrt[71577]: Saved core dump of pid 71490 (/usr/bin/save) to /var/spool/abrt/ccpp-2016-06-27-21:05:42-71490 (23531520 bytes)\n\n\n\nJul  9 21:05:00 pcyyycnz abrtd: Directory 'ccpp-2016-07-09-21:05:00-50687' creation detected\nJul  9 21:05:00 pcyyycnz abrtd: Directory 'ccpp-2016-07-09-21:05:00-50687' creation detected\nJul  9 21:05:00 pcyyycnz abrt[50718]: Saved core dump of pid 50687 (/usr/bin/save) to /var/spool/abrt/ccpp-2016-07-09-21:05:00-50687 (23920640 bytes)\nJul  9 21:05:00 pcyyycnz abrt[50718]: Saved core dump of pid 50687 (/usr/bin/save) to /var/spool/abrt/ccpp-2016-07-09-21:05:00-50687 (23920640 bytes)\nJul  9 21:05:00 pcyyycnz abrtd: Package 'lgtoclnt' isn't signed with proper key\nJul  9 21:05:00 pcyyycnz abrtd: Package 'lgtoclnt' isn't signed with proper key\n\n\nPR271F5N@NOEYYRY7> sudo -l\nMatching Defaults entries for PR271F5N on this host:\n    !visiblepw, always_set_home, env_reset, env_keep=\"COLORS DISPLAY HOSTNAME HISTSIZE INPUTRC KDEDIR LS_COLORS\", \n    ...\n\nUser PR271F5N may run the following commands on this host:\n    (root) /usr/sbin/vgdisplay, /usr/sbin/lvs, /usr/sbin/lvdisplay, /usr/sbin/vgs, /usr/sbin/pvdisplay, /usr/sbin/pvs, /bin/cat, /bin/ls, /sbin/fdisk -l, /sbin/vgs,\n    /sbin/pvdisplay, /sbin/pvs, /sbin/lvdisplay, /sbin/lvs, /sbin/vgdisplay, /sbin/chkconfig --list, /usr/bin/tail, /bin/more, /usr/bin/head, /usr/bin/less, /usr/bin/crontab\n    -l, /usr/bin/more, /usr/bin/du, /usr/bin/file, /usr/sbin/ntpq, /usr/bin/lssavewpar, /bin/grep, /usr/sbin/lsrole, /sbin/sfdisk -d, /usr/sbin/lsldap, /usr/sbin/lsitab,\n    /usr/sbin/puppetca -la, /usr/sbin/lsplitvg, /sbin/sfdisk -l, /usr/bin/cobbler system report, /usr/bin/grep, /usr/bin/func, /usr/sbin/lscifscred, /usr/bin/bootlist,\n    ...\n    /sbin/udevadm info *, /usr/bin/openssl dgst -md5 *\n    (admsip) ALL\n    (root) /bin/su - admsip\n    (root) LTV2_LOTC\n    (root) NOPASSWD: /usr/cac/bin/createhome.sh\n\nBonjour, \n\nC'est toujours un problème de  cache, nous avons vérifié  avec notre NNI et avec le votre aussi sans problème (voir trace)\nLe cache n'était pas nettoyer correctement, il faut arrêter le service sssd avant de faire le ménage, chose pas faite selon les traces de vos commentaire. \nPour bien faire, nous vous invitons à consulter la fiche RDE : Titre : CO - Problème CACCIA Redhat 6.2 / 6.4 / 6.6 / Calibre / AIX : nettoyage du cache \nlien notes: Notes://APP111B/C12574880035B81E/4305B55794D5102AC1256B8700549486/20A769BF19F3620EC1257D1E0048C976\n\nSSSD a  un utilitaire permettant de vider le cache d'un utilisateur particulier mais celui -ci ne permet pas de vider le cache sudo. Ainsi il faudra procéder \nà la méthode numero 2 (Voir fiche pour plus d'information):\ncd /var/lib/sss/db\n/sbin/service sssd stop\nrm *.ldb\n/sbin/service sssd start\n\nAinsi nous vous conseillons de remettre les configuration par défaut ( nsswitch, sudo-ldap, ...) si ne sont  pas encore faiest puis procéder au nettoyage.\n\n\nCordialement,\nL'équipe Support Serveur N3.\nTag SSN3 : SSN3-PR-I-CAC-S3\n==============================\n\nPR271F5N@NOEYYRY7> sudo -lU FH28872N\nMatching Defaults entries for FH28872N on this host:\n    !visiblepw, always_set_home, env_reset, env_keep=\"COLORS DISPLAY HOSTNAME HISTSIZE INPUTRC KDEDIR LS_COLORS\", env_keep+=\"MAIL PS1 PS2 QTDIR USERNAME LANG LC_ADDRESS\n    LC_CTYPE\", env_keep+=\"LC_COLLATE LC_IDENTIFICATION LC_MEASUREMENT LC_MESSAGES\", env_keep+=\"LC_MONETARY LC_NAME LC_NUMERIC LC_PAPER LC_TELEPHONE\", env_keep+=\"LC_TIME LC_ALL\n    LANGUAGE LINGUAS _XKB_CHARSET XAUTHORITY\", secure_path=/sbin\\:/bin\\:/usr/sbin\\:/usr/bin, !mail_no_user, !mail_no_host, !mail_no_perms, syslog=local2, timestamp_timeout=10,\n    !always_set_home, env_keep+=*, ignore_dot, authenticate, listpw=never, passprompt=Mot de passe de %u:, env_delete+=LD_PRELOAD\n\nUser FH28872N may run the following commands on this host:\n    (root) ALL\n    (root) /bin/su - root\n    (root) NOPASSWD: /usr/cac/bin/createhome.sh\nPR271F5N@NOEYYRY7> timed out waiting for input: auto-logout\nPR271F5N@NOEYYRY7>\n\nPR271F5N@NOEYYRY7> sudo -l\nMatching Defaults entries for PR271F5N on this host:\n    !visiblepw, always_set_home, env_reset, env_keep=\"COLORS DISPLAY HOSTNAME HISTSIZE INPUTRC KDEDIR LS_COLORS\", \n    ...\n\nUser PR271F5N may run the following commands on this host:\n    (root) /usr/sbin/vgdisplay, /usr/sbin/lvs, /usr/sbin/lvdisplay, /usr/sbin/vgs, /usr/sbin/pvdisplay, /usr/sbin/pvs, /bin/cat, /bin/ls, /sbin/fdisk -l, /sbin/vgs,\n    /sbin/pvdisplay, /sbin/pvs, /sbin/lvdisplay, /sbin/lvs, /sbin/vgdisplay, /sbin/chkconfig --list, /usr/bin/tail, /bin/more, /usr/bin/head, /usr/bin/less, /usr/bin/crontab\n    -l, /usr/bin/more, /usr/bin/du, /usr/bin/file, /usr/sbin/ntpq, /usr/bin/lssavewpar, /bin/grep, /usr/sbin/lsrole, /sbin/sfdisk -d, /usr/sbin/lsldap, /usr/sbin/lsitab,\n    /usr/sbin/puppetca -la, /usr/sbin/lsplitvg, /sbin/sfdisk -l, /usr/bin/cobbler system report, /usr/bin/grep, /usr/bin/func, /usr/sbin/lscifscred, /usr/bin/bootlist,\n    ...\n    /sbin/udevadm info *, /usr/bin/openssl dgst -md5 *\n    (admsip) ALL\n    (root) /bin/su - admsip\n    (root) LTV2_LOTC\n    (root) NOPASSWD: /usr/cac/bin/createhome.sh\n\n    04677_29762_38295\n\n\nroot@noeyy5lr:/root [HX8] # multipath -ll /dev/mapper/mpathw\nmpathw (360060e801664ed00000164ed00000370) dm-100\nsize=234G features='0' hwhandler='0' wp=rw\n\nroot@noeyy5lr:/root [HX8] # grep dm-100 /var/log/messages\nAug  5 07:35:26 noeyy5lr kernel: end_request: I/O error, dev dm-100, sector 71\nAug  5 07:35:26 noeyy5lr kernel: end_request: I/O error, dev dm-100, sector 79\nAug  5 07:35:26 noeyy5lr kernel: end_request: I/O error, dev dm-100, sector 63\nAug  5 07:35:26 noeyy5lr kernel: end_request: I/O error, dev dm-100, sector 63\nAug  5 07:35:26 noeyy5lr kernel: end_request: I/O error, dev dm-100, sector 63\nAug  5 07:35:26 noeyy5lr kernel: end_request: I/O error, dev dm-100, sector 63\nAug  5 07:35:26 noeyy5lr kernel: end_request: I/O error, dev dm-100, sector 63\nAug  5 07:35:26 noeyy5lr kernel: end_request: I/O error, dev dm-100, sector 63\nAug  5 07:35:26 noeyy5lr kernel: end_request: I/O error, dev dm-100, sector 71\nAug  5 07:35:26 noeyy5lr kernel: end_request: I/O error, dev dm-100, sector 191\nAug  5 07:35:26 noeyy5lr kernel: end_request: I/O error, dev dm-100, sector 63\nAug  5 07:35:26 noeyy5lr kernel: end_request: I/O error, dev dm-100, sector 63\nAug  5 07:35:26 noeyy5lr kernel: end_request: I/O error, dev dm-100, sector 4159\nAug  5 08:36:45 noeyy5lr kernel: end_request: I/O error, dev dm-100, sector 490733440\nAug  5 08:36:45 noeyy5lr kernel: end_request: I/O error, dev dm-100, sector 490733552\nAug  5 08:36:45 noeyy5lr kernel: end_request: I/O error, dev dm-100, sector 0\nAug  5 08:36:45 noeyy5lr kernel: end_request: I/O error, dev dm-100, sector 8\nAug  5 08:36:45 noeyy5lr kernel: end_request: I/O error, dev dm-100, sector 0\nAug  5 08:36:45 noeyy5lr kernel: end_request: I/O error, dev dm-100, sector 490721343\nAug  5 08:36:45 noeyy5lr kernel: end_request: I/O error, dev dm-100, sector 490721471\nAug  5 08:36:45 noeyy5lr kernel: end_request: I/O error, dev dm-100, sector 63\nAug  5 08:36:45 noeyy5lr kernel: end_request: I/O error, dev dm-100, sector 71\nAug  5 08:36:45 noeyy5lr kernel: end_request: I/O error, dev dm-100, sector 63\nroot@noeyy5lr:/root [HX8] #\n\nroot@noeyy5lr:/var/log/func [HX8] # more func.log\n2016-08-03 08:59:54,313 - DEBUG - Return code for jobs.job_status: (0, -1)\n2016-08-03 08:59:55,321 - DEBUG - Return code for saveclient.saveclient: (0, '', '  /dev/mapper/mpathw: read failed after 0 of 4096 at 251255521280: Input/output error\\n  /dev/m\napper/mpathw: read failed after 0 of 4096 at 251255578624: Input/output error\\n  /dev/mapper/mpathw: read failed after 0 of 4096 at 0: Input/output error\\n  /dev/mapper/mpathw:\nread failed after 0 of 4096 at 4096: Input/output error\\n  /dev/mapper/mpathwp1: read failed after 0 of 512 at 251249295360: Input/output error\\n  /dev/mapper/mpathwp1: read fai\nled after 0 of 512 at 251249360896: Input/output error\\n  /dev/mapper/mpathwp1: read failed after 0 of 512 at 0: Input/output error\\n  /dev/mapper/mpathwp1: read failed after 0\nof 512 at 4096: Input/output error\\n  /dev/mapper/mpathwp1: read failed after 0 of 2048 at 0: Input/output error\\n')\n2016-08-03 09:00:00,125 - DEBUG - cn: Puppet CA: noefy1n7.noe.edf.fr sub_hash: 3420582203\n2016-08-03 09:00:00,126 - DEBUG - current acls {u'Puppet CA: noefy1n7.noe.edf.fr-3420582203': ['*', 'foo']}\n\n\nntpq: /usr/sbin/ntpq /usr/share/man/man8/ntpq.8.gz\nPR271F5N@clafz01pps> /usr/sbin/ntpq -p\n     remote           refid      st t when poll reach   delay   offset  jitter\n==============================================================================\n ntp1.edf.fr     .INIT.          16 u    - 1024    0    0.000    0.000   0.000\n ntp2.edf.fr     .INIT.          16 u    - 1024    0    0.000    0.000   0.000\n*LOCAL(0)        .LOCL.          10 l   36   64  377    0.000    0.000   0.001\nPR271F5N@clafz01pps> ntpstate\n\n\nClient : zei33yax SIP :zea330i4\nClient : zei33yau SIP :zea330i1\n\n\nfind . -xdev  | cpio -ocvB >/logiciels/pr/test.cpio\n\n[root@pcyy01zqn logiciels]# cat /boot/grub/device.map\n# this device map was generated by anaconda\n(hd0)     /dev/cciss/c0d0p2\n(hd1)     /dev/cciss/c0d1p2\n\ncpio: write error: No space left on device\ncpio: write error: Connection reset by peer\nsysteme_alterne.ksh\n\nDisk /dev/mapper/root_vg-lv_var: 3221 MB, 3221225472 bytes\n255 heads, 63 sectors/track, 391 cylinders\nUnits = cylinders of 16065 * 512 = 8225280 bytes\nSector size (logical/physical): 512 bytes / 512 bytes\nI/O size (minimum/optimal): 512 bytes / 512 bytes\nDisk identifier: 0x00000000\n\nDisk /dev/mapper/root_vg-lv_var doesn't contain a valid partition table\n\n\nDisk /dev/mapper/root_vg_alt-lv_var_alt: 3221 MB, 3221225472 bytes\n255 heads, 63 sectors/track, 391 cylinders\nUnits = cylinders of 16065 * 512 = 8225280 bytes\nSector size (logical/physical): 512 bytes / 512 bytes\nI/O size (minimum/optimal): 512 bytes / 512 bytes\nDisk identifier: 0x00000000\n\n\nsysteme_alterne.ksh\n2016/08/19-15:21:23 |pcyy01zqn|systeme_alterne          |SYSTEME_ALTERNE_I               |0|_INFO_   |||||Recopie du filesystem /var\nMontage de la partition /dev/root_vg_alt/lv_var_alt sur /sys_alt/var\nDeplacement dans /var\n---------------------------------------------------\nCOMMANDE EXECUTEE:\nfind . -xdev | ( cpio -ocvB | ( cd /sys_alt/var ; cpio -icvdumB ) )\n---------------------------------------------------\nFilesystem            Size  Used Avail Use% Mounted on\n/dev/mapper/root_vg_alt-lv_var_alt\n                      3.0G   69M  2.8G   3% /sys_alt/var\n=======\n/var\n\nfind . -xdev | ( cpio -ocvB | ( cd /logiciels/alt_test/var ; cpio -icvdumB ) )\n\nBonjour,\n\nLe sysalt est bloqué à cause de la copie de /var vers /var_alt qui n'aboutie pas. Celui-ci est dû à un problème d'espace dans le FS (var_alt) d'acceuil malgrè la création des deux FS avec une taille identique.\nLe /var contient des fichiers cores, leurs tailles ont changé à l'issue de leurs copie via cpio. En effet 3G (la taille d'origine) ne suffise plus alors le script sort en erreur.\nNous avons déplacé ces fichiers provisoirement et lancé un nouveau sysalt pour validation et celui-ci sort OK (voir trace). Par conséquent  il faudra trouver d'espace pour ces fichiers pour que le sysalt fonctionne correctement , ou les supprimer s'il n'y a plus d'utilité.\n\n\nCordialement,\nL'équipe Support Serveur N3\nTAG SSN3 : SSN3-PR-I-LIN-S3\n\n======Trace=========\n2016/08/22-08:33:17 |pcyy01zqn|systeme_alterne          |SYSTEME_ALTERNE_I               |0|_INFO_   |||||Demontage de /sys_alt/logiciels/controlm/agt_8.0.00/ctm/sysout\n2016/08/22-08:33:17 |pcyy01zqn|systeme_alterne          |SYSTEME_ALTERNE_I               |0|_INFO_   |||||Demontage de /sys_alt/logiciels/oracle/oradb/11.2.0\n2016/08/22-08:33:18 |pcyy01zqn|systeme_alterne          |SYSTEME_ALTERNE_I               |0|_INFO_   |||||Demontage de /sys_alt/logiciels/controlm/agt_8.0.00\n2016/08/22-08:33:18 |pcyy01zqn|systeme_alterne          |SYSTEME_ALTERNE_I               |0|_INFO_   |||||Demontage de /sys_alt/legato\n2016/08/22-08:33:18 |pcyy01zqn|systeme_alterne          |SYSTEME_ALTERNE_I               |0|_INFO_   |||||Demontage de /sys_alt/home\n2016/08/22-08:33:18 |pcyy01zqn|systeme_alterne          |SYSTEME_ALTERNE_I               |0|_INFO_   |||||Demontage de /sys_alt/boot\n2016/08/22-08:33:18 |pcyy01zqn|systeme_alterne          |SYSTEME_ALTERNE_I    \n           |0|_INFO_   |||||Demontage de /sys_alt/var\n2016/08/22-08:33:18 |pcyy01zqn|systeme_alterne          |SYSTEME_ALTERNE_I               |0|_INFO_   |||||Demontage de /sys_alt/tmp\n2016/08/22-08:33:19 |pcyy01zqn|systeme_alterne          |SYSTEME_ALTERNE_I               |0|_INFO_   |||||Demontage de /sys_alt/\n2016/08/22-08:33:20 |pcyy01zqn|systeme_alterne          |SYSTEME_ALTERNE_I               |0|_INFO_   |||||*** FIN OK\n[root@pcyy01zqn log]#\n\n\nBonjour,\n\nLe problème ne vient pas du serveur SIP. La sauvegarde se plante car rear ( qui est lancé sur le client )n'arrive pas à copier le fichier de log de la forme \"rear-backup_$(date +%Y%m%d_%H%M%S).log\"; qui apparemment n'existe pas (voir log ).\nL'emplacement de ce fichier a été définie dans le fichier /etc/rear/site.conf, qui semble n'est pas pris en compte.\n\nChez les rhel, ce paramètre est ajouté directement dans la configuration par défaut de rear, c'est-à-dire dans /usr/sahre/rear/conf/default.conf. Nous avons ajouté la ligne :\nLOGFILE=/tmp/rear-backup_$(date +%Y%m%d_%H%M%S).log dans ce fichier, puis validé par un lancement d'une sauvegarde ponctuelle. La première teste de sauvegarde est KO car le FS /local00 n'était pas exclus or celui-ci fait 293G. Nous l'avons ajouté dans la partie exclude  dans /etc/site.conf pour validation et ainsi la deuxième tentative de sauvegarde sort \"OK\".\n\nNous vous informons aussi que le FS /local00 est 100% full en ce moment, donc il faut faire le ménage.\n\nCordialement,\nL'équipe Support Serveur N3\nTAG SSN3 : SSN3-PR-I-SIP-S3\n=============\n\n\n[root@noefy8tp ~]#\n[root@noefy8tp ~]# clear\n[root@noefy8tp ~]# service iptables status\nTable: filter\nChain INPUT (policy ACCEPT)\nnum  target     prot opt source               destination\n\nChain FORWARD (policy ACCEPT)\nnum  target     prot opt source               destination\n\nChain OUTPUT (policy ACCEPT)\nnum  target     prot opt source               destination\n\n[root@noefy8tp ~]# service iptables status\nTable: filter\nChain INPUT (policy ACCEPT)\nnum  target     prot opt source               destination\n\nChain FORWARD (policy ACCEPT)\nnum  target     prot opt source               destination\n\nChain OUTPUT (policy ACCEPT)\nnum  target     prot opt source               destination\n\n\n### Info:       Test de presence d'une regle concernant le port -7026- (tcp) ...        ###\n### Info:       Aucune regle concernant le port -7026- (tcp) n'existe ...       ###\n### Info:       Creation de la regle en entree pour le port -7026- ...  ###\n### Info:       Sauvegarde des regles IPTABLES ...      ###\niptables: Saving firewall rules to /etc/sysconfig/iptables:[  OK  ]\n### Info:       Redemarrage du service IPTABLES ...     ###\niptables: Setting chains to policy ACCEPT: filter          [  OK  ]\niptables: Flushing firewall rules:                         [  OK  ]\niptables: Unloading modules:                               [  OK  ]\niptables: Applying firewall rules:                         [  OK  ]\n### Info:       pre-installation Etape 2 ===> Creation des volumes logiques necessaire a l'installation de l'OI.        ###\n### Info:       Verification du volume logique : lv_agt800_data ...     ###\n### Info:       Verification de /logiciels/controlm/agt_8.0.00. ###\n### Info:       Le point de montage -/logiciels/controlm/agt_8.0.00- n'est pas un FS.   ###\n### Info:       Ceci est un pre-requis pour cet OI.     ###\n### Info:       Espace requis 700.      ###\n### Info:       Un volume logique sera cree automatiquement.    ###\n### Info:       Verification du volume logique : lv_agt800_sysout ...   ###\n### Info:       Verification de /logiciels/controlm/agt_8.0.00/ctm/sysout.      ###\n\n\nBonjour,\n\nNous avons constaté que la restauration se bloquait car rear n'a pas réussi à créer de manière automatique les partitions /dev/sda1 (boot) et /dev/sda2.\nPour contourner, au moment où rear s'arrêtait, nous les avons créés manuellement. Une fois que c'est fait, nous avons laissé à rear de poursuivre ces actions.\nMaintenant, la machine a pu démarré mais pour le moment elle est bloqué sur un fsck des FS dans le data_vg.\nC'est normal car ils sont présent dans le fstab et le système essaie de les monter or le data_vg n'existe pas encore. Donc nous pensons qu'il est nécessaire de les commenter dans le fstab d'abord. Pour cela il va falloir enter le mot de passe root puis commenter les lignes dans le fstab. Ou aussi booter en mode rescue et modifier le fstab.\nPar ailleurs vous pouvez nous communiquer le mot de passe root et nous le ferons à moins que vous vouliez le faire.\n\n\nCordialement,\nL'équipe Support Serveur N3\nTAG SSN3 : SSN3-PR-I-LIN-S3\n\n\n\n\n\n\n\n\n\ndisk /dev/sda 32211763200 msdos\npart /dev/sda 104857600 1048576 primary boot /dev/sda1\npart /dev/sda 32105299968 105906176 primary lvm /dev/sda2\n\n\nPR271F5N@noeyyerj.noe.edf.fr> sudo ls -ltrR /var/lib/puppet/ssl/\nMot de passe de PR271F5N:\n/var/lib/puppet/ssl/:\ntotal 48\ndrwxr-x---. 2 puppet root  4096 Aug  8  2013 private\n-rw-r--r--. 1 puppet root 26284 Aug  8  2013 crl.pem\ndrwxr-x---. 2 puppet root  4096 Sep  9 11:14 private_keys\ndrwxr-xr-x. 2 puppet root  4096 Sep  9 11:14 public_keys\ndrwxr-xr-x. 2 puppet root  4096 Sep  9 11:16 certificate_requests\ndrwxr-xr-x. 2 puppet root  4096 Sep  9 13:59 certs\n\n/var/lib/puppet/ssl/private:\ntotal 0\n\n/var/lib/puppet/ssl/private_keys:\ntotal 4\n-rw------- 1 puppet root 887 Sep  9 11:14 noeyyerj.noe.edf.fr.pem\n\n/var/lib/puppet/ssl/public_keys:\ntotal 4\n-rw-r--r-- 1 puppet root 251 Sep  9 11:14 noeyyerj.noe.edf.fr.pem\n\n/var/lib/puppet/ssl/certificate_requests:\ntotal 4\n-rw-r----- 1 puppet root 550 Sep  9 11:16 noeyyerj.noe.edf.fr.pem\n\n/var/lib/puppet/ssl/certs:\ntotal 4\n-rw-r--r--. 1 puppet root 847 Aug  8  2013 ca.pem\n\n\nPR271F5N@pcyyydgl.adam.adroot.edf.fr> free -tm\n             total       used       free     shared    buffers     cached\nMem:          7864       7734        130       3186         13       3406\n-/+ buffers/cache:       4314       3550\nSwap:         2047       1367        680\nTotal:        9912       9101        811\n\nBonjour,\n\nCette demande concerne la partie applicative donc pas dans le périmètre du support serveur qui s'occupe particulièrement de la partie système ( l'OS).\nDe ce fait, nous attirons votre attention  que votre machine swap énormément, il va falloir regarder la partie mémoire car visiblement c'est pas bien dimensionné. \nPuis des FS qui s'approche des 100% du taux d'utilisation, qu'il faudrait penser à faire le ménage peut être.\nPour le problème de sendmail, vu que nous ne sommes pas les spécialistes, nous avons regardé vite fait et il semble que les mails sont bien envoyés (selon les logs).\nLe problème semble se situer au  niveau du relais ( noeintpirgw002-intp.edf.fr ) qui bloque les pièces jointes apparemment car vous avez dit même que sur le relais noeintpirgw001-intp.edf.fr, le problème ne se présente pas.\n\nFlorence COURVOISIER (01 47 65 52 86)\n--Denis GHIAZZA (01 47 65 56 57)\n--Thibault MARTIN (01 47 65 42 20)\n--Lino AUGEARD (01 47 65 31 80)\n--Damien GUIOT (01 47 65 31 75)\n--Claire LARDIERE (01 47 65 37 88)\n--Jean-Charles BAUTMANS (01 47 65 46 03)\n--Serge SMADJA (01 78 63 63 55)\n\nITO_IESI2_LOTC-PCU_SN1\n\nITO_IESI2_LOTC-HYP-ESX_SN2\nITO_IESI2_LOTC-HYP-ESX_SN3\n\nBonjour,\n\nJe me permet de vous solliciter pour vous faire savoir ma difficulté de réaliser mon EDP cette annéee avec mon PM dans les delais mentionées.\nLors de ma dernière restitution vers mois de Mai 2016 , j'ai déjà parlé à mon PM que cette annnée je partira en vacance début Octobre qu'il faudra  prevoir en avance quand on est ce qu'on pourra faire l'EDP pour l'année 2016 pour ne pas se trouver dans la même situation que précédemment. Pour éviter qu'on le fasse toujours à la dernière minute et à l'approche du départ de vacance comme l'année dernière.\nEncore une fois, mon PM me force de faire l'EDP une semaine avant mon départ de vacance. Je lui ai répondu que c'est pas possible car c'est très juste.",
 			"settings":
 			{
-				"buffer_size": 0,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"contents": "sudo docker run -d --name \"origin\" --privileged --pid=host --net=host -v /:/rootfs:ro -v /var/run:/var/run:rw -v /sys:/sys -v /var/lib/docker:/var/lib/docker:rw -v /var/lib/origin/openshift.local.volumes:/var/lib/origin/openshift.local.volumes \\\n        openshift/origin start\n",
-			"file": "/Z/Mydoc/Journees_Docker_17-18Fev2016/installation/docker-proxy.conf",
-			"file_size": 182,
-			"file_write_time": 131000258670000000,
-			"settings":
-			{
-				"buffer_size": 277,
-				"line_ending": "Unix"
+				"buffer_size": 38859,
+				"line_ending": "Windows",
+				"name": "lrwxrwxrwx  1 root   root      22 Oct 11  2013 S98"
 			}
 		}
 	],
@@ -159,6 +136,10 @@
 	},
 	"file_history":
 	[
+		"/Z/Mydoc/Memo/ACL.doc",
+		"/C/Users/PR271F5N/Documents/mytext.la",
+		"/C/Users/PR271F5N/Documents/log_install_svr_alfa.txt",
+		"/Z/Mydoc/Journees_Docker_17-18Fev2016/installation/docker-proxy.conf",
 		"/C/Users/PR271F5N/AppData/Roaming/Sublime Text 2/Packages/Package Control/Package Control.sublime-settings",
 		"/C/Users/PR271F5N/Documents/git-prompt.sh",
 		"/C/Users/PR271F5N/prakotoarisoa/project/node/test.js",
@@ -170,7 +151,6 @@
 		"/Z/Mydoc/Journees_Docker_17-18Fev2016/installation/README.md",
 		"/Z/Mydoc/Journees_Docker_17-18Fev2016/installation/hosts",
 		"/Z/Mydoc/Journees_Docker_17-18Fev2016/monitoring/readme-sysdig.txt",
-		"/Z/Mydoc/Journees_Docker_17-18Fev2016/installation/docker-proxy.conf",
 		"/Z/Mydoc/Nouveau Document Microsoft Office Word 97 - 2003.doc",
 		"/Z/Mydoc/Depot rhel4.doc",
 		"/C/Users/PR271F5N/Documents/ConEmuPack.150813g/ConEmu.xml",
@@ -233,6 +213,12 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"find",
+			"line",
+			"sunrpc",
+			"nfs",
+			"NFS",
+			"nfs",
 			"term",
 			"xterm",
 			"cygwin",
@@ -263,7 +249,7 @@
 	"groups":
 	[
 		{
-			"selected": 7,
+			"selected": 5,
 			"sheets":
 			[
 				{
@@ -271,15 +257,15 @@
 					"file": "/C/Users/PR271F5N/Documents/Manipulation d'un LV",
 					"settings":
 					{
-						"buffer_size": 319,
+						"buffer_size": 372,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								88,
-								88
+								371,
+								371
 							]
 						],
 						"settings":
@@ -295,34 +281,6 @@
 				},
 				{
 					"buffer": 1,
-					"file": "/Z/Mydoc/Memo/ACL.doc",
-					"settings":
-					{
-						"buffer_size": 2888,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2888,
-								2888
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 198.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
 					"file": "/C/Users/PR271F5N/model_spec.spec",
 					"settings":
 					{
@@ -333,8 +291,8 @@
 						"selection":
 						[
 							[
-								1159,
-								1159
+								1169,
+								1169
 							]
 						],
 						"settings":
@@ -344,13 +302,13 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 3535.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 3,
+					"buffer": 2,
 					"file": "/Z/Mydoc/Memo/redhat/How to create and host a yum repository over httpd",
 					"settings":
 					{
@@ -361,8 +319,8 @@
 						"selection":
 						[
 							[
-								1374,
-								1374
+								1375,
+								1375
 							]
 						],
 						"settings":
@@ -373,31 +331,31 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 54.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 3,
 					"settings":
 					{
-						"buffer_size": 1721,
+						"buffer_size": 643,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1720,
-								0
+								637,
+								637
 							]
 						],
 						"settings":
 						{
-							"auto_name": "Bonjour,",
+							"auto_name": "Créer à partir d'un rpm source",
 							"syntax": "Packages/Text/Plain text.tmLanguage",
-							"tab_size": 2,
+							"tab_size": 8,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
@@ -407,80 +365,55 @@
 					"type": "text"
 				},
 				{
+					"buffer": 4,
+					"settings":
+					{
+						"buffer_size": 354,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								354,
+								354
+							]
+						],
+						"settings":
+						{
+							"auto_name": "kernel panic",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
 					"buffer": 5,
-					"file": "/C/Users/PR271F5N/Documents/log_install_svr_alfa.txt",
 					"settings":
 					{
-						"buffer_size": 2616,
+						"buffer_size": 38859,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2616,
-								2616
+								38859,
+								38859
 							]
 						],
 						"settings":
 						{
+							"auto_name": "lrwxrwxrwx  1 root   root      22 Oct 11  2013 S98",
 							"syntax": "Packages/Text/Plain text.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "/C/Users/PR271F5N/Documents/mytext.la",
-					"settings":
-					{
-						"buffer_size": 0,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "/Z/Mydoc/Journees_Docker_17-18Fev2016/installation/docker-proxy.conf",
-					"settings":
-					{
-						"buffer_size": 277,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								161,
-								161
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 14669.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"

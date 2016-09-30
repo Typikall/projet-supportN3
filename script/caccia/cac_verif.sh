@@ -1,5 +1,6 @@
 #!/bin/bash
 neutre='\e[0;m'
+vert='\e[0;32m'
 rouge='\e[0;31m'
 for var in $(grep -v "#" $HOME/prakotoarisoa/script/caccia/list_caccia2|cut -d"|" -f2)
 do
@@ -9,7 +10,7 @@ if [ $? -ne 0 ]
 then
 echo -e $rouge"KO"
 else
-echo -e "OK"
+echo -e $vert"OK"
 fi
 echo -e $neutre"--------"
 done  

@@ -1,0 +1,22 @@
+
+Configuration IP de Windows
+
+
+Carte Ethernet Connexion au r‚seau local* 11 :
+
+   Statut du m‚dia. . . . . . . . . . . . : M‚dia d‚connect‚
+   Suffixe DNS propre … la connexion. . . : 
+
+Carte Ethernet Connexion au r‚seau local 2 :
+
+   Suffixe DNS propre … la connexion. . . : 
+   Adresse IPv4. . . . . . . . . . . . . .: 192.168.182.177
+   Masque de sous-r‚seau. . . .ÿ. . . . . : 255.255.255.0
+   Passerelle par d‚faut. . . .ÿ. . . . . : 
+
+Carte Ethernet Connexion au r‚seau local :
+
+   Suffixe DNS propre … la connexion. . . : atlas.edf.fr
+   Adresse IPv4. . . . . . . . . . . . . .: 10.151.15.70
+   Masque de sous-r‚seau. . . .ÿ. . . . . : 255.255.255.0
+   Passerelle par d‚faut. . . .ÿ. . . . . : 10.151.15.1
