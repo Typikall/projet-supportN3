@@ -1,0 +1,11 @@
+kernel panic
+
+Le process init n'arrive pas à se lancer 
+Causes possible 
+- un ou plusieurs disque ou file system introuvable 
+- problème avec des librairies 
+
+Solution
+- essayer de booter en mode single puis regarder ce qui a été modifié
+- booter en mode rescue si le boot single ne marche pas 
+- vérifier l'état de Selinux, le désactiver temporairement 

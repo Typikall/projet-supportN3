@@ -1,0 +1,56 @@
+How to create and host a yum repository over httpd 
+Créer un dépot RPM YUM avec httpd - Rhedat rhel
+
+1-Set up apache :
+Configurer Apache
+
+    # yum install httpd
+    # mkdir /var/www/html/myrepo
+
+Créer le metadata avec createrepo
+createrepo est un utilitaire chez redhat, permet de créer un repository 
+
+2-On a system of the same release as the repository, gather the rpms and create the repository metadata with createrepo :
+
+
+    # yum install createrepo
+    # mkdir myrepo
+    # cp /mysourcerpms/mes.rpms myrepo
+    # cd /path/to/myrepo
+    # createrepo /path/to/myrepo
+
+PI: Mieux vaut toujours utiliser le chemin absolu
+    The RHEL5 version of createrepo require a full path be given as an option or the repository will not be created correctly . To avoid problems, make sure you always use a full path.
+
+3-Copy the folder to your apache server using the method of your choice.
+    For convenience, the content of /path/to/myrepo has been copied to /var/www/html/myrepo, including the repodata folder it should now include.
+Copier le contenu de  /path/to/myrepo dans  var/www/html/myrepo
+
+    # chmod o+r /var/www/html/myrepo -R
+    # chcon -R httpd_sys_content_t /var/www/html/myrepo
+
+    The chcon command is only required if SELinux is in enforcing mode.
+
+4-Configure the clients with a new /etc/yum.repos.d/myrepo.repo
+Configuer le client avec le nouveau repository
+
+    [myrepo]
+    name=my custom repo
+    baseurl=http://myapacheserver/myrepo
+    enabled=1
+    gpgcheck=0
+
+    Depending on your setup, you may want to enable gpgcheck - if for exemple you are sharing content provided by Red Hat from the main repositories (released content, not beta or fasttrack) , the options to configure correctly gpg checks would be
+PI: Si les rpms fournis ont été signés alors il faut mettre gpgcheck=1 et founir avec la clé comme le montre l'exemple ci-dessous :
+
+    gpgcheck=1 
+    gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release
+
+    The keys are by default installed on systems by a Red Hat release package for your type of installation. For more information on the creation of .repo files, you can check man yum.conf under the section [repository] OPTIONS.
+
+createrepo doit être lancé sur le système qui a la même version du dépot cibles. 
+Exemple :
+lancer createrepo sur rhel5 pour un dépot rhel5 
+lancer createrepo sur rhel6 pour un dépot rhel6
+
+The steps contained in this article work for any release, but the createrepo command must be ran with the createrepo of the RHEL major release for its repository - this is due to format differences in rpm between major releases. This means you need to run createrepo on RHEL5 for a RHEL5 repository, on RHEL6 for a RHEL6 repository and so on.

@@ -1,0 +1,14 @@
+Créer à partir d'un rpm source
+récupérer le rpm source puis installer
+Dans cette exemple, nous utilisons le paquet tree
+wget ftp://ftp.redhat.com/pub/redhat/linux/enterprise/6Workstation/en/os/SRPMS/tree-
+1.5.3-2.el6.src.rpm
+rpm -ivh tree-1.5.3-2.el6.src.rpm
+Cette commande crée un répertoire rpmbuild dans votre répertoire de travail (home directory)
+rpmbuild contient deux répertoires : 
+SOURCE : contient le code source du programmme sours forme de tarball et quelques patchs
+SPEC: contient le fichier spec du programme.
+Dans cette exemple nou effectueons juste une petite modification du fichier spec
+
+
+

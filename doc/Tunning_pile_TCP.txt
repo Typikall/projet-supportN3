@@ -1,0 +1,65 @@
+Rapport des modifications effectuées sur la machine noefy297, noefy298, noefy299
+
+ - net.ipv4.tcp_adv_win_scale
+
+=============================================================================
+|Paramètre kernel impactant la performance de la connexion réseau sous linux|
+=============================================================================
+
+Remaque: les valeurs suivantes sont celles sur une rhel  5.9
+
+- Valeur (min, chargé, max) de la taille  d'allocation  page mémoire pour tous socktets TCP:
+ 	- net.ipv4.tcp_mem = 196608       262144  393216
+ 		min : nombre d'allocation minimal.TCP ne régule pas sa consommation mémoire si le nombre de page qu'il a alloué 		est inférieur à cette valeur.Par défaut il est  à 900 sur 32bits et ces valeurs par défaut sont 				calulées au démarrage et en fonction de la mémoire disponible sur la machine.
+ 		chargé ou mode mémoire chargé :  tcp régule sa consommation mémoire si le nombre de page qu'il a alloué dépasse cette valeur.
+ 		max : le nombre max d'allocation page mémoire
+ 			Rmq: Ce paramètre permet en général de réguler la consommation mémoire d'un socket TCP.
+
+- Valeur (min, chargé, max) de la taille d'allocation page mémoire pour tous sockets UDP:
+	- net.ipv4.udp_mem = 193248       257664  386496
+		min : nombre d'allocation minimal.UDP ne régule pas sa consommation mémoire si le nombre de page qu'il a alloué 		est inférieur à cette valeur.
+ 		chargé : idem avec TCP
+ 		max : le nombre max d'allocation page mémoire
+ 			Rmq: Ce paramètre permet en général de réguler la consommation mémoire d'un socket UDP.
+
+
+- Valeur de la taille du buffer de récéption (tcp_rmem) d'un socket TCP.
+	- net.ipv4.tcp_rmem = 4096        87380   4194304
+		- min : taille minimal utilisé par chaque socket TCP. Elle ne permet pas de limiter la taille  en général du buffer de récéption  , initialement défini pour tous les protocoles de TCP/IP par l'option SO_RCVBUF (net.core.rmem_default) sur un socket.
+		- default : taille par défaut utilisée par  chaque socket TCP. Cette valeur ecrase la valeur par
+		 			défaut du buffer de récéption, initialement défini pour tous les sockets de l'OS par l'option SO_RCVBUF (net.core.rmem_default) sur un socket. C'est cette valeur qu'il faut aggrandir si on veut avoir une fenêtre plus grande. Dans ce cas il faut activer la variable  net.ipv4.tcp_window_scaling.
+		- max : taille maximal utilisée utilisé par chaque socket TCP. Il ne permet pas de limiter la taille en général du buffer d'émission, initialement défini pour tous les sockets de l'OS par l'option SO_RCVBUF(net.core.rmem_max) sur un socket.
+
+- Valeur de la taille du buffer d'émission (tcp_wmem) d'un socket TCP.
+	- net.ipv4.tcp_wmem = 4096        65536   16777216
+		- min : taille minimal utilisé par chaque socket TCP. Elle ne permet pas de limiter la taille  en général du buffer d'émission , initialement défini pour tous les sockets de l'OS par l'option SO_SNDBUF (net.core.wmem_default) sur un socket.
+		- default : taille par défaut utilisée par  chaque socket TCP. Cette valeur ecrase la valeur par
+		 			défaut du buffer d'émission, initialement défini pour tous les sockets de l'OS par l'option SO_SNDBUF (net.core.wmem_default) sur un socket. C'est cette valeur qu'il faut aggrandir si on veut avoir une fenêtre plus grande. Dans ce cas il faut activer la variable  net.ipv4.tcp_window_scaling.
+		- max : taille maximal utilisée utilisé par chaque socket TCP. Il ne permet pas de limiter la taille en général du buffer d'émission, initialement défini pour tous les socket de l'OS par l'option SO_SNDBUF(net.core.wmem_max) sur un socket.
+
+- Valeur de la taille du buffer de récéption (udp_rmem_min) d'un socket UDP.
+	- net.ipv4.udp_rmem_min = 4096
+		Taille minimal en octet utilisée par chaque socket UDP pour recevoir les données . La valeur par défaut est la taille d'une page mémoire (4096).
+
+- Valeur de la taille du buffer d'émission (udp_wmem_min) d'un socket UDP.
+	- net.ipv4.udp_wmem_min = 4096	
+		Taille minimal en octet utilisée par chaque socket UDP pour envoyer les données. La valeur par défaut est la taille d'une page mémoire (4096).
+
+
+- Valeur (default, max) du buffer de récéption pour tous l'ensemble des socket (tcp, unix, etc)dans l'OS . Par défaut il est à 128KB sur la pluspart des distributions Linux.
+ 	- net.core.rmem_default = 129024
+	- net.core.rmem_max = 16777216
+  	Rmq: La valeur par défaut ne doit pas être supérieur à la valeur max
+
+- Valeur (default, max) du buffer d'émission pour tous l'ensemble des socket (tcp, unix, etc) dans l'OS. Par défaut il est à 128KB sur la pluspart des distributions Linux.
+  	- net.core.wmem_default = 129024
+  	- net.core.wmem_max = 16777216
+  Rmq: La valeur par défaut ne doit pas être supérieur à la valeur max
+
+- Valeur max de l'option buffer mémoire
+  	- net.core.optmem_max = 20480
+
+- Autoriser ou pas l'agrandissment automatique de la fenêtre de transmission TCP 
+	- net.ipv4.tcp_window_scaling 
+		- valeur 0 : off; 1 on
+		- par défaut : 1

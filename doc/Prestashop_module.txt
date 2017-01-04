@@ -1,0 +1,7 @@
+Prestashop 
+Module marker place :
+- http://addons.prestashop.com/en/marketplace-creation/8057-advanced-marketplace.html
+- http://addons.prestashop.com/en/marketplace-creation/18656-ja-marketplace.html
+Thème : 
+Voir thèmes prestashop développé par Template Monster : 
+- http://www.templatemonster.com/
