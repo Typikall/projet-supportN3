@@ -1,0 +1,76 @@
+Kernel tunning avec sysctl
+
+C'est un processus de modification des paramètres kernel dont le but est d'améliorer la  performance du sytème sur un cas d'utilisation particulier (ex serveur base de donnée oracle).
+La pluspart de ses paramètres se trouvent dans un fichier dans le répertoire /proc/sys, dont la modification de la valeur consiste à modifier tout simplement le fichier correspondant. Cependant Linux propose l'outil "sysctl" permettant de faire ces modifications de façons plus sûre et fiable.
+
+Quelques commande d'usage :
+- sysctl -a : affiche tous les paramètres avec leur valeur
+
+#sysctl -a 
+kernel.sched_child_runs_first = 0
+kernel.sched_min_granularity_ns = 10000000
+kernel.sched_latency_ns = 5000000
+kernel.sched_wakeup_granularity_ns = 15000000
+kernel.sched_tunable_scaling = 1
+kernel.sched_features = 3183
+kernel.sched_migration_cost = 500000
+kernel.sched_nr_migrate = 32
+...
+
+vm.dirty_writeback_centisecs = 500
+vm.dirty_expire_centisecs = 3000
+vm.nr_pdflush_threads = 0
+vm.swappiness = 30
+vm.nr_hugepages = 0
+vm.nr_hugepages_mempolicy = 0
+vm.hugetlb_shm_group = 0
+vm.hugepages_treat_as_movable = 0
+
+- sysctl -w <param>=val : permet de modifier la valeur d'un paramètre
+
+exemple : activation du routage IP (à condition que le serveur possède plusieurs cartes réseaux)
+#sysctl net|grep forward
+net.ipv4.conf.all.forwarding = 0
+net.ipv4.conf.all.mc_forwarding = 0
+...
+net.ipv4.ip_forward = 0
+#sysctl -w net.ipv4.ip_forward=1
+
+#sysctl -a|grep forward 
+net.ipv4.conf.all.forwarding = 0
+net.ipv4.conf.all.mc_forwarding = 0
+...
+net.ipv4.ip_forward = 1
+
+- sysctl -n : affiche uniquement les valeurs des paramètres
+
+- sysctl -N : affiche uniquement le nom des paramètres
+
+Les modifications seront  perdu au procahin redémarrage du serveur. Pour les rendre persistent, il faut les metre dans le fichier de configuration de sysctl dans /etc/sysctl.conf.
+
+Comme on a dit au début, les paramètres se trouvent dans /proc/sys/. Ils sont regroupés par thème et se trouvent dans leurs répertoires respectifs :
+[admsrv@clay71avm sys]$ pwd
+/proc/sys
+[admsrv@clay71avm sys]$ ls
+abi  crypto  debug  dev  fs  kernel  net  sunrpc  vm
+[admsrv@clay71avm sys]$
+
+Il est aussi possible de faire la liaison entre le nom d'un paramètre retourné par sysctl et le fichier dans /proc/sys/ en remplacant le "/" par ".".
+Exemple :
+- dans sysctl : net.ipv4.ip_forward
+- dans /prco/sys : /net/ipv4/ip_forward
+
+Avec sysctl, on peut aussi n'afficher que tous les paramètres d'un catégorie donnée :
+
+- sysctl abi : affiche tous les paramètres concernant "abi"
+- sysctl net : tous les paramètres "net"
+- sysctl kernel : tous les paramèters  "kernel"
+[admsrv@clay71avm sys]$ sysctl kernel
+kernel.sched_child_runs_first = 0
+kernel.sched_min_granularity_ns = 10000000
+kernel.sched_latency_ns = 5000000
+kernel.sched_wakeup_granularity_ns = 15000000
+kernel.sched_tunable_scaling = 1
+...
+
+Exemples de modification 

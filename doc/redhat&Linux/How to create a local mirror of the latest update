@@ -1,0 +1,62 @@
+How to create a local mirror of the latest update for Red Hat Enterprise Linux 5, 6, 7 without using Satellite server? 
+
+
+Environnement
+
+    Red Hat Enterprise Linux 7
+    Red Hat Enterprise Linux 6
+    Red Hat Enterprise Linux 5
+    Red Hat Network (RHN)
+    reposync
+
+
+Résolution
+
+Red Hat provides a utility called reposync which can be used to download the packages from RHN. In order to download all packages from a specific channel, the system should be subscribed to that channel. If the system is not subscribed to the required channel then reposync will not be able to download and sync those packages on local system.
+
+Example: If a Red Hat Enterprise Linux 5 system is subscribed to rhel-i386-server-5 base channel and rhn-tools-rhel-i386-server-5 channel, then reposync can sync the contents only from these 2 channels. If you try to sync contents from rhel-i386-server-cluster-5 or any other channels to which system is not subscribed then reposync will not work.
+
+    First install the "yum-utils" and "createrepo" packages on the system which is registered with RHN:
+
+
+
+    # yum install yum-utils createrepo
+
+    Now execute this command to download the packages in a directory:
+
+NOTE: Please change the --repoid=<REPO_ID> according to what repo id the system is currently using.
+Raw
+
+    # reposync --gpgcheck -l --repoid=channel-id
+    for example:
+    # reposync --gpgcheck -l --repoid=rhel-x86_64-server-5 \
+           --download_path=/download/path
+
+The above command will download the packages in the mentioned download path. You then need to run following command to create the repository:
+Raw
+
+    # cd /var/www/html/<download directory>
+    # createrepo -v /var/www/html/<download directory>/
+
+To download all the metadata for the channel that is being are synced, please use the '--download-metadata' and '--downloadcomps' flags with reposync, this will allow the use of various plugins such as yum-security or use the 'groupinstall' feature in yum.
+Raw
+
+    # reposync --gpgcheck -l --repoid=channel-id --downloadcomps --download-metadata
+    for example:
+    # reposync --gpgcheck -l --repoid=rhel-x86_64-server-5 \
+           --download_path=/download/path --downloadcomps --download-metadata
+
+To have access to the group data for the newly synced repo, please run the createrepo command with as follows:
+Raw
+
+    # cd /var/www/html/<download directory>
+    # createrepo -v  /var/www/html/<download directory>/ -g comps.xml
+
+    Then configure the repository on the client system which you want to update using this repository.
+
+NOTE:
+
+    reposync utility will create the local mirror for the channel to which system is subscribed.
+
+    For creating local security repositories the procedure to be followed is different, as the metadata for security rpms differs from that for regular rpms . createrepo will not create the updateinfo.xml file. Please visit this link for more information on how to create a local security repository. Note that the server which will act as a local security repository should be of the same RHEL version as the clients. (Example: if clients' version is RHEL6.6, server should also be RHEL 6.6).
+

@@ -1,0 +1,55 @@
+Mise en place ACL sur les répertoires et fichier sur souche RHEL:
+
+Il existe deux types d'ACL : access ACL et default ACL
+- access ACL : une liste de controle d'acces appliqué à un fichier ou à un répertoire
+- default ACL : une liste de controle d'accès appliqué uniquement aux répertoires. Si un fichier dans un repertoire n'a pas d'ACL alors le default ACL sur se répertoire sera appliqué sur le fichier.
+Les ACL peuvent êtres configurés par user ou par groupe  ou par mask (ensemble )
+Deux utilitaires pour gérer les ACL : 
+- getfacl: visualiser les ACL mis en place
+- setfacl: ajouter, modifier et supprimer un ACL 
+
+Syntaxe : 
+
+getfacl <fic> => visulise les ACL appliqués sur fic
+getfacl <rep> => visualise les ACL sur rep. Les default ACL sont préfixés par "default"
+setfacl -m <rules> <fic ou rep> => Ajoute un ACL à un fichier ou un répertoire
+    <rules> :
+        u:<uid>:<perm> => ajoute un ACL pour un utilisateur
+        g:<gid>:<perm> => ajouite un ACL pour un groupe
+    <perm> => une combinaison de  r (read) , w (write) et x (execute)
+setfacl -x <rules> <fic or rep> => supprime l'ACL sur le fichier ou le répertoire
+setfacl -m  d:<uid or gid>:<perm> <rep> => configure le default ACL sur le répertoire
+
+Exemples :
+- configure le default ACL sur rep1 avec la permission "rw" à admin:
+    root@localhost # : setfacl -m d:admin:rw rep1
+
+- Affiche le default ACL sur rep1 :
+    root@localhost # : getfacl rep1/
+                        # file: rep1/
+                        # owner: root
+                        # group: root
+                        user::rwx
+                        group::r-x
+                        other::r-x
+                        default:user::rwx
+                        default:user:admin:rw-
+                        default:group::r-x
+                        default:mask::rwx
+                        default:other::r-x
+
+- Ajoute un ACL au ficher fic avec la permission "rw" à admin et "r" pour admsrv
+    root@localhost # : setfacl -m u:admin:rw fic1
+                        setfacl -m u:admsrv:r fic1
+
+- Visualise les ACLs pour fic1
+    root@localhost # : getfacl fic1
+                        # file: fic1
+                        # owner: root
+                        # group: root
+                        user::rw-
+                        user:admsrv:r--
+                        user:admin:rw-
+                        group::r--
+                        mask::rw-
+                        other::r--

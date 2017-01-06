@@ -1,0 +1,17 @@
+YUM en pratique 
+
+Yum –enablerepo=<nom_du_repo> install /update/list <nom_paquet> : installation d’un paquet via un dépôt spécifique activé par la commande enablerepo.
+
+Yum –disablerepo=<nom_du_repo> install/update/list <nom_paquet> : installation d’un paquet sans utilisé le dépôt mentionné dans le filtre dans la commande disablerepo.
+
+Yum repolist-all : affiche la liste de tous les dépôts activés sur la machine
+
+Yum list all : affiche la liste de tous les paquets installé sur la machine et ceux qui sont dans les dépôts activés.
+
+Yum search <motif> : permet de chercher un paquet à l’aide du motif quand on ne sait pas trop son vrai nom.
+
+Yum clean all : Permet de nettoyer le cache yum et tout le tralalala.
+
+Yum info <paquage> : donne les informations sur le paquet en question, comme la date d’installation,…
+
+
