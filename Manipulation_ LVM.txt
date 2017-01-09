@@ -1,0 +1,62 @@
+LOGICAL VOLUME OU LV  
+
+CREATION 
+
+La création d'un LV pour être utilisé Dans un FS se fait en deux étapes : 
+- création du LV (ou de l'enveloppe) avec la commaned lvcreate
+- création du FS sur le LV 
+	Syntaxe :	lvcreate -n <nom_lv> -L <size> <groupe_de_volume>
+				mkfs -t ext4 /dev/<groupe_de_volume>/<nom_lv>
+
+	Ex: Créer le LV test_lv dans le Vg data_vg, avec une taille de 5G puis formater en ext4
+	lvcreate -n <lv_test> -L 5G data_vg
+
+AUGMENTATION DE LA TAILLE
+
+La modification de la taille d’un LV se réalise en deux étapes :
+- resize du LV
+- resize du file système
+	syntaxe :	lvresize –r –L <size en M,G> <chemin_LV>  <nom_PV du VG>
+    	L’option –r permet d’effectuer une resize  à chaud du système de fichier monté su le LV, ce qui permet de faire les deux étapes ci-dessus en une seule commande.
+
+	- Ex1  : Modifier la taille du LV et le FS à 3G 
+	lvresize -r -L 3G /dev/mapper/root_vg-lv_tmp /dev/sda2 
+
+	- Ex2  : Ajouter 3G au LV  root_vg-lv_tmp et au FS /tmp
+	lvresize -r -L +3G /dev/mapper/root_vg-lv_tmp /dev/sda2 
+
+DIMINUTION DE LA TAILLE 
+
+Si l'aggrandissment peut se faire à chaud, la diminution par contre doit se faire à froid. C'est-à-dire le FS doit être démonté. Ci-dessous les étapes à suivre :
+
+- umount <répertoire de montage du FS>
+- e2fsck -f <FS>
+- resize2fs	<FS> <size> 
+- lvresize -L <size> <nom_lv>
+- resize2fs <FS>
+
+	- Ex: Enlever 2G sur le LV
+	lvresize -L -2G /dev/mapper/lv_test veut dire qu'on enlève 2G sur le lv_test
+	resize2fs /fs_test . Lancé sans la valeur de  la taille, le FS va prendre la totalité du LV.
+
+
+SAUVEGARDE ET RESTAURATION
+
+SAUVEGARDE
+
+La sauvegarde consiste à sauvegarder les métadata d'un PV, VG et LV permettant de les re-créer facilement après en cas de problème sans le faire manuellement. Cette sauvegarde s'appuie sur le ou les VG et elle se fait avec la commande vgcfgbackup.
+	Syntaxe :	vgcfbackup –f <nom_fichier>%s  
+	Cette commande sauvegarde tous les métadata de tous les volumes disponibles. 
+	Le %s permet de dire de faire la sauvegarde dans des fichiers différents pour chaque VG.
+
+RESTAURATION
+
+La restauration consiste à restaurer ou re-créer tous les PV, VG et LV avec le fichie de backup. Elle est se fait avec la commande vgcfgrestore.
+	Syntaxe :	vgcfrestore –f  <fichier_backup_vg> 
+
+	Ex : Restaurer le VG data_vg
+	vgcfgrestore -f datavg_20161204
+
+	Autres commandes :	vgcfrestore –list  <vg_name> : liste tous les fichiesr de backup de vg_name
+						vgcfgrestore -t <vg_name> : test le fichier si c'est pas corrompu.
+						
