@@ -1,0 +1,4 @@
+RPM en pratique 
+
+- Extraire le script  de preinstall d’un RPM 
+rpm -q --scripts –p <nom _du_paquet.rpm> 
