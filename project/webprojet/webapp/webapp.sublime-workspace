@@ -13,9 +13,9 @@
 	[
 		{
 			"contents": "Manipulation d'un LV\n\nAugmentation de la taille\n\n\nReduction de la taille :\n- umount <répertoire de montage du FS>\n- e2fsck -f <FS>\n- resize2fs	<FS> <size> \n- lvresize -L <size> <nom_lv>\n- resize2fs <FS>\nNote: size ici est la taille finale voulu pour le FS\n\n# lvcreate -n <nom_du_lv> -L <taille_en_G>G <groupe_de_volume>\n# mkfs -t ext4 /dev/<groupe_de_volume>/<nom_du_lv>\n\n\n",
-			"file": "/C/Users/PR271F5N/Documents/Manipulation d'un LV",
-			"file_size": 389,
-			"file_write_time": 131148004863667148,
+			"file": "/C/Users/PR271F5N/prakotoarisoa/Manipulation_ LVM.txt",
+			"file_size": 391,
+			"file_write_time": 131280029375805465,
 			"settings":
 			{
 				"buffer_size": 373,
@@ -32,10 +32,7 @@
 			}
 		},
 		{
-			"contents": "How to create and host a yum repository over httpd \nCréer un dépot RPM YUM avec httpd - Rhedat rhel\n\n1-Set up apache :\nConfigurer Apache\n\n    # yum install httpd\n    # mkdir /var/www/html/myrepo\n\nCréer le metadata avec createrepo\ncreaterepo est un utilitaire chez redhat, permet de créer un repository \n\n2-On a system of the same release as the repository, gather the rpms and create the repository metadata with createrepo :\n\n\n    # yum install createrepo\n    # mkdir myrepo\n    # cp /mysourcerpms/mes.rpms myrepo\n    # cd /path/to/myrepo\n    # createrepo /path/to/myrepo\n\nPI: Mieux vaut toujours utiliser le chemin absolu\n    The RHEL5 version of createrepo require a full path be given as an option or the repository will not be created correctly . To avoid problems, make sure you always use a full path.\n\n3-Copy the folder to your apache server using the method of your choice.\n    For convenience, the content of /path/to/myrepo has been copied to /var/www/html/myrepo, including the repodata folder it should now include.\nCopier le contenu de  /path/to/myrepo dans  var/www/html/myrepo\n\n    # chmod o+r /var/www/html/myrepo -R\n    # chcon -R httpd_sys_content_t /var/www/html/myrepo\n\n    The chcon command is only required if SELinux is in enforcing mode.\n\n4-Configure the clients with a new /etc/yum.repos.d/myrepo.repo\nConfiguer le client avec le nouveau repository\n\n    [myrepo]\n    name=my custom repo\n    baseurl=http://myapacheserver/myrepo\n    enabled=1\n    gpgcheck=0\n\n    Depending on your setup, you may want to enable gpgcheck - if for exemple you are sharing content provided by Red Hat from the main repositories (released content, not beta or fasttrack) , the options to configure correctly gpg checks would be\nPI: Si les rpms fournis ont été signés alors il faut mettre gpgcheck=1 et founir avec la clé comme le montre l'exemple ci-dessous :\n\n    gpgcheck=1 \n    gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release\n\n    The keys are by default installed on systems by a Red Hat release package for your type of installation. For more information on the creation of .repo files, you can check man yum.conf under the section [repository] OPTIONS.\n\ncreaterepo doit être lancé sur le système qui a la même version du dépot cibles. \nExemple :\nlancer createrepo sur rhel5 pour un dépot rhel5 \nlancer createrepo sur rhel6 pour un dépot rhel6\n\nThe steps contained in this article work for any release, but the createrepo command must be ran with the createrepo of the RHEL major release for its repository - this is due to format differences in rpm between major releases. This means you need to run createrepo on RHEL5 for a RHEL5 repository, on RHEL6 for a RHEL6 repository and so on.",
-			"file": "/Z/Mydoc/Memo/redhat/How to create and host a yum repository over httpd",
-			"file_size": 2234,
-			"file_write_time": 131044054530000000,
+			"file": "/C/Users/PR271F5N/prakotoarisoa/doc/Création-Repos-RPM.txt",
 			"settings":
 			{
 				"buffer_size": 2706,
@@ -44,7 +41,7 @@
 			}
 		},
 		{
-			"contents": "Créer à partir d'un rpm source\nrécupérer le rpm source puis installer\nDans cette exemple, nous utilisons le paquet tree\nwget ftp://ftp.redhat.com/pub/redhat/linux/enterprise/6Workstation/en/os/SRPMS/tree-\n1.5.3-2.el6.src.rpm\nrpm -ivh tree-1.5.3-2.el6.src.rpm\nCette commande crée un répertoire rpmbuild dans votre répertoire de travail (home directory)\nrpmbuild contient deux répertoires : \nSOURCE : contient le code source du programmme sours forme de tarball et quelques patchs\nSPEC: contient le fichier spec du programme.\nDans cette exemple nou effectueons juste une petite modification du fichier spec\n\n\n\n",
+			"file": "/C/Users/PR271F5N/prakotoarisoa/doc/Création-RPM.txt",
 			"settings":
 			{
 				"buffer_size": 608,
@@ -53,7 +50,7 @@
 			}
 		},
 		{
-			"contents": "kernel panic\n\nLe process init n'arrive pas à se lancer \nCauses possible \n- un ou plusieurs disque ou file system introuvable \n- problème avec des librairies \n\nSolution\n- essayer de booter en mode single puis regarder ce qui a été modifié\n- booter en mode rescue si le boot single ne marche pas \n- vérifier l'état de Selinux, le désactiver temporairement ",
+			"file": "/C/Users/PR271F5N/prakotoarisoa/doc/kernel panic.txt",
 			"settings":
 			{
 				"buffer_size": 354,
@@ -62,7 +59,7 @@
 			}
 		},
 		{
-			"contents": "Prestashop \nModule marker place :\n- http://addons.prestashop.com/en/marketplace-creation/8057-advanced-marketplace.html\n- http://addons.prestashop.com/en/marketplace-creation/18656-ja-marketplace.html\nThème : \nVoir thèmes prestashop développé par Template Monster : \n- http://www.templatemonster.com/\n",
+			"file": "/C/Users/PR271F5N/prakotoarisoa/doc/Prestashop_module.txt",
 			"settings":
 			{
 				"buffer_size": 301,
@@ -71,7 +68,7 @@
 			}
 		},
 		{
-			"file": "/Z/Mydoc/Parametre-tuning-pile-TCP_IP Linux.txt",
+			"file": "/C/Users/PR271F5N/prakotoarisoa/doc/Tunning_pile_TCP.txt",
 			"settings":
 			{
 				"buffer_size": 4972,
@@ -80,21 +77,46 @@
 			}
 		},
 		{
-			"contents": "Package Control Messages\n========================\n\nTheme - Spacegray\n-----------------\n\n  Fixes in Spacegray 1.3.1:\n  \n    - Fixed the Sublime Text 2 visualization issue (dangling commas)\n\n  New in Spacegray 1.3:\n  \n  - Sidebar Fileicons! 🎉\n  \n    Make sure to activate them with the setting:\n    \"spacegray_fileicons\": true,\n  \n  \n  Fixes:\n  \n  - Fixed line highlight conflicting with invalid marks\n\n\nTheme - Spacegray\n-----------------\n\n  Fixes in Spacegray 1.3.2:\n  \n    - Fixed red-heavy syntax in JS\n    - Fixed text input field alignment\n    - Fixed image link color highlighting in Markdown\n    - Fixed Oceanic Theme input field backgorund color\n",
+			"file": "/C/Users/PR271F5N/prakotoarisoa/doc/Kernel tunning avec sysctl.txt",
 			"settings":
 			{
-				"buffer_size": 654,
+				"buffer_size": 2889,
 				"line_ending": "Windows",
-				"name": "Package Control Messages",
-				"read_only": true,
-				"scratch": true
+				"name": "Kernel tunning avec sysctl"
 			}
 		},
 		{
-			"contents": "\n\nBonjour,\n\nCette demande concerne la partie applicative donc pas dans le périmètre du support serveur qui s'occupe particulièrement de la partie système ( l'OS).\nDe ce fait, nous attirons votre attention  que votre machine swap énormément, il va falloir regarder la partie mémoire car visiblement c'est pas bien dimensionné. \nPuis des FS qui s'approche des 100% du taux d'utilisation, qu'il faudrait penser à faire le ménage peut être.\nPour le problème de sendmail, vu que nous ne sommes pas les spécialistes, nous avons regardé vite fait et il semble que les mails sont bien envoyés (selon les logs).\nLe problème semble se situer au  niveau du relais ( noeintpirgw002-intp.edf.fr ) qui bloque les pièces jointes apparemment car vous avez dit même que sur le relais noeintpirgw001-intp.edf.fr, le problème ne se présente pas.\n\nFlorence COURVOISIER (01 47 65 52 86)\n--Denis GHIAZZA (01 47 65 56 57)\n--Thibault MARTIN (01 47 65 42 20)\n--Lino AUGEARD (01 47 65 31 80)\n--Damien GUIOT (01 47 65 31 75)\n--Claire LARDIERE (01 47 65 37 88)\n--Jean-Charles BAUTMANS (01 47 65 46 03)\n--Serge SMADJA (01 78 63 63 55)\n\nITO_IESI2_LOTC-PCU_SN1\n\nITO_IESI2_LOTC-HYP-ESX_SN2\nITO_IESI2_LOTC-HYP-ESX_SN3\n \n\n\nBonjour,\n\nA l' attention de LANDATA :\nL'adresse IP 10.151.13.235 correspond à l'adresse de mon poste dans le réseau atlas (voir commentaire précédent), quand il n'y a pas de VPN. \nMais si vous regardez bien les commentaires, il y a bien une deuxième adresse IP ( 192.168.182.173) qui est l'adresse de mon poste quand je suis connecté au VPN admsip. J'ai mis le retour de la commande ipconfig et vous voyez bien que j'ai les deux adresse IP qui montre bien que je suis connecté au VPN.\nD'ailleurs c'est ce que tous les membres de l'équipe support serveur fait tous les matins . Pour votre information, pour se connecter au VPN, le support passe par un lien spécifique : https://vpnzsa.pcy.edf.fr/admsip ou https://vpnzsa.noe.edf.fr/admsip (voir PJ).\nPour information , les serveurs SIPSIR sont aussi dans le ZSA outillage et nous n'avons pas de problème de connexion sur ces machines.\n\nA moins qu'il y a eu des changements  et dont lequel le support serveur n'a pas été mis au courant. Mais pour l'instant , nous n'arrivons pas à accéder à vos machines.\nVous pouvez me joindre au 01 78 66 69 90.\n\nCordialement,\nL'équipe Support Serveur N3\nTAG SSN3 : SSN3-PR-I-LIN-S3\n\n====Trace de configuration=====\nConfiguration IP de Windows\nCarte Ethernet Connexion au r▒seau local* 11 :\n   Statut du m▒dia. . . . . . . . . . . . : M▒dia d▒connect▒\n   Suffixe DNS propre ▒ la connexion. . . :\n\nCarte Ethernet Connexion au r▒seau local 2 :\n   Suffixe DNS propre ▒ la connexion. . . :\n   Adresse IPv4. . . . . . . . . . . . . .: 192.168.182.173\n   Masque de sous-r▒seau. . . .▒. . . . . : 255.255.255.0\n   Passerelle par d▒faut. . . .▒. . . . . :\n\nCarte Ethernet Connexion au r▒seau local :\n\n   Suffixe DNS propre ▒ la connexion. . . : atlas.edf.fr\n   Adresse IPv4. . . . . . . . . . . . . .: 10.151.13.235\n   Masque de sous-r▒seau. . . .▒. . . . . : 255.255.255.0\n   Passerelle par d▒faut. . . .▒. . . . . : 10.151.13.1\n\n\n   -----09/11/16 16:40:32-ITO_DTCM_LANDATA_SN1-ELECTON, BAPTISTE (BE03727S)-----\nBonjour,\n\nPouvez-vous prendre en compte le retour de notre support\nil faut utiliser le nouveau VPN JUNIPER PULSE et plus le VPN CISCO ANYCONNECT.\n\nles urls sont les suivantes: https://vpnadmin.pcy.edf.fr/securid ou https://vpnadmin.noe.edf.fr/securid\nLes flux sont ouverts via ce VPN.\n\nCdlt\n\n\nPR271F5N@pcyfyeu2.pcy.edfgdf.fr> ps -edf|grep rear\nPR271F5N  7200  6980  0 15:33 pts/1    00:00:00 grep rear\nroot     29969     1  0 Nov01 ?        00:00:00 /bin/sh -c if [ -x /etc/rear/exclude_fs.sh ];then /etc/rear/exclude_fs.sh; fi; PATH=/usr/local/bin:/bin:/usr/bin:/sbin && /usr/sbin/rear mkbackup\nroot     31298 29969  0 Nov01 ?        00:00:00 /bin/bash /usr/sbin/rear mkbackup\nPR271F5N@pcyfyeu2.pcy.edfgdf.fr>\n\n\n[admexsip@noefy1n7 log]$ sudo zcat /var/log/messages.2.gz|grep -i dhcp |grep -i \"B5:E1:DC\"\n2016-11-03T15:51:25.982910+01:00 noefy1n7 dhcpd: DHCPDISCOVER from 28:80:23:b5:e1:dc via 163.84.209.5\n2016-11-03T15:51:25.982951+01:00 noefy1n7 dhcpd: DHCPOFFER on 163.84.209.80 to 28:80:23:b5:e1:dc via 163.84.209.5\n2016-11-03T15:51:30.019827+01:00 noefy1n7 dhcpd: DHCPREQUEST for 163.84.209.80 (10.117.0.221) from 28:80:23:b5:e1:dc via 163.84.209.5\n2016-11-03T15:51:30.019870+01:00 noefy1n7 dhcpd: DHCPACK on 163.84.209.80 to 28:80:23:b5:e1:dc via 163.84.209.5\n2016-11-03T15:52:19.504594+01:00 noefy1n7 dhcpd: DHCPDISCOVER from 28:80:23:b5:e1:dc via 163.84.209.5\n2016-11-03T15:52:19.504635+01:00 noefy1n7 dhcpd: DHCPOFFER on 163.84.209.80 to 28:80:23:b5:e1:dc via 163.84.209.5\n2016-11-03T15:52:19.506390+01:00 noefy1n7 dhcpd: DHCPREQUEST for 163.84.209.80 (10.117.0.221) from 28:80:23:b5:e1:dc via 163.84.209.5\n2016-11-03T15:52:19.506413+01:00 noefy1n7 dhcpd: DHCPACK on 163.84.209.80 to 28:80:23:b5:e1:dc via 163.84.209.5\n2016-11-03T15:52:45.403067+01:00 noefy1n7 dhcpd: DHCPREQUEST for 163.84.209.80 from 28:80:23:b5:e1:dc via 163.84.209.5\n2016-11-03T15:52:45.403098+01:00 noefy1n7 dhcpd: DHCPACK on 163.84.209.80 to 28:80:23:b5:e1:dc via 163.84.209.5\n[admexsip@noefy1n7 log]$ sudo cat declareclient/noefy1n7.noe.edf.fr_knw36hk6.kqg.egs.edf.fr_20161103_153549.log\ndeclareclient_HOSTNAMESIP = noefy1n7.noe.edf.fr\ndeclareclient_HOSTNAMECLIENT = knw36hk6.kqg.egs.edf.fr\ndeclareclient_DATE_DEB = 20161103_153549\ndeclareclient_SYNC = OUI\ndeclareclient_ARGS = -W fh33853n@sx400014 -n knw36hk6.kqg.egs.edf.fr -x IMAT005207804 -e 28:80:23:B5:E1:DC -i 163.84.209.80 -m 255.255.255.0 -g 163.84.209.3\ndeclareclient_MSG_RET = Server declare\ndeclareclient_ARGS_RET = OK\ndeclareclient_DATE_FIN = 20161103_153552\ndeclareclient_STATUS = 0\n[admexsip@noefy1n7 log]$\n\n\n[admexsip@noefy1n7 log]$ sudo cat declareclient/noefy1n7.noe.edf.fr_knw36hk5.kqg.egs.edf.fr_20161028_161136.log\ndeclareclient_HOSTNAMESIP = noefy1n7.noe.edf.fr\ndeclareclient_HOSTNAMECLIENT = knw36hk5.kqg.egs.edf.fr\ndeclareclient_DATE_DEB = 20161028_161136\ndeclareclient_SYNC = OUI\ndeclareclient_ARGS = -W fh33853n@sx400014 -n knw36hk5.kqg.egs.edf.fr -x IMAT005207798 -e 28:80:23:B5:B3:08 -i 163.84.209.82 -m 255.255.255.0 -g 163.84.209.3\ndeclareclient_MSG_RET = Server declare\ndeclareclient_ARGS_RET = OK\ndeclareclient_DATE_FIN = 20161028_161138\ndeclareclient_STATUS = 0\n[admexsip@noefy1n7 log]$ sudo zcat /var/log/messages.2.gz|grep -i dhcp|grep -i \"B5:B3:08\"\n[admexsip@noefy1n7 log]$ sudo zcat /var/log/messages.3.gz|grep -i dhcp|grep -i \"B5:B3:08\"\n2016-10-28T16:51:16.985504+02:00 noefy1n7 dhcpd: DHCPDISCOVER from 28:80:23:b5:b3:08 via 163.84.209.5\n2016-10-28T16:51:16.985543+02:00 noefy1n7 dhcpd: DHCPOFFER on 163.84.209.82 to 28:80:23:b5:b3:08 via 163.84.209.5\n2016-10-28T16:51:21.022215+02:00 noefy1n7 dhcpd: DHCPREQUEST for 163.84.209.82 (10.117.0.221) from 28:80:23:b5:b3:08 via 163.84.209.5\n2016-10-28T16:51:21.022253+02:00 noefy1n7 dhcpd: DHCPACK on 163.84.209.82 to 28:80:23:b5:b3:08 via 163.84.209.5\n2016-10-28T16:52:16.716518+02:00 noefy1n7 dhcpd: DHCPDISCOVER from 28:80:23:b5:b3:08 via 163.84.209.5\n2016-10-28T16:52:16.716551+02:00 noefy1n7 dhcpd: DHCPOFFER on 163.84.209.82 to 28:80:23:b5:b3:08 via 163.84.209.5\n2016-10-28T16:52:16.719920+02:00 noefy1n7 dhcpd: DHCPREQUEST for 163.84.209.82 (10.117.0.221) from 28:80:23:b5:b3:08 via 163.84.209.5\n2016-10-28T16:52:16.719969+02:00 noefy1n7 dhcpd: DHCPACK on 163.84.209.82 to 28:80:23:b5:b3:08 via 163.84.209.5\n2016-10-28T16:52:40.602223+02:00 noefy1n7 dhcpd: DHCPREQUEST for 163.84.209.82 from 28:80:23:b5:b3:08 via 163.84.209.5\n2016-10-28T16:52:40.602257+02:00 noefy1n7 dhcpd: DHCPACK on 163.84.209.82 to 28:80:23:b5:b3:08 via 163.84.209.5\n[admexsip@noefy1n7 log]$\n\n\nITO_IESI2_LOTC_NEWCLOUD_SN2\n\n[root@NOEYYCL8 ~]# yum list |grep php|grep 5.4.16\nRepodata is over 2 weeks old. Install yum-cron? Or run: yum makecache fast\nphp.x86_64                       5.4.16-36.el7_1     sysref-centos-7.1-base\n\n\nBonjour,\n\nNous avons reçu cet incident I01416090 qui parle d’un problème de droit root pour  l’ensemble des utilisateurs du groupe s1g_root sur la machine NOEYYP9C. Dans le ticket à titre d’exemple le demandeur parle de l’utilisateur F14432.\nLe demandeur a fait la demande de droit dans  le portail ( N° : 24878 ) en créant un groupe puis l’associé au compte générique root ; et elle –ci a été bien réalisée. (voir capture).\nNous avons proposé au demandeur de faire le nettoyage du cache mais cela n’a pas résolu le problème.\nNous avons remarqué aussi que celui qui a fait la demande caccia est en même temps le PE et le POA de l’application ( NNA :S1G). Pour notre part sa demande n’est pas encore concernée par la règle « demandeur et valideur doivent être deux personnes différentes ».\n\nPouvez-vous nous apporter votre expertise sur ce sujet s’il vous plaît ?\n\nCordialement,\nL'équipe Support Serveur\n\napplication putty\n\nserveur noeyyxng.noe.edf.fr\n\ncompte CM154A6N\ncompte caccia\n\n\n\nBonjour, \n\nNous aimerions avoir votre avis sur cette sollicitation qui concerne newcloud sur la parttie souche et les paquets RPM de leur  dépôt (voir demande ci-dessus).\n- RPM :\nEn  gros le demandeur rencontre des différences de version des paquets httpd et php  dans le dépôt newcloud avec le dépôt EEI. De ce faite il souhaite avoir les même version que de ce qui existe dans chez EEI. Si ce n'est pas possible ou interdit , alors il souhaite savoir la raison.\nIl a remarqué aussi l'absence du paquet SCL (une sorte de métapaquet permettant d'installer apache et php compatible avec le framework Symphony). Serait-il possible d'en procurer et de le mettre à disposition dans le dépôt newcloud ?\nVous trouverez ci-dessous les versions des paquets httpd et php du dépôt EEI.\n- Souche: \nLe demandeur  a remarqué la création par défaut d'un VG qui se nomme \"Docker_storage_vg\" à l'installation. Nous avons fait un test sur les souches EEI et nous n'avons pas ce VG, créé à la fin de l'installation. Du coup est-ce une spécificité des souches newcloud? Si oui il souhaite savoir dans quel disque il pourra ainsi créer le datavg pour pouvoir installer les midleware EDF. Faudra-t-il ajouter un nouveau disque ?\n\nEn atttente de votre retour.\n\nCordialement,\nL'équipe Support Serveur N3\n=====RPM centos============\n\n[root@noeyycl5 ~]# yum --enablerepo=* list httpd\nLoaded plugins: product-id\nAvailable Packages\nhttpd.x86_64            2.4.6-31.el7.centos                                         sysref-centos-7.1-base\n[root@noeyycl5 ~]# yum --enablerepo=* list php\nLoaded plugins: product-id\nAvailable Packages\nphp.x86_64              5.4.16-36.el7_1                                      sysref-centos-7.1-base\n===========Mail============\nBonjour,\n\nje vous fait remonter plusieurs questions de clients newCloud au niveau système et respository.\n\nMerci  par avance pour votre retour.\n\nQuestion 1\nIl existe normalement dans le repository de base CentOS des packages httpd et php qui permettent d’installer des apache et php.\nIl s’agit des packages httpd-2.4.6-40.el7.centos.x86_64.rpm et php-5.4.16-36.el7_1.x86_64.rpm.\n\nSauf erreur de ma part, ces packages n’apparaissent pas dans le repository newCloud. Pour quelle raison ? Est-ce autorisé ou interdit, et pourquoi ?\n\nQuestion 2\nGénéralement, nous installons les packages apache et php des SCL (Software Collection), pour avoir des versions plus récentes et compatibles avec les Framework tels que Symfony.\nLà aussi, je ne retrouve pas les packages des SCL sur le repository newCloud.\nOn retrouve la description des différents repositories officiels, dont les SCL, dans le wiki CentOS :\nhttps://wiki.centos.org/fr/AdditionalResources/Repositories/\n\nPour quelle raison n’a-t-on pas les packages des SCL sur le repository newCloud ? Est-ce autorisé ou interdit et pourquoi ?\n\nQuestion 3\nA quoi correspond le Docker_storage_vg sur CentOS qui utilise le disque /dev/sdb ? Est-ce l'équivalent du data_vg ou pas ? Si ce n'est pas le cas, pour installer les middlewares EDF (il est demandé de créer un data_vg) sur quel disque doit-on créer le data_vg (3 disques sur les VM newCloud : sda, sdb et sdc) ?\n\nMerci par avance.\nCordialement,\nCharly\n\n\n2016-11-17 07:08:46 Creating tar archive '/tmp/rear.kpwJUqKmvT28701/outputfs//rhel5_backup_20161117_070714.tar.gz'\nstat: cannot stat `/tmp/rear.kpwJUqKmvT28701/outputfs//rhel5_backup_20161117_070714.tar.gz': Permission denied\n2016-11-17 08:11:26 WARNING: tar ended with return code 1 and below output:\n  ---snip---\n  tar: Removing leading `/' from member names\n  tar: Removing leading `/' from hard link targets\n  ----------\nThis means that files have been modified during the archiving\nprocess. As a result the backup may not be completely consistent\nor may not be a perfect copy of the system. Relax-and-Recover\nwill continue, however it is highly advisable to verify the\nbackup in order to be sure to safely recover this system.\n\ncp: accessing `/tmp/rear.kpwJUqKmvT28701/outputfs//rhel5_backup_20161117_070714.log': Permission denied\n2016-11-17 08:11:26 Including backup/NETFS/GNU/Linux/60_start_selinux.sh\n2016-11-17 08:11:26 Including backup/NETFS/GNU/Linux/62_force_autorelabel.sh\n2016-11-17 08:11:26 Including backup/NETFS/default/97_remove_lock.sh\nrm: cannot remove `/tmp/rear.kpwJUqKmvT28701/outputfs//.lockfile': Permission denied\n13233\n\n\nPas de différence de paramétrage noyau au niveau tcp.\n\n\n14:23:32.752464 IP (tos 0x0, ttl  64, id 54263, offset 0, flags [DF], proto: TCP (6), length: 40) noefy297.noe.edf.fr.https > 10.128.101.2.51588: ., cksum 0x4e6c (correct), 131:131(0) ack 81213 win 0\n14:23:33.073045 IP (tos 0x0, ttl 123, id 29690, offset 0, flags [DF], proto: TCP (6), length: 41) 10.128.101.2.51588 > noefy297.noe.edf.fr.https: ., cksum 0x0278 (correct), 81213:81214(1) ack 131 win 16627\n14:23:33.073070 IP (tos 0x0, ttl  64, id 54264, offset 0, flags [DF], proto: TCP (6), length: 40) noefy297.noe.edf.fr.https > 10.128.101.2.51588: ., cksum 0x4e6c (correct), 131:131(0) ack 81213 win 0\n14:23:33.691909 IP (tos 0x0, ttl 123, id 29691, offset 0, flags [DF], proto: TCP (6), length: 41) 10.128.101.2.51588 > noefy297.noe.edf.fr.https: ., cksum 0x0278 (correct), 81213:81214(1) ack 131 win 16627\n14:23:33.691929 IP (tos 0x0, ttl  64, id 54265, offset 0, flags [DF], proto: TCP (6), length: 40) noefy297.noe.edf.fr.https > 10.128.101.2.51588: ., cksum 0x4e6c (correct), 131:131(0) ack 81213 win 0\n14:23:34.911846 IP (tos 0x0, ttl 123, id 29693, offset 0, flags [DF], proto: TCP (6), length: 41) 10.128.101.2.51588 > noefy297.noe.edf.fr.https: ., cksum 0x0278 (correct), 81213:81214(1) ack 131 win 16627\n14:23:34.911862 IP (tos 0x0, ttl  64, id 54266, offset 0, flags [DF], proto: TCP (6), length: 40) noefy297.noe.edf.fr.https > 10.128.101.2.51588: ., cksum 0x4e6c (correct), 131:131(0) ack 81213 win 0\n14:23:37.324996 IP (tos 0x0, ttl 123, id 29695, offset 0, flags [DF], proto: TCP (6), length: 41) 10.128.101.2.51588 > noefy297.noe.edf.fr.https: ., cksum 0x0278 (correct), 81213:81214(1) ack 131 win 16627\n\n\nBonjour,\n\nEffectivement, diminuer la taille d'un FS peut avoir des risques à savoir perte des données.\nNéanmoins nous pensons qu'il est possible de le faire sur cette machine en suivant la procédure disponible dans la PTE stockage de la souche RHEL 6.6 qui est disponible dans Prodis ref : 01350_27571_38129.\nToutefois il est fortement recommandé de réaliser d'abord une sauvegarde des données avant toutes manipulations sur le FS en question. \nNous vous recommandons de bien lire cette PTE  s'il vous plaît . Nous vous conseillons  même  aussi de  tester  d'abord les commandes que vous voudrez  lancer sur une machine de test.\n\n\nCordialement,\nL'équipe Support Serveur N3\nTAG SSN3 : SSN3-PR-Q-LIN-S3\n\n\n \n100312978\n\n\n[admexsip@pcyfy635 distributions]$ ls centos/7Server/x86_64/7.1/os/Packages/|grep php\nphp-5.4.16-36.el7_1.x86_64.rpm\nphp-cli-5.4.16-36.el7_1.x86_64.rpm\n\n[admexsip@pcyfy635 distributions]$ ls centos/7Server/x86_64/7.1/os/Packages/|grep httpd\nhttpd-2.4.6-31.el7.centos.x86_64.rpm\nhttpd-devel-2.4.6-31.el7.centos.x86_64.rpm\n\n\nBonjour,\n\nCi dessous les réponses des 3 questions posées :\n\n- Question 1 et 2 :\n Les dépôts officiels des distributions  (rhel + centos) contiennent certes beaucoup de paquet que les dépôts utilisés à EEI. Cela est tout simplement une question de sécurité au  niveau du SI EDF, EEI fournis uniquement les paquets susceptibles d'être utilisés et compatible au sein d'EDF. Donc il ne faut pas se baser sur les versions publiés par les éditeurs.\nIl y en a de même pour les versions, par soucis de compatibilités, EEI sort uniquement une version qu'il la qualifie comme stable par rapport aux divers applications qui l'utilisent.\nEn effet pour les paquet demandées, ci -dessous les versions supportées par EEI actuellement :\n- php : php-5.4.16-36.el7_1.x86_64.rpm\n- httpd: httpd-2.4.6-31.el7.centos.x86_64.rpm\nAinsi vous pouvez vérifier si vous avez ces paquets là avec les bonnes versions dans votre dépôt newcloud.\nLe paquet SCL n'est même pas aussi présent dans les dépôts EEI conformément à ce qui a été dit au dessus.\n\n-Question 3:\nLe Docker_storage_vg est un VG utilisé dans le cadre d'utilisation de la machine comme docker host. C'est-à-dire un VG créé  lors de l'installation de l'OI docker.\nSi la machine ne se trouve pas dans ce cas de figure , alors il est possible de le supprimer pour en créer le data_vg. Donc nous vous demandons d'abord de vous renseigner auprès de l'exploitant ou au projet pour avoir plus d'informations sur son utilisation.\n\nCordialement,\nL'équipe Support Serveur N3\nTAG SSN3 : SSN3-PR-Q-LIN-S3\n\n\n\nRapport des modifications effectuées sur la machine noefy297, noefy298, noefy299\n\n - net.ipv4.tcp_adv_win_scale\n\n\n- Valeur  max par défaut du buffer du protocole TCP sous linux  :\n  - net.ipv4.tcp_mem = 196608       262144  393216\n\n- Valeur  max par défaut du buffer du protocole UDP sous linux  :\n  - net.ipv4.udp_mem = 193248       257664  386496\n\n- Valeur par défaut et max du buffer du socket de réception de la pile TCP/IP. Par défaut il est à 128KB sur la pluspart des distributions Linux.\n  - net.core.rmem_default = 129024\n  - net.core.rmem_max = 16777216\n\n- Valeur par défaut et max du buffer du socket de transmission de la pile TCP. Par défaut il est à 128KB sur la pluspart des distributions Linux.\n  - net.core.wmem_default = 129024\n  - net.core.wmem_max = 16777216\n\n- Valeur max de l'option buffer de mémoire\n  - net.core.optmem_max = 20480\n\n- Valeur de la memoire utilisé par chaque \n\n\nDec  7 23:12:01 noeyy5gu CROND[8821]: (root) CMD (date >> /tmp/cronLsofParMinute.Sorel && /usr/sbin/lsof | wc -l >> /tmp/cronLsofParMinute.Sorel)\nDec  7 23:12:01 noeyy5gu CROND[8822]: (root) CMD (date >> /tmp/cronFreeParMinute.Sorel && free >> /tmp/cronFreeParMinute.Sorel)\nDec  7 23:12:01 noeyy5gu CROND[8823]: (root) CMD (date >> /tmp/cronPsParMinute.Sorel && ps faux | wc -l >> /tmp/cronPsParMinute.Sorel)\nDec  7 23:12:01 noeyy5gu CROND[8824]: (root) CMD (/root/scripts/My_suivi.ksh -cfg My_suivi.conf -nologger  >/dev/null  2>&1)\n\n\nif [[ ! -d \"$HOME/bin\" ]]; then mkdir -p \"$HOME/bin\"; fi && \\\ncurl -L https://github.com/docker/machine/releases/download/v0.8.2/docker-machine-Windows-x86_64.exe > \"$HOME/bin/docker-machine.exe\" \n\n\nPP05647S@zpl00801> ls -lrt /etc/conf_machine/signatures/svr_sysref*\n-rw-r--r--. 1 root root 19 Mar 26  2015 /etc/conf_machine/signatures/svr_sysref-linux.6.4.0_linux_rhe6_n3^1.1\n-rw-r--r--  1 root root 64 Oct 27 10:58 /etc/conf_machine/signatures/svr_sysref-linux.6.6.0--mig_linux_rhe6_n0^1.1\n-rw-r--r--  1 root root  0 Oct 27 10:58 /etc/conf_machine/signatures/svr_sysref-linux-prerequis-oi.6.6.0_linux_el6_n0-n1-n3^1.1\n-rw-r--r--  1 root root  0 Oct 27 10:58 /etc/conf_machine/signatures/svr_sysref-linux-drivers-vm.6.6.0_linux_el6_n1-n3^1.0\n-rw-r--r--  1 root root  0 Oct 27 10:58 /etc/conf_machine/signatures/svr_sysref-linux-prerequis-appli.6.6.0_linux_el6_n0-n1-n3^1.0\n-rw-r--r--  1 root root  0 Oct 27 10:58 /etc/conf_machine/signatures/svr_sysref-linux-config.6.6.0_linux_el6_n1-n3^1.0\n\nSignature 6.6\n-rw-r--r--. 1 root root 30 Feb  3  2015 /etc/conf_machine/signatures/svr_sysref-linux.6.4.0_linux_rhe6_n3^1.2\n-rw-r--r--  1 root root  0 Dec 21 14:39 /etc/conf_machine/signatures/svr_sysref-linux-prerequis-oi.6.6.0_linux_el6_n0-n1-n3^1.2\n-rw-r--r--  1 root root  0 Dec 21 14:39 /etc/conf_machine/signatures/svr_sysref-linux-drivers-vm.6.6.0_linux_el6_n1-n3^1.0\n-rw-r--r--  1 root root  0 Dec 21 14:39 /etc/conf_machine/signatures/svr_sysref-linux-prerequis-appli.6.6.0_linux_el6_n0-n1-n3^1.0\n-rw-r--r--  1 root root  0 Dec 21 14:39 /etc/conf_machine/signatures/svr_sysref-linux-config.6.6.0_linux_el6_n1-n3^1.1\n-rw-r--r--  1 root root 63 Dec 21 14:39 /etc/conf_machine/signatures/svr_sysref-linux.6.6.0--mig_linux_rhe6_n1-n3^1.1\n-rw-r--r--  1 root root  0 Dec 21 14:39 /etc/conf_machine/signatures/svr_sysref-linux-securite-n3.6.6.0_linux_el6_n0-n3^1.1\n\nSignature 6.4 \n-rw-r--r--. 1 root root 30 Feb  3  2015 /etc/conf_machine/signatures/svr_sysref-linux.6.4.0_linux_rhe6_n3^1.2\n\n\n  /dev/sdc2             root_vg_alt  lvm2 a--   19.88g   3.25g\n  /dev/sdd              data_vg      lvm2 a--  239.36g 193.48g\n  unknown device        ycr3vg_app01 lvm2 a-m  116.89g      0\n  unknown device        ycr3vg_app01 lvm2 a-m  116.89g      0\n\n\n\n  Couldn't find device with uuid Ob8gPU-6PJQ-UXuc-FqHd-wF1w-ZqMG-Iaa2fO.\n  Couldn't find device with uuid ct2qMx-272E-DeoN-CNxS-Of3w-qsKb-lf6Yh4.\n\n  PR271F5N@pcyyyp3q>\nPR271F5N@pcyyyp3q> top\ntop - 10:23:49 up 23 days,  2:43,  5 users,  load average: 0.00, 0.01, 0.07\nTasks: 381 total,   1 running, 380 sleeping,   0 stopped,   0 zombie\nCpu(s):  0.3%us,  0.2%sy,  0.0%ni, 99.5%id,  0.0%wa,  0.0%hi,  0.0%si,  0.0%st\nMem:  16334412k total, 15213188k used,  1121224k free,   792164k buffers\nSwap: 16879600k total,     4836k used, 16874764k free,  8356784k cached\n\n  PID USER      PR  NI  VIRT  RES  SHR S %CPU %MEM    TIME+  COMMAND\n14925 boadm     20   0 2615m 286m  39m S  0.7  1.8   1:15.26 boe_cmsd\n15132 boadm     20   0 5037m 1.1g  17m S  0.3  7.2   1:44.32 java\n15211 boadm     20   0 3706m 244m  33m S  0.3  1.5   0:13.70 boe_xccached\n15238 boadm     20   0 5035m 1.4g  17m S  0.3  8.7   1:37.62 java\n17155 PR271F5N  20   0 27756 1592 1044 R  0.3  0.0   0:00.02 top\n25695 boadm     20   0 5014m 893m  14m S  0.3  5.6   1:20.57 java\n    1 root      20   0 23504 1500 1272 S  0.0  0.0   0:00.85 init\n    2 root      20   0     0    0    0 S  0.0  0.0   0:00.28 kthreadd\n    3 root      RT   0     0    0    0 S  0.0  0.0   0:05.87 migration/0\n    4 root      20   0     0    0    0 S  0.0  0.0   0:12.49 ksoftirqd/0\n    5 root      RT   0     0    0    0 S  0.0  0.0   0:00.00 migration/0\n    6 root      RT   0     0    0    0 S  0.0  0.0   0:01.88 watchdog/0\n    7 root      RT   0     0    0    0 S  0.0  0.0   0:05.97 migration/1\n    8 root      RT   0     0    0    0 S  0.0  0.0   0:00.00 migration/1\n    9 root      20   0     0    0    0 S  0.0  0.0   0:12.00 ksoftirqd/1\n   10 root      RT   0     0    0    0 S  0.0  0.0   0:01.42 watchdog/1\n   11 root      RT   0     0    0    0 S  0.0  0.0   0:06.18 migration/2\n   12 root      RT   0     0    0    0 S  0.0  0.0   0:00.00 migration/2\n   13 root      20   0     0    0    0 S  0.0  0.0   0:11.76 ksoftirqd/2\n   14 root      RT   0     0    0    0 S  0.0  0.0   0:01.38 watchdog/2\n   15 root      RT   0     0    0    0 S  0.0  0.0   0:05.91 migration/3\n   16 root      RT   0     0    0    0 S  0.0  0.0   0:00.00 migration/3\n   17 root      20   0     0    0    0 S  0.0  0.0   0:12.77 ksoftirqd/3\n   18 root      RT   0     0    0    0 S  0.0  0.0   0:01.41 watchdog/3\n   19 root      20   0     0    0    0 S  0.0  0.0   1:03.38 events/0\n   20 root      20   0     0    0    0 S  0.0  0.0   0:53.88 events/1\n   21 root      20   0     0    0    0 S  0.0  0.0   0:58.60 events/2\n   22 root      20   0     0    0    0 S  0.0  0.0   1:25.43 events/3\n\nPR271F5N@pcyyyp3q> ps -edf|grep tomcat\nPR271F5N 22891 11260  0 10:29 pts/4    00:00:00 grep tomcat\nboadm    25695     1  4 09:59 pts/0    00:01:21 /logiciels/bo/ROP/PROD/BI4/sap_bobj/enterprise_xi40/linux_x64/sapjvm//bin/java -classpath /logiciels/bo/ROP/PROD/BI4/sap_bobj/tomcat/bin/bootstrap.jar:/logiciels/bo/ROP/PROD/BI4/sap_bobj/tomcat/bin/tomcat-juli.jar -Djava.util.logging.config.file=/logiciels/bo/ROP/PROD/BI4/sap_bobj/tomcat/conf/logging.properties -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager -Dbobj.enterprise.home=/logiciels/bo/ROP/PROD/BI4/sap_bobj/enterprise_xi40 -Djava.awt.headless=true -Djava.net.preferIPv4Stack=false -Xmx2048m -XX:MaxPermSize=384m -Djava.endorsed.dirs=/logiciels/bo/ROP/PROD/BI4/sap_bobj/tomcat/endorsed -Dcatalina.base=/logiciels/bo/ROP/PROD/BI4/sap_bobj/tomcat -Dcatalina.home=/logiciels/bo/ROP/PROD/BI4/sap_bobj/tomcat -Djava.io.tmpdir=/logiciels/bo/ROP/PROD/BI4/sap_bobj/tomcat/temp org.apache.catalina.startup.Bootstrap start\n",
+			"file": "/C/Users/PR271F5N/prakotoarisoa/doc/ACL sur Linux.txt",
 			"settings":
 			{
-				"buffer_size": 24756,
+				"buffer_size": 2441,
+				"line_ending": "Windows",
+				"name": "Mise en place ACL sur les répertoires et fichier s"
+			}
+		},
+		{
+			"file": "/C/Users/PR271F5N/prakotoarisoa/doc/YUM en pratique.txt",
+			"settings":
+			{
+				"buffer_size": 820,
+				"line_ending": "Windows",
+				"name": "Commande YUM en pratique"
+			}
+		},
+		{
+			"file": "/C/Users/PR271F5N/prakotoarisoa/doc/TCPDUMP en pratique.txt",
+			"settings":
+			{
+				"buffer_size": 225,
+				"line_ending": "Windows",
+				"name": "TCPDUMP en pratique"
+			}
+		},
+		{
+			"contents": "\n\nBonjour,\n\nCette demande concerne la partie applicative donc pas dans le périmètre du support serveur qui s'occupe particulièrement de la partie système ( l'OS).\nDe ce fait, nous attirons votre attention  que votre machine swap énormément, il va falloir regarder la partie mémoire car visiblement c'est pas bien dimensionné. \nPuis des FS qui s'approche des 100% du taux d'utilisation, qu'il faudrait penser à faire le ménage peut être.\nPour le problème de sendmail, vu que nous ne sommes pas les spécialistes, nous avons regardé vite fait et il semble que les mails sont bien envoyés (selon les logs).\nLe problème semble se situer au  niveau du relais ( noeintpirgw002-intp.edf.fr ) qui bloque les pièces jointes apparemment car vous avez dit même que sur le relais noeintpirgw001-intp.edf.fr, le problème ne se présente pas.\n\nFlorence COURVOISIER (01 47 65 52 86)\n--Denis GHIAZZA (01 47 65 56 57)\n--Thibault MARTIN (01 47 65 42 20)\n--Lino AUGEARD (01 47 65 31 80)\n--Damien GUIOT (01 47 65 31 75)\n--Claire LARDIERE (01 47 65 37 88)\n--Jean-Charles BAUTMANS (01 47 65 46 03)\n--Serge SMADJA (01 78 63 63 55)\n\nITO_IESI2_LOTC-PCU_SN1\n\nITO_IESI2_LOTC-HYP-ESX_SN2\nITO_IESI2_LOTC-HYP-ESX_SN3\n \n\n\nBonjour,\n\nA l' attention de LANDATA :\nL'adresse IP 10.151.13.235 correspond à l'adresse de mon poste dans le réseau atlas (voir commentaire précédent), quand il n'y a pas de VPN. \nMais si vous regardez bien les commentaires, il y a bien une deuxième adresse IP ( 192.168.182.173) qui est l'adresse de mon poste quand je suis connecté au VPN admsip. J'ai mis le retour de la commande ipconfig et vous voyez bien que j'ai les deux adresse IP qui montre bien que je suis connecté au VPN.\nD'ailleurs c'est ce que tous les membres de l'équipe support serveur fait tous les matins . Pour votre information, pour se connecter au VPN, le support passe par un lien spécifique : https://vpnzsa.pcy.edf.fr/admsip ou https://vpnzsa.noe.edf.fr/admsip (voir PJ).\nPour information , les serveurs SIPSIR sont aussi dans le ZSA outillage et nous n'avons pas de problème de connexion sur ces machines.\n\nA moins qu'il y a eu des changements  et dont lequel le support serveur n'a pas été mis au courant. Mais pour l'instant , nous n'arrivons pas à accéder à vos machines.\nVous pouvez me joindre au 01 78 66 69 90.\n\nCordialement,\nL'équipe Support Serveur N3\nTAG SSN3 : SSN3-PR-I-LIN-S3\n\n====Trace de configuration=====\nConfiguration IP de Windows\nCarte Ethernet Connexion au r▒seau local* 11 :\n   Statut du m▒dia. . . . . . . . . . . . : M▒dia d▒connect▒\n   Suffixe DNS propre ▒ la connexion. . . :\n\nCarte Ethernet Connexion au r▒seau local 2 :\n   Suffixe DNS propre ▒ la connexion. . . :\n   Adresse IPv4. . . . . . . . . . . . . .: 192.168.182.173\n   Masque de sous-r▒seau. . . .▒. . . . . : 255.255.255.0\n   Passerelle par d▒faut. . . .▒. . . . . :\n\nCarte Ethernet Connexion au r▒seau local :\n\n   Suffixe DNS propre ▒ la connexion. . . : atlas.edf.fr\n   Adresse IPv4. . . . . . . . . . . . . .: 10.151.13.235\n   Masque de sous-r▒seau. . . .▒. . . . . : 255.255.255.0\n   Passerelle par d▒faut. . . .▒. . . . . : 10.151.13.1\n\n\n   -----09/11/16 16:40:32-ITO_DTCM_LANDATA_SN1-ELECTON, BAPTISTE (BE03727S)-----\nBonjour,\n\nPouvez-vous prendre en compte le retour de notre support\nil faut utiliser le nouveau VPN JUNIPER PULSE et plus le VPN CISCO ANYCONNECT.\n\nles urls sont les suivantes: https://vpnadmin.pcy.edf.fr/securid ou https://vpnadmin.noe.edf.fr/securid\nLes flux sont ouverts via ce VPN.\n\nCdlt\n\n\nPR271F5N@pcyfyeu2.pcy.edfgdf.fr> ps -edf|grep rear\nPR271F5N  7200  6980  0 15:33 pts/1    00:00:00 grep rear\nroot     29969     1  0 Nov01 ?        00:00:00 /bin/sh -c if [ -x /etc/rear/exclude_fs.sh ];then /etc/rear/exclude_fs.sh; fi; PATH=/usr/local/bin:/bin:/usr/bin:/sbin && /usr/sbin/rear mkbackup\nroot     31298 29969  0 Nov01 ?        00:00:00 /bin/bash /usr/sbin/rear mkbackup\nPR271F5N@pcyfyeu2.pcy.edfgdf.fr>\n\n\n[admexsip@noefy1n7 log]$ sudo zcat /var/log/messages.2.gz|grep -i dhcp |grep -i \"B5:E1:DC\"\n2016-11-03T15:51:25.982910+01:00 noefy1n7 dhcpd: DHCPDISCOVER from 28:80:23:b5:e1:dc via 163.84.209.5\n2016-11-03T15:51:25.982951+01:00 noefy1n7 dhcpd: DHCPOFFER on 163.84.209.80 to 28:80:23:b5:e1:dc via 163.84.209.5\n2016-11-03T15:51:30.019827+01:00 noefy1n7 dhcpd: DHCPREQUEST for 163.84.209.80 (10.117.0.221) from 28:80:23:b5:e1:dc via 163.84.209.5\n2016-11-03T15:51:30.019870+01:00 noefy1n7 dhcpd: DHCPACK on 163.84.209.80 to 28:80:23:b5:e1:dc via 163.84.209.5\n2016-11-03T15:52:19.504594+01:00 noefy1n7 dhcpd: DHCPDISCOVER from 28:80:23:b5:e1:dc via 163.84.209.5\n2016-11-03T15:52:19.504635+01:00 noefy1n7 dhcpd: DHCPOFFER on 163.84.209.80 to 28:80:23:b5:e1:dc via 163.84.209.5\n2016-11-03T15:52:19.506390+01:00 noefy1n7 dhcpd: DHCPREQUEST for 163.84.209.80 (10.117.0.221) from 28:80:23:b5:e1:dc via 163.84.209.5\n2016-11-03T15:52:19.506413+01:00 noefy1n7 dhcpd: DHCPACK on 163.84.209.80 to 28:80:23:b5:e1:dc via 163.84.209.5\n2016-11-03T15:52:45.403067+01:00 noefy1n7 dhcpd: DHCPREQUEST for 163.84.209.80 from 28:80:23:b5:e1:dc via 163.84.209.5\n2016-11-03T15:52:45.403098+01:00 noefy1n7 dhcpd: DHCPACK on 163.84.209.80 to 28:80:23:b5:e1:dc via 163.84.209.5\n[admexsip@noefy1n7 log]$ sudo cat declareclient/noefy1n7.noe.edf.fr_knw36hk6.kqg.egs.edf.fr_20161103_153549.log\ndeclareclient_HOSTNAMESIP = noefy1n7.noe.edf.fr\ndeclareclient_HOSTNAMECLIENT = knw36hk6.kqg.egs.edf.fr\ndeclareclient_DATE_DEB = 20161103_153549\ndeclareclient_SYNC = OUI\ndeclareclient_ARGS = -W fh33853n@sx400014 -n knw36hk6.kqg.egs.edf.fr -x IMAT005207804 -e 28:80:23:B5:E1:DC -i 163.84.209.80 -m 255.255.255.0 -g 163.84.209.3\ndeclareclient_MSG_RET = Server declare\ndeclareclient_ARGS_RET = OK\ndeclareclient_DATE_FIN = 20161103_153552\ndeclareclient_STATUS = 0\n[admexsip@noefy1n7 log]$\n\n\n[admexsip@noefy1n7 log]$ sudo cat declareclient/noefy1n7.noe.edf.fr_knw36hk5.kqg.egs.edf.fr_20161028_161136.log\ndeclareclient_HOSTNAMESIP = noefy1n7.noe.edf.fr\ndeclareclient_HOSTNAMECLIENT = knw36hk5.kqg.egs.edf.fr\ndeclareclient_DATE_DEB = 20161028_161136\ndeclareclient_SYNC = OUI\ndeclareclient_ARGS = -W fh33853n@sx400014 -n knw36hk5.kqg.egs.edf.fr -x IMAT005207798 -e 28:80:23:B5:B3:08 -i 163.84.209.82 -m 255.255.255.0 -g 163.84.209.3\ndeclareclient_MSG_RET = Server declare\ndeclareclient_ARGS_RET = OK\ndeclareclient_DATE_FIN = 20161028_161138\ndeclareclient_STATUS = 0\n[admexsip@noefy1n7 log]$ sudo zcat /var/log/messages.2.gz|grep -i dhcp|grep -i \"B5:B3:08\"\n[admexsip@noefy1n7 log]$ sudo zcat /var/log/messages.3.gz|grep -i dhcp|grep -i \"B5:B3:08\"\n2016-10-28T16:51:16.985504+02:00 noefy1n7 dhcpd: DHCPDISCOVER from 28:80:23:b5:b3:08 via 163.84.209.5\n2016-10-28T16:51:16.985543+02:00 noefy1n7 dhcpd: DHCPOFFER on 163.84.209.82 to 28:80:23:b5:b3:08 via 163.84.209.5\n2016-10-28T16:51:21.022215+02:00 noefy1n7 dhcpd: DHCPREQUEST for 163.84.209.82 (10.117.0.221) from 28:80:23:b5:b3:08 via 163.84.209.5\n2016-10-28T16:51:21.022253+02:00 noefy1n7 dhcpd: DHCPACK on 163.84.209.82 to 28:80:23:b5:b3:08 via 163.84.209.5\n2016-10-28T16:52:16.716518+02:00 noefy1n7 dhcpd: DHCPDISCOVER from 28:80:23:b5:b3:08 via 163.84.209.5\n2016-10-28T16:52:16.716551+02:00 noefy1n7 dhcpd: DHCPOFFER on 163.84.209.82 to 28:80:23:b5:b3:08 via 163.84.209.5\n2016-10-28T16:52:16.719920+02:00 noefy1n7 dhcpd: DHCPREQUEST for 163.84.209.82 (10.117.0.221) from 28:80:23:b5:b3:08 via 163.84.209.5\n2016-10-28T16:52:16.719969+02:00 noefy1n7 dhcpd: DHCPACK on 163.84.209.82 to 28:80:23:b5:b3:08 via 163.84.209.5\n2016-10-28T16:52:40.602223+02:00 noefy1n7 dhcpd: DHCPREQUEST for 163.84.209.82 from 28:80:23:b5:b3:08 via 163.84.209.5\n2016-10-28T16:52:40.602257+02:00 noefy1n7 dhcpd: DHCPACK on 163.84.209.82 to 28:80:23:b5:b3:08 via 163.84.209.5\n[admexsip@noefy1n7 log]$\n\n\nITO_IESI2_LOTC_NEWCLOUD_SN2\n\n[root@NOEYYCL8 ~]# yum list |grep php|grep 5.4.16\nRepodata is over 2 weeks old. Install yum-cron? Or run: yum makecache fast\nphp.x86_64                       5.4.16-36.el7_1     sysref-centos-7.1-base\n\n\nBonjour,\n\nNous avons reçu cet incident I01416090 qui parle d’un problème de droit root pour  l’ensemble des utilisateurs du groupe s1g_root sur la machine NOEYYP9C. Dans le ticket à titre d’exemple le demandeur parle de l’utilisateur F14432.\nLe demandeur a fait la demande de droit dans  le portail ( N° : 24878 ) en créant un groupe puis l’associé au compte générique root ; et elle –ci a été bien réalisée. (voir capture).\nNous avons proposé au demandeur de faire le nettoyage du cache mais cela n’a pas résolu le problème.\nNous avons remarqué aussi que celui qui a fait la demande caccia est en même temps le PE et le POA de l’application ( NNA :S1G). Pour notre part sa demande n’est pas encore concernée par la règle « demandeur et valideur doivent être deux personnes différentes ».\n\nPouvez-vous nous apporter votre expertise sur ce sujet s’il vous plaît ?\n\nCordialement,\nL'équipe Support Serveur\n\napplication putty\n\nserveur noeyyxng.noe.edf.fr\n\ncompte CM154A6N\ncompte caccia\n\n\n\nBonjour, \n\nNous aimerions avoir votre avis sur cette sollicitation qui concerne newcloud sur la parttie souche et les paquets RPM de leur  dépôt (voir demande ci-dessus).\n- RPM :\nEn  gros le demandeur rencontre des différences de version des paquets httpd et php  dans le dépôt newcloud avec le dépôt EEI. De ce faite il souhaite avoir les même version que de ce qui existe dans chez EEI. Si ce n'est pas possible ou interdit , alors il souhaite savoir la raison.\nIl a remarqué aussi l'absence du paquet SCL (une sorte de métapaquet permettant d'installer apache et php compatible avec le framework Symphony). Serait-il possible d'en procurer et de le mettre à disposition dans le dépôt newcloud ?\nVous trouverez ci-dessous les versions des paquets httpd et php du dépôt EEI.\n- Souche: \nLe demandeur  a remarqué la création par défaut d'un VG qui se nomme \"Docker_storage_vg\" à l'installation. Nous avons fait un test sur les souches EEI et nous n'avons pas ce VG, créé à la fin de l'installation. Du coup est-ce une spécificité des souches newcloud? Si oui il souhaite savoir dans quel disque il pourra ainsi créer le datavg pour pouvoir installer les midleware EDF. Faudra-t-il ajouter un nouveau disque ?\n\nEn atttente de votre retour.\n\nCordialement,\nL'équipe Support Serveur N3\n=====RPM centos============\n\n[root@noeyycl5 ~]# yum --enablerepo=* list httpd\nLoaded plugins: product-id\nAvailable Packages\nhttpd.x86_64            2.4.6-31.el7.centos                                         sysref-centos-7.1-base\n[root@noeyycl5 ~]# yum --enablerepo=* list php\nLoaded plugins: product-id\nAvailable Packages\nphp.x86_64              5.4.16-36.el7_1                                      sysref-centos-7.1-base\n===========Mail============\nBonjour,\n\nje vous fait remonter plusieurs questions de clients newCloud au niveau système et respository.\n\nMerci  par avance pour votre retour.\n\nQuestion 1\nIl existe normalement dans le repository de base CentOS des packages httpd et php qui permettent d’installer des apache et php.\nIl s’agit des packages httpd-2.4.6-40.el7.centos.x86_64.rpm et php-5.4.16-36.el7_1.x86_64.rpm.\n\nSauf erreur de ma part, ces packages n’apparaissent pas dans le repository newCloud. Pour quelle raison ? Est-ce autorisé ou interdit, et pourquoi ?\n\nQuestion 2\nGénéralement, nous installons les packages apache et php des SCL (Software Collection), pour avoir des versions plus récentes et compatibles avec les Framework tels que Symfony.\nLà aussi, je ne retrouve pas les packages des SCL sur le repository newCloud.\nOn retrouve la description des différents repositories officiels, dont les SCL, dans le wiki CentOS :\nhttps://wiki.centos.org/fr/AdditionalResources/Repositories/\n\nPour quelle raison n’a-t-on pas les packages des SCL sur le repository newCloud ? Est-ce autorisé ou interdit et pourquoi ?\n\nQuestion 3\nA quoi correspond le Docker_storage_vg sur CentOS qui utilise le disque /dev/sdb ? Est-ce l'équivalent du data_vg ou pas ? Si ce n'est pas le cas, pour installer les middlewares EDF (il est demandé de créer un data_vg) sur quel disque doit-on créer le data_vg (3 disques sur les VM newCloud : sda, sdb et sdc) ?\n\nMerci par avance.\nCordialement,\nCharly\n\n\n2016-11-17 07:08:46 Creating tar archive '/tmp/rear.kpwJUqKmvT28701/outputfs//rhel5_backup_20161117_070714.tar.gz'\nstat: cannot stat `/tmp/rear.kpwJUqKmvT28701/outputfs//rhel5_backup_20161117_070714.tar.gz': Permission denied\n2016-11-17 08:11:26 WARNING: tar ended with return code 1 and below output:\n  ---snip---\n  tar: Removing leading `/' from member names\n  tar: Removing leading `/' from hard link targets\n  ----------\nThis means that files have been modified during the archiving\nprocess. As a result the backup may not be completely consistent\nor may not be a perfect copy of the system. Relax-and-Recover\nwill continue, however it is highly advisable to verify the\nbackup in order to be sure to safely recover this system.\n\ncp: accessing `/tmp/rear.kpwJUqKmvT28701/outputfs//rhel5_backup_20161117_070714.log': Permission denied\n2016-11-17 08:11:26 Including backup/NETFS/GNU/Linux/60_start_selinux.sh\n2016-11-17 08:11:26 Including backup/NETFS/GNU/Linux/62_force_autorelabel.sh\n2016-11-17 08:11:26 Including backup/NETFS/default/97_remove_lock.sh\nrm: cannot remove `/tmp/rear.kpwJUqKmvT28701/outputfs//.lockfile': Permission denied\n13233\n\n\nPas de différence de paramétrage noyau au niveau tcp.\n\n\n14:23:32.752464 IP (tos 0x0, ttl  64, id 54263, offset 0, flags [DF], proto: TCP (6), length: 40) noefy297.noe.edf.fr.https > 10.128.101.2.51588: ., cksum 0x4e6c (correct), 131:131(0) ack 81213 win 0\n14:23:33.073045 IP (tos 0x0, ttl 123, id 29690, offset 0, flags [DF], proto: TCP (6), length: 41) 10.128.101.2.51588 > noefy297.noe.edf.fr.https: ., cksum 0x0278 (correct), 81213:81214(1) ack 131 win 16627\n14:23:33.073070 IP (tos 0x0, ttl  64, id 54264, offset 0, flags [DF], proto: TCP (6), length: 40) noefy297.noe.edf.fr.https > 10.128.101.2.51588: ., cksum 0x4e6c (correct), 131:131(0) ack 81213 win 0\n14:23:33.691909 IP (tos 0x0, ttl 123, id 29691, offset 0, flags [DF], proto: TCP (6), length: 41) 10.128.101.2.51588 > noefy297.noe.edf.fr.https: ., cksum 0x0278 (correct), 81213:81214(1) ack 131 win 16627\n14:23:33.691929 IP (tos 0x0, ttl  64, id 54265, offset 0, flags [DF], proto: TCP (6), length: 40) noefy297.noe.edf.fr.https > 10.128.101.2.51588: ., cksum 0x4e6c (correct), 131:131(0) ack 81213 win 0\n14:23:34.911846 IP (tos 0x0, ttl 123, id 29693, offset 0, flags [DF], proto: TCP (6), length: 41) 10.128.101.2.51588 > noefy297.noe.edf.fr.https: ., cksum 0x0278 (correct), 81213:81214(1) ack 131 win 16627\n14:23:34.911862 IP (tos 0x0, ttl  64, id 54266, offset 0, flags [DF], proto: TCP (6), length: 40) noefy297.noe.edf.fr.https > 10.128.101.2.51588: ., cksum 0x4e6c (correct), 131:131(0) ack 81213 win 0\n14:23:37.324996 IP (tos 0x0, ttl 123, id 29695, offset 0, flags [DF], proto: TCP (6), length: 41) 10.128.101.2.51588 > noefy297.noe.edf.fr.https: ., cksum 0x0278 (correct), 81213:81214(1) ack 131 win 16627\n\n\nBonjour,\n\nEffectivement, diminuer la taille d'un FS peut avoir des risques à savoir perte des données.\nNéanmoins nous pensons qu'il est possible de le faire sur cette machine en suivant la procédure disponible dans la PTE stockage de la souche RHEL 6.6 qui est disponible dans Prodis ref : 01350_27571_38129.\nToutefois il est fortement recommandé de réaliser d'abord une sauvegarde des données avant toutes manipulations sur le FS en question. \nNous vous recommandons de bien lire cette PTE  s'il vous plaît . Nous vous conseillons  même  aussi de  tester  d'abord les commandes que vous voudrez  lancer sur une machine de test.\n\n\nCordialement,\nL'équipe Support Serveur N3\nTAG SSN3 : SSN3-PR-Q-LIN-S3\n\n\n \n100312978\n\n\n[admexsip@pcyfy635 distributions]$ ls centos/7Server/x86_64/7.1/os/Packages/|grep php\nphp-5.4.16-36.el7_1.x86_64.rpm\nphp-cli-5.4.16-36.el7_1.x86_64.rpm\n\n[admexsip@pcyfy635 distributions]$ ls centos/7Server/x86_64/7.1/os/Packages/|grep httpd\nhttpd-2.4.6-31.el7.centos.x86_64.rpm\nhttpd-devel-2.4.6-31.el7.centos.x86_64.rpm\n\n\nBonjour,\n\nCi dessous les réponses des 3 questions posées :\n\n- Question 1 et 2 :\n Les dépôts officiels des distributions  (rhel + centos) contiennent certes beaucoup de paquet que les dépôts utilisés à EEI. Cela est tout simplement une question de sécurité au  niveau du SI EDF, EEI fournis uniquement les paquets susceptibles d'être utilisés et compatible au sein d'EDF. Donc il ne faut pas se baser sur les versions publiés par les éditeurs.\nIl y en a de même pour les versions, par soucis de compatibilités, EEI sort uniquement une version qu'il la qualifie comme stable par rapport aux divers applications qui l'utilisent.\nEn effet pour les paquet demandées, ci -dessous les versions supportées par EEI actuellement :\n- php : php-5.4.16-36.el7_1.x86_64.rpm\n- httpd: httpd-2.4.6-31.el7.centos.x86_64.rpm\nAinsi vous pouvez vérifier si vous avez ces paquets là avec les bonnes versions dans votre dépôt newcloud.\nLe paquet SCL n'est même pas aussi présent dans les dépôts EEI conformément à ce qui a été dit au dessus.\n\n-Question 3:\nLe Docker_storage_vg est un VG utilisé dans le cadre d'utilisation de la machine comme docker host. C'est-à-dire un VG créé  lors de l'installation de l'OI docker.\nSi la machine ne se trouve pas dans ce cas de figure , alors il est possible de le supprimer pour en créer le data_vg. Donc nous vous demandons d'abord de vous renseigner auprès de l'exploitant ou au projet pour avoir plus d'informations sur son utilisation.\n\nCordialement,\nL'équipe Support Serveur N3\nTAG SSN3 : SSN3-PR-Q-LIN-S3\n\n\n\nRapport des modifications effectuées sur la machine noefy297, noefy298, noefy299\n\n - net.ipv4.tcp_adv_win_scale\n\n\n- Valeur  max par défaut du buffer du protocole TCP sous linux  :\n  - net.ipv4.tcp_mem = 196608       262144  393216\n\n- Valeur  max par défaut du buffer du protocole UDP sous linux  :\n  - net.ipv4.udp_mem = 193248       257664  386496\n\n- Valeur par défaut et max du buffer du socket de réception de la pile TCP/IP. Par défaut il est à 128KB sur la pluspart des distributions Linux.\n  - net.core.rmem_default = 129024\n  - net.core.rmem_max = 16777216\n\n- Valeur par défaut et max du buffer du socket de transmission de la pile TCP. Par défaut il est à 128KB sur la pluspart des distributions Linux.\n  - net.core.wmem_default = 129024\n  - net.core.wmem_max = 16777216\n\n- Valeur max de l'option buffer de mémoire\n  - net.core.optmem_max = 20480\n\n- Valeur de la memoire utilisé par chaque \n\n\nDec  7 23:12:01 noeyy5gu CROND[8821]: (root) CMD (date >> /tmp/cronLsofParMinute.Sorel && /usr/sbin/lsof | wc -l >> /tmp/cronLsofParMinute.Sorel)\nDec  7 23:12:01 noeyy5gu CROND[8822]: (root) CMD (date >> /tmp/cronFreeParMinute.Sorel && free >> /tmp/cronFreeParMinute.Sorel)\nDec  7 23:12:01 noeyy5gu CROND[8823]: (root) CMD (date >> /tmp/cronPsParMinute.Sorel && ps faux | wc -l >> /tmp/cronPsParMinute.Sorel)\nDec  7 23:12:01 noeyy5gu CROND[8824]: (root) CMD (/root/scripts/My_suivi.ksh -cfg My_suivi.conf -nologger  >/dev/null  2>&1)\n\n\nif [[ ! -d \"$HOME/bin\" ]]; then mkdir -p \"$HOME/bin\"; fi && \\\ncurl -L https://github.com/docker/machine/releases/download/v0.8.2/docker-machine-Windows-x86_64.exe > \"$HOME/bin/docker-machine.exe\" \n\n\nPP05647S@zpl00801> ls -lrt /etc/conf_machine/signatures/svr_sysref*\n-rw-r--r--. 1 root root 19 Mar 26  2015 /etc/conf_machine/signatures/svr_sysref-linux.6.4.0_linux_rhe6_n3^1.1\n-rw-r--r--  1 root root 64 Oct 27 10:58 /etc/conf_machine/signatures/svr_sysref-linux.6.6.0--mig_linux_rhe6_n0^1.1\n-rw-r--r--  1 root root  0 Oct 27 10:58 /etc/conf_machine/signatures/svr_sysref-linux-prerequis-oi.6.6.0_linux_el6_n0-n1-n3^1.1\n-rw-r--r--  1 root root  0 Oct 27 10:58 /etc/conf_machine/signatures/svr_sysref-linux-drivers-vm.6.6.0_linux_el6_n1-n3^1.0\n-rw-r--r--  1 root root  0 Oct 27 10:58 /etc/conf_machine/signatures/svr_sysref-linux-prerequis-appli.6.6.0_linux_el6_n0-n1-n3^1.0\n-rw-r--r--  1 root root  0 Oct 27 10:58 /etc/conf_machine/signatures/svr_sysref-linux-config.6.6.0_linux_el6_n1-n3^1.0\n\nSignature 6.6\n-rw-r--r--. 1 root root 30 Feb  3  2015 /etc/conf_machine/signatures/svr_sysref-linux.6.4.0_linux_rhe6_n3^1.2\n-rw-r--r--  1 root root  0 Dec 21 14:39 /etc/conf_machine/signatures/svr_sysref-linux-prerequis-oi.6.6.0_linux_el6_n0-n1-n3^1.2\n-rw-r--r--  1 root root  0 Dec 21 14:39 /etc/conf_machine/signatures/svr_sysref-linux-drivers-vm.6.6.0_linux_el6_n1-n3^1.0\n-rw-r--r--  1 root root  0 Dec 21 14:39 /etc/conf_machine/signatures/svr_sysref-linux-prerequis-appli.6.6.0_linux_el6_n0-n1-n3^1.0\n-rw-r--r--  1 root root  0 Dec 21 14:39 /etc/conf_machine/signatures/svr_sysref-linux-config.6.6.0_linux_el6_n1-n3^1.1\n-rw-r--r--  1 root root 63 Dec 21 14:39 /etc/conf_machine/signatures/svr_sysref-linux.6.6.0--mig_linux_rhe6_n1-n3^1.1\n-rw-r--r--  1 root root  0 Dec 21 14:39 /etc/conf_machine/signatures/svr_sysref-linux-securite-n3.6.6.0_linux_el6_n0-n3^1.1\n\nSignature 6.4 \n-rw-r--r--. 1 root root 30 Feb  3  2015 /etc/conf_machine/signatures/svr_sysref-linux.6.4.0_linux_rhe6_n3^1.2\n\n\n  /dev/sdc2             root_vg_alt  lvm2 a--   19.88g   3.25g\n  /dev/sdd              data_vg      lvm2 a--  239.36g 193.48g\n  unknown device        ycr3vg_app01 lvm2 a-m  116.89g      0\n  unknown device        ycr3vg_app01 lvm2 a-m  116.89g      0\n\n\n\n  Couldn't find device with uuid Ob8gPU-6PJQ-UXuc-FqHd-wF1w-ZqMG-Iaa2fO.\n  Couldn't find device with uuid ct2qMx-272E-DeoN-CNxS-Of3w-qsKb-lf6Yh4.\n\n  PR271F5N@pcyyyp3q>\nPR271F5N@pcyyyp3q> top\ntop - 10:23:49 up 23 days,  2:43,  5 users,  load average: 0.00, 0.01, 0.07\nTasks: 381 total,   1 running, 380 sleeping,   0 stopped,   0 zombie\nCpu(s):  0.3%us,  0.2%sy,  0.0%ni, 99.5%id,  0.0%wa,  0.0%hi,  0.0%si,  0.0%st\nMem:  16334412k total, 15213188k used,  1121224k free,   792164k buffers\nSwap: 16879600k total,     4836k used, 16874764k free,  8356784k cached\n\n  PID USER      PR  NI  VIRT  RES  SHR S %CPU %MEM    TIME+  COMMAND\n14925 boadm     20   0 2615m 286m  39m S  0.7  1.8   1:15.26 boe_cmsd\n15132 boadm     20   0 5037m 1.1g  17m S  0.3  7.2   1:44.32 java\n15211 boadm     20   0 3706m 244m  33m S  0.3  1.5   0:13.70 boe_xccached\n15238 boadm     20   0 5035m 1.4g  17m S  0.3  8.7   1:37.62 java\n17155 PR271F5N  20   0 27756 1592 1044 R  0.3  0.0   0:00.02 top\n25695 boadm     20   0 5014m 893m  14m S  0.3  5.6   1:20.57 java\n    1 root      20   0 23504 1500 1272 S  0.0  0.0   0:00.85 init\n    2 root      20   0     0    0    0 S  0.0  0.0   0:00.28 kthreadd\n    3 root      RT   0     0    0    0 S  0.0  0.0   0:05.87 migration/0\n    4 root      20   0     0    0    0 S  0.0  0.0   0:12.49 ksoftirqd/0\n    5 root      RT   0     0    0    0 S  0.0  0.0   0:00.00 migration/0\n    6 root      RT   0     0    0    0 S  0.0  0.0   0:01.88 watchdog/0\n    7 root      RT   0     0    0    0 S  0.0  0.0   0:05.97 migration/1\n    8 root      RT   0     0    0    0 S  0.0  0.0   0:00.00 migration/1\n    9 root      20   0     0    0    0 S  0.0  0.0   0:12.00 ksoftirqd/1\n   10 root      RT   0     0    0    0 S  0.0  0.0   0:01.42 watchdog/1\n   11 root      RT   0     0    0    0 S  0.0  0.0   0:06.18 migration/2\n   12 root      RT   0     0    0    0 S  0.0  0.0   0:00.00 migration/2\n   13 root      20   0     0    0    0 S  0.0  0.0   0:11.76 ksoftirqd/2\n   14 root      RT   0     0    0    0 S  0.0  0.0   0:01.38 watchdog/2\n   15 root      RT   0     0    0    0 S  0.0  0.0   0:05.91 migration/3\n   16 root      RT   0     0    0    0 S  0.0  0.0   0:00.00 migration/3\n   17 root      20   0     0    0    0 S  0.0  0.0   0:12.77 ksoftirqd/3\n   18 root      RT   0     0    0    0 S  0.0  0.0   0:01.41 watchdog/3\n   19 root      20   0     0    0    0 S  0.0  0.0   1:03.38 events/0\n   20 root      20   0     0    0    0 S  0.0  0.0   0:53.88 events/1\n   21 root      20   0     0    0    0 S  0.0  0.0   0:58.60 events/2\n   22 root      20   0     0    0    0 S  0.0  0.0   1:25.43 events/3\n\n\nBonjour,\n\nNous avons réçu la sollicitation suivante , qui parle d'une signature de certificat impossible par puppet.\nPouvez vous réaliser la signature manuelle du certificat pour cette machine s'il vous plaît.\nNous vous avons déjà demandé les droits root et c'est bon.\nMachine : pcyfz07ael\nSIP : pcyfy635.pcy.edfgdf.fr\n\nCordialement,\nL'équipe Support Serveur N3\n\n\n\nBonjour,\n\nVous aurez dû d'abord vérifier ce qu'il y avait comme partition sur le disque avant de vous lancer dans le dimensionnement ou la création de PV. Pour nous le PV n'a pas  a été créée (cf vos commentaire dans le ticket) car la partition ne l'était pas aussi. Il y a forcément eu des erreurs. \nDonc pour la prochaine fois, assurez vous que la partition soit  bien créé d'abord.\nPar ailleurs nous estimons que cette action est un peu critique au risque de perdre les données si vous n'avez de sauvegarde à jour. Une autre solution aussi est d'ajouter un autre disque au lieu de faire l'aggrandissement, puis de créer le PV après.\n\nPour nous le + signifie que  la partition a une taille plus élevé que le nombre de block affiché il parrait.\n\n\n\nBonjour,\n\nVous aurez dû aussi par précaution démonter la partition avant de l'aggrandir. Cela vous a évité  d'avoir le message \"sdc busy\" quand vous avez fait \"w\". Un reboot pour prise en compte ou un coup de partprobe -s pour informer le noyau du changement était nécessaire.\n\nMaintenant les deux solutions qui s'offre à vous sont  :\n- soit  vous aggrandissez la taille de la partition /dev/sdc1 pour prendre la totalité du disque une fois que ce dernier a été aggrandi. Penser à le démonter avant toute opération pour ne pas revenir à la situation précédente.\n- soit créer une nouvelle partition /dev/sdc2, une fois que le disque a été bien aggrandi. Puis créer un nouveau PV avec cette nouvelle partition. Nous pensons que c'est la plus sûre et cela revient à celui  dont vous avez déjà fait mais vue qu'il y a eu ces  erreur.\n\n\n\n",
+			"settings":
+			{
+				"buffer_size": 25714,
 				"line_ending": "Windows"
 			}
 		}
@@ -167,6 +189,10 @@
 	},
 	"file_history":
 	[
+		"/C/Users/PR271F5N/prakotoarisoa/doc/Aix version définition.txt",
+		"/Z/Mydoc/Memo/20150325_network_performance_tuning.pdf",
+		"/C/Users/PR271F5N/Downloads/eGLdDQ3v",
+		"/C/Users/PR271F5N/Downloads/5fEiTeNJ",
 		"/E/flash/projet/delete_smbuser.sh",
 		"/Z/Mydoc/Memo/ACL.doc",
 		"/C/Users/PR271F5N/Documents/mytext.la",
@@ -281,12 +307,12 @@
 	"groups":
 	[
 		{
-			"selected": 7,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "/C/Users/PR271F5N/Documents/Manipulation d'un LV",
+					"file": "/C/Users/PR271F5N/prakotoarisoa/Manipulation_ LVM.txt",
 					"settings":
 					{
 						"buffer_size": 373,
@@ -334,14 +360,14 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 205.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "/Z/Mydoc/Memo/redhat/How to create and host a yum repository over httpd",
+					"file": "/C/Users/PR271F5N/prakotoarisoa/doc/Création-Repos-RPM.txt",
 					"settings":
 					{
 						"buffer_size": 2706,
@@ -351,8 +377,8 @@
 						"selection":
 						[
 							[
-								1375,
-								1375
+								1374,
+								1374
 							]
 						],
 						"settings":
@@ -370,6 +396,7 @@
 				},
 				{
 					"buffer": 3,
+					"file": "/C/Users/PR271F5N/prakotoarisoa/doc/Création-RPM.txt",
 					"settings":
 					{
 						"buffer_size": 608,
@@ -398,6 +425,7 @@
 				},
 				{
 					"buffer": 4,
+					"file": "/C/Users/PR271F5N/prakotoarisoa/doc/kernel panic.txt",
 					"settings":
 					{
 						"buffer_size": 354,
@@ -424,6 +452,7 @@
 				},
 				{
 					"buffer": 5,
+					"file": "/C/Users/PR271F5N/prakotoarisoa/doc/Prestashop_module.txt",
 					"settings":
 					{
 						"buffer_size": 301,
@@ -450,7 +479,7 @@
 				},
 				{
 					"buffer": 6,
-					"file": "/Z/Mydoc/Parametre-tuning-pile-TCP_IP Linux.txt",
+					"file": "/C/Users/PR271F5N/prakotoarisoa/doc/Tunning_pile_TCP.txt",
 					"settings":
 					{
 						"buffer_size": 4972,
@@ -478,25 +507,24 @@
 				},
 				{
 					"buffer": 7,
+					"file": "/C/Users/PR271F5N/prakotoarisoa/doc/Kernel tunning avec sysctl.txt",
 					"settings":
 					{
-						"buffer_size": 654,
+						"buffer_size": 2889,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								438,
-								438
+								1009,
+								1009
 							]
 						],
 						"settings":
 						{
-							"auto_indent": false,
-							"syntax": "Packages/Text/Plain text.tmLanguage",
-							"tab_width": 2,
-							"word_wrap": true
+							"auto_name": "Kernel tunning avec sysctl",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -506,17 +534,100 @@
 				},
 				{
 					"buffer": 8,
+					"file": "/C/Users/PR271F5N/prakotoarisoa/doc/ACL sur Linux.txt",
 					"settings":
 					{
-						"buffer_size": 24756,
+						"buffer_size": 2441,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								24756,
-								24756
+								1424,
+								1424
+							]
+						],
+						"settings":
+						{
+							"auto_name": "Mise en place ACL sur les répertoires et fichier s",
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "/C/Users/PR271F5N/prakotoarisoa/doc/YUM en pratique.txt",
+					"settings":
+					{
+						"buffer_size": 820,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								820,
+								820
+							]
+						],
+						"settings":
+						{
+							"auto_name": "Commande YUM en pratique",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "/C/Users/PR271F5N/prakotoarisoa/doc/TCPDUMP en pratique.txt",
+					"settings":
+					{
+						"buffer_size": 225,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								11,
+								11
+							]
+						],
+						"settings":
+						{
+							"auto_name": "TCPDUMP en pratique",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"settings":
+					{
+						"buffer_size": 25714,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								24128,
+								24128
 							]
 						],
 						"settings":
@@ -527,7 +638,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 8153.0,
+						"translation.y": 7829.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -599,6 +710,6 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 263.0,
+	"side_bar_width": 216.0,
 	"status_bar_visible": true
 }
