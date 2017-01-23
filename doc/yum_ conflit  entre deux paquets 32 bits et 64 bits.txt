@@ -1,0 +1,29 @@
+yum update ou yum install ne marche pas: conflit entre un paquet 32 bits et 64 bits 
+
+Transaction Check Error:
+file /usr/share/man/man1/ca.1ssl.gz from install of openssl-0.9.8e-27.el5_10.3.x86_64 conflicts with file from package openssl-0.9.8e-27.el5_10.1.i686
+file /usr/share/man/man1/req.1ssl.gz from install of openssl-0.9.8e-27.el5_10.3.x86_64 conflicts with file from package openssl-0.9.8e-27.el5_10.1.i686
+file /usr/share/man/man1/x509.1ssl.gz from install of openssl-0.9.8e-27.el5_10.3.x86_64 conflicts with file from package openssl-0.9.8e-27.el5_10.1.i686
+
+
+Résolution:
+
+1- Install the yum-utils package
+# yum install yum-utils
+2- The package-cleanup --dupes lists all duplicate packages
+# package-cleanup --dupes 
+3- The package-cleanup --cleandupes removes the duplicates (it asks for a confirmation to remove all duplicates unless the -y switch is given):
+# package-cleanup --cleandupes
+4- Edit /etc/yum.conf, set the following line:
+exactarch=1
+5- Run yum command:
+# yum clean all
+# yum update
+
+Note 1: If all above procedure fail, you can also check your exclude content in /etc/yum.conf file. Sometimes 32Bits Packages are in the yum blacklist and system will prevent it to install and you will see the Transaction Check Error.
+
+# grep -i exclude /etc/yum.conf
+exclude=kernel*,*.i?86
+
+Note 2: In case the systems cannot be connected to the internet for security reasons, one could replace the files with the rpm command as follow:
+rpm -Uvh --replacefiles openssl-*.rpm
