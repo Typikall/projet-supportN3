@@ -27,3 +27,5 @@ exclude=kernel*,*.i?86
 
 Note 2: In case the systems cannot be connected to the internet for security reasons, one could replace the files with the rpm command as follow:
 rpm -Uvh --replacefiles openssl-*.rpm
+
+Lien redhat : https://access.redhat.com/solutions/158883
