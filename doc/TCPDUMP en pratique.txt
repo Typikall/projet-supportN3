@@ -1,4 +1,4 @@
 TCPDUMP en pratique 
 
 tcpdump –vv –i eth0 |grep –i  <@mac> : voir les requêtes venant de la machine qui a cette adresse. Utile pour capturer une reqête DHCP.
-tcpdump –vv –i eth0 |grep –i  pxe : voir s’il y a une requête PXE .
+tcpdump –vv –i eth0 |grep –i  pxe : voir s’il y a une requête PXE.

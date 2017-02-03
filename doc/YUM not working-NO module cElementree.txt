@@ -1,0 +1,47 @@
+yum not working due to "ImportError: No module named cElementTree" error.
+
+yum -y update
+Plugin "refresh-packagekit" can't be imported
+Loaded plugins: rhnplugin
+/usr/lib64/python2.6/xmlrpclib.py:612: DeprecationWarning: The xmllib module is obsolete.  Use xml.sax instead.
+  import xmllib # lazy subclassing (!)
+rhel-x86_64-server-6                                                                                                                                                                                                  | 1.8 kB     00:00     
+^CTraceback (most recent call last):
+  File "/usr/bin/yum", line 29, in <module>
+    yummain.user_main(sys.argv[1:], exit_code=True)
+  File "/usr/share/yum-cli/yummain.py", line 285, in user_main
+    errcode = main(args)
+  File "/usr/share/yum-cli/yummain.py", line 136, in main
+    result, resultmsgs = base.doCommands()
+  File "/usr/share/yum-cli/cli.py", line 434, in doCommands
+    self._getTs(needTsRemove)
+
+    return YumRepository._getRepoXML(self)
+  File "/usr/lib/python2.6/site-packages/yum/yumRepo.py", line 1447, in _getRepoXML
+    self._loadRepoXML(text=self)
+  File "/usr/lib/python2.6/site-packages/yum/yumRepo.py", line 1437, in _loadRepoXML
+    return self._groupLoadRepoXML(text, self._mdpolicy2mdtypes())
+  File "/usr/lib/python2.6/site-packages/yum/yumRepo.py", line 1412, in _groupLoadRepoXML
+    if self._commonLoadRepoXML(text):
+  File "/usr/lib/python2.6/site-packages/yum/yumRepo.py", line 1230, in _commonLoadRepoXML
+  ...  
+    self.parse(srcfile)
+  File "/usr/lib/python2.6/site-packages/yum/repoMDObject.py", line 140, in parse
+    parser = iterparse(infile)
+  File "/usr/lib/python2.6/site-packages/yum/misc.py", line 1169, in cElementTree_iterparse
+    _cElementTree_import()
+  File "/usr/lib/python2.6/site-packages/yum/misc.py", line 1164, in _cElementTree_import
+    import cElementTree
+ImportError: No module named cElementTree
+
+Résolutions :
+	- The libexpat.so.1 symlink links to libexpat.so.1.5.2 in /lib64/. But the directory was renamed to libexpat.so.1.old. Recreating the symlink with the correct name solved the issue:
+		# ln -s /lib64/libexpat.so.1.5.2 /lib64/libexpat.so.1
+		# /sbin/ldconfig
+	- Downgrade python
+	- Rendre le contenu de la variable d'environnement LD_LIBRARY_PATH vide
+		# LD_LIBRARY_PATH=""
+
+
+
+		 

@@ -29,3 +29,5 @@ Note 2: In case the systems cannot be connected to the internet for security rea
 rpm -Uvh --replacefiles openssl-*.rpm
 
 Lien redhat : https://access.redhat.com/solutions/158883
+
+
