@@ -1,0 +1,12 @@
+Tunefs
+
+Objet:
+
+De base, les serveur Linux réservent 5 % d'espace sur les files systems afin de prévoir la surcharge éventuelle du système. Par exemple, cette marge peut permettre au root de toujours se connecter.
+Mais, sur les grosses volumétries, 5% s'avère être beaucoup trop élevé et n'est donc pas justifié.
+
+Pour réduire l'espace réservé, utiliser la commande : tune2fs -m 1 /dev/nom_du_vg/nom_du_lv
+
+Il n'est pas nécessaire de redémarrer le serveur.
+
+Ceci ne s'applique pas au FileSystem XFS fourni par défaut sur les systèmes EL 7.x (Redhat/CentOS).

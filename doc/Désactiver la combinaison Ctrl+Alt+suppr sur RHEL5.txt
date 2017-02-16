@@ -1,0 +1,25 @@
+Désactiver la combinaison Ctrl+Alt+suppr sur RHEL5, RHEL6 et EL7
+
+Ce document décrit les modifications permettant de désactiver la combinaison CTRL+ALT+SUPPR, qui en cas d'utilisation malvenue reboote le système.
+Attention : en effectuant cette modification vous perdez la possibilité de rebooter "proprement" le serveur en cas de freeze, la seule solution restante sera alors l'arrêt électrique via la carte ILO.
+
+Ce document s'applique aux souches RHEL 5.x & RHEL 6.x et EL 7.x
+
+- RHEL 5.x
+Dans /etc/inittab
+Commenter la ligne suivante :
+
+# Trap CTRL-ALT-DELETE
+# ca::ctrlaltdel:/sbin/shutdown -t3 -r now
+
+Il vous suffit ensuite de taper la commande suivante pour que le système re-scanne le contenu de l'inittab sans redémarrer :
+
+# init q
+
+- RHEL 6.x
+Renommer le fichier /etc/init/control-alt-delete.conf en /etc/init/control-alt-delete.disable
+Commande : mv /etc/init/control-alt-delete.conf /etc/init/control-alt-delete.disable 
+
+Il n'est pas nécessaire de redémarrer le serveur.
+
+EL 7.x : Cette modification est intégrée directement dans la souche.

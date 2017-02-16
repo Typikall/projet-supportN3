@@ -1,0 +1,46 @@
+LINUX : Approche traitement ticket
+
+- Prendre les informations sur l'incident
+	- qui l'a envoyé ?
+	- presence d'analyse N1, N2 ?
+	- passé par l'infogérant ?
+	- l'objet de l'incident ?
+- Prendre les informations sur la machine
+	- Fisher
+	- Inventiv
+	- e-reseau
+	- EPEL
+- Traitement de l'incident
+	- système (démarche adminsys)
+		- souches Linux (OS)
+		- sysalt
+		- Documentation : base Notes, Prodis,Sissi
+	- OI (installation)
+		- Prodis : PTI, PTM, RIQ...
+		- déblocage : test
+	- sipsir(N1/N2)
+		- principe
+		- portail
+		- SIPSIR linux
+			- Client sipsir
+			- Scripts
+			- répertoires de backup
+			- sauvegarde
+			- restauration
+			- PRA (restauration de l'image d'une machine dans le réseau de backup EDF :RIB)
+		- Documentation : base Notes, wiki
+	- caccia (N1/N2)
+		- principe
+		- portail
+		- client caccia
+		- annuaire
+		- Documentation : base Notes, wiki, Fisher
+- Renvoie de l'incident
+	- analyse et solution
+	- TAG Support serveur
+	- Groupe de renvoie
+- Documentation
+	- RDE
+	- SISSI
+	- JIRA 
+	

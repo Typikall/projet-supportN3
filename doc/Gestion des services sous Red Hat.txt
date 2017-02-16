@@ -1,0 +1,62 @@
+SF - Gestion des services sous Red Hat
+
+Ce document a pour objet de présenter la gestion des scripts d'initialisation sur environnement Red Hat Enterprise Linux (RHEL) 5
+
+- Arrête/relance service 
+	- Service en cours d'exécution :
+	# service postfix status
+	master (pid 4594) is running...
+
+	- Arrêt d'un service :
+	# service postfix stop
+	Shutting down postfix:                                     [  OK  ]
+
+	- Vérification service arrêté (dépendant des services) :
+	# service postfix status
+	master is stopped
+
+	- Démarrage d'un service :
+	# service postfix start
+	Starting postfix:                                          [  OK  ]
+
+	- Exemple d'échec de lancement d'un service :
+	# service postfix start
+	Starting postfix:                                          [FAILED]
+
+- Gérer les niveaux d'exécution
+L'outil chkconfig gère directement les liens symboliques dans /etc/rc[0-6].d
+
+- Désactiver un service à tous les niveaux d'exécution :
+# chkconfig postfix off
+
+- Vérification :
+# chkconfig --list postfix
+postfix         0:off   1:off   2:off   3:off   4:off   5:off   6:off
+
+- Activation au démarrage (niveau d'exécution 3) :
+# chkconfig postfix on
+
+- Vérification des niveaux d'exécution :
+# chkconfig --list postfix
+postfix         0:off   1:off   2:on    3:on    4:on    5:on    6:off
+
+A noter l'utilisation de la commande chkconfig --list sans autre paramètre, qui liste tous les services et leur niveau d'exécution respectifs.
+
+- Ajouter un nouveau service :
+Il faut pour cela que le script d'initialisation contienne au moins deux lignes de ce type en début de fichier et soit en commentaire (exemple) :
+
+# chkconfig: 2345 20 80
+# description: Some service description
+
+La première ligne indique les niveaux d'exécution (2345) et le niveau de priorisation des scripts de démarrage (20) et d'arrêt (80) par rapport aux autres scripts.
+La seconde ligne donne 
+
+L'ajout du service se fait ensuite par :
+
+# chkconfig --add patrol
+
+Les liens symboliques sont automatiquement positionnés :
+
+# chkconfig --list test
+test            0:off   1:off   2:on    3:on    4:on    5:on    6:off
+
