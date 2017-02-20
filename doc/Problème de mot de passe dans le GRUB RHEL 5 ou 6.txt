@@ -1,0 +1,5 @@
+Problème de mot de passe dans le GRUB RHEL 5 ou 6
+
+Pour enlever le mot de passe GRUB, il faut :
+1. Editer le fichier /boot/grub/grub.conf
+2. Supprimer les lignes commençant par "password ..."

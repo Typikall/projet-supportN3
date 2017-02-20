@@ -1,0 +1,55 @@
+Activation de IPv6 sous RHEL/CentOS
+
+
+1. Activation IPv6
+Dans le fichier /etc/modprobe.d/disable-ipv6.conf, on trouve la directive options suivante :
+	ipv6 disable=1
+
+Cette ligne doit être commentée (ou supprimée) pour charger l’IPv6 au démarrage :
+	#ipv6 disable=1
+
+Dans le fichier /etc/sysconfig/network, la ligne
+	NETWORKING_IPV6=yes
+doit être présente afin de prendre en compte la configuration IPv6 inscrite dans les fichiers de configuration (cf §2.2 ci-dessous).
+
+ Il est à présent recommandé de rebooter la machine OU de décharger le module IPv6, puis le recharger :
+	# rmmod ipv6
+	# modprobe ipv6
+
+2. Configuration IPv6
+	2.1 Configuration manuelle
+Les différentes interfaces réseaux peuvent obtenir une configuration IPv6 via l’utilitaire « ifconfig ». Il suffit de préciser que nous sommes en configuration IPv6 (IPv4 par défaut) via l’option inet6.
+Exemple : pour ajouter une IP IPv6 sur l’interface eth1 :
+	ifconfig eth1 inet6 add 2607:f0d0:1002:0011:0000:0000:0000:0002
+
+Idem pour le routage, l’utilitaire « route » permet de gérer les routes IPv6 :
+Exemple : pour ajouter une route (fonctionne comme en IPv4) :
+	route -A inet6 add 2000::/3 gw 3ffe:ffff:0:f101::1 dev eth0
+
+	2.2 Fichier de configuration
+Pour configurer une interface réseau, ajouter à son fichier de configuration avec la commande suivante :
+	/etc/sysconfig/network-scripts/ifcfg-eth?
+
+les options suivantes :
+	IPV6INIT=yes
+	IPV6ADDR=<IPv6-IP-Address>
+	IPV6_DEFAULTGW=<IPv6-IP-Gateway-Address>
+
+
+Exemple de configuration IPv4 + IPv6 pour l’interface eth0 :
+	/etc/sysconfig/network-scripts/ifcfg-eth0
+
+	DEVICE=eth0
+	BOOTPROTO=static
+	ONBOOT=yes
+	HWADDR=00:30:48:33:bc:33
+	IPADDR=202.54.1.5
+	GATEWAY=202.54.1.3
+	NETMASK=255.255.255.248
+	IPV6INIT=yes
+	IPV6ADDR=2607:f0d0:1002:0011:0000:0000:0000:0002
+	IPV6_DEFAULTGW=2607:f0d0:1002:0011:0000:0000:0000:0001
+
+
+Nous pouvons ensuite relancer le service network pour appliquer les modifications :
+	service network restart
