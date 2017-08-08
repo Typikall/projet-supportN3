@@ -1,12 +1,6 @@
 #!/bin/ksh
 #
-# @(#)Application               : Envoi de commandes vers des différents serveurs d'installation (SIP) en SSH
-# @(#)Fonction                  : 
-# @(#)SCR-Version               :
-# @(#)Auteur                    : Laurent MIRVAUX - IGD/ISD - INGENIERIE-SERVEURS-UNIX
-# @(#)Date de creation          : 20/04/2010 - 1.0 - Developpement initial
-# @(#)Date de modification      : 15/11/2010 - 1.1 - Controle de la duree max des commandes 
-# @(#)Date de modification      : 01/06/2010 - 1.2 -
+# @(#)Application               : Envoi de commandes vers des diffÃ©rents serveurs d'installation  en SSH
 # @(#)Parametres d'entree       :
 # @(#)Codes retour              : 0 = correct, <> 0 = erreur
 # @(#)Utilisateur               : $Infogerant
@@ -28,26 +22,26 @@ f_usage()
 rc=$1
 echo "
 
- But :  Script d'envoi des commandes vers les differents serveurs d'installation (SIP) en SSH 
-	Sauvegarde des traces pour conservation dans la base des données.
+ But :  Script d'envoi des commandes vers les differents serveurs d'installation en SSH 
+	Sauvegarde des traces pour conservation dans la base des donnÃ©es.
 
-	La configuration SSH permettant les echanges sans mot de passe aura ete mise en oeuvre préalablement
+	La configuration SSH permettant les echanges sans mot de passe aura ete mise en oeuvre prÃ©alablement
 
-	Un fichier de configuration est associé pour tenir compte des specificites de l'OS à l'origine du SSH  (../conf/main.conf)
+	Un fichier de configuration est associÃ© pour tenir compte des specificites de l'OS Ã  l'origine du SSH  (../conf/main.conf)
 
  Syntaxe : $0 [ arguments ] 
 
-  arg1 		: Nom du fichier de log dans lequel seront ajoutées les traces d'execution (par defaut stocke sous /tmp)
+  arg1 		: Nom du fichier de log dans lequel seront ajoutÃ©es les traces d'execution (par defaut stocke sous /tmp)
   arg2	 	: Nom de l'utilisateur de connexion sur le SIP
   arg3 		: Nom ou adresse IP du SIP
   arg4 		: Script a executer sur le serveur SIP distant 
-  arg5 et +     : Argument du script executé sur le serveur SIP distant
+  arg5 et +     : Argument du script executÃ© sur le serveur SIP distant
 
   -simul	: Mode simulation. Affichage des commandes mais sans les executer
   -simul2	: Passe au serveur distant SIP la demande de passage en mode simulation ( -simul )
-  -v 		: Affiche les détails sur le script courant 
-  -vv 		: Passe au serveur distant SIP la demande d'affichage des détails ( -v )
-  -vvv 		: Passe au serveur distant SIP pour son client final la demande d'affichage des détails ( -vv ) 
+  -v 		: Affiche les dÃ©tails sur le script courant 
+  -vv 		: Passe au serveur distant SIP la demande d'affichage des dÃ©tails ( -v )
+  -vvv 		: Passe au serveur distant SIP pour son client final la demande d'affichage des dÃ©tails ( -vv ) 
 
   -aide|--help  : Affiche l'aide en ligne de ce script 
 
@@ -99,9 +93,9 @@ TMPF_LISTE="$TMPF1 $TMPF2 $TMPF3 $TMPF4 $TMPF5"
 flag_simul=""					# Permet de passer l'option -simul aux scripts appeles
 flag_simul2=""					# Permet de passer l'option -simul aux scripts appeles
 flag_detail=""					# Affichage verbeux des traitements
-flag_detail2=""					# Affichage verbeux des traitements coté SIP 
-flag_detail3=""					# Affichage verbeux des traitements coté client final 
-flag_detail4=""					# Affichage tres verbeux des traitements coté client final 
+flag_detail2=""					# Affichage verbeux des traitements cotÃ© SIP 
+flag_detail3=""					# Affichage verbeux des traitements cotÃ© client final 
+flag_detail4=""					# Affichage tres verbeux des traitements cotÃ© client final 
 flag_debug=no					# Permet de conserver certains fichiers intermediaires
 #
 #
@@ -179,7 +173,7 @@ liste_expr=$1 ; pid=$2 ; dureemax=${3:-90} ; dureesudo=${4:-15}
 
 	if [ `tail -1 $logf | egrep -ci "${liste_expr}"` -ne 0  -a  $i -lt ${dureesudo} ] ; then 	# Recherche de demande de mot de passe 
 		
-	   f_kill_children "Mot de passe demandé - conf SUDO incorrecte. Kill du script appelant"
+	   f_kill_children "Mot de passe demandÃ© - conf SUDO incorrecte. Kill du script appelant"
 
 	   break		# On quitte la boucle 
 
@@ -211,7 +205,7 @@ msg="$*"
 #
 #- Positionnement des traps sur signaux 
 
-trap 'f_sortie 10 "Reception d un signal trap sur le script  $0  executé sur le serveur  `hostname`" '  2 3 15 16
+trap 'f_sortie 10 "Reception d un signal trap sur le script  $0  executÃ© sur le serveur  `hostname`" '  2 3 15 16
 
 # -------------------------------------------------------------
 #  Lecture des arguments
@@ -266,7 +260,7 @@ cat /dev/null > $LOG_FILE 2>/dev/null 						# RAZ du fichier de log
    for tmpf in $TMPF1 $TMPF2  ; do cat /dev/null > $tmpf 2>/dev/null  ; done 
 
 #
-#- Verification des arguments passés avec la commande 
+#- Verification des arguments passÃ©s avec la commande 
 
    [ -z "${SIP_CMDE}" ]  &&  f_sortie  5  "Test acces SSH vers le SIP reussi"	# Aucune commande n'est passee en argument
 
