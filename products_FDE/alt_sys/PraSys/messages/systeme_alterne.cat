@@ -1,6 +1,0 @@
-# CATALOGUE DE MESSAGES POUR LE SYSTEME ALTERNE
-#handle|emetteur|surveillance|severite|mail|sms|Ch1|Ch2|Ch3|Ch4|Libelle
-SYSTEME_ALTERNE_I|systeme_alterne|0|0|0|0|||||${PARAM[1]}
-SYSTEME_ALTERNE_W|systeme_alterne|0|1|0|0|||||${PARAM[1]}
-SYSTEME_ALTERNE_E|systeme_alterne|0|2|0|0|||||${PARAM[1]}
-
