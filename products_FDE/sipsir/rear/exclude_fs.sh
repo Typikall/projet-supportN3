@@ -1,10 +1,8 @@
 #!/bin/bash
 # ============================================================
-# =        Script d'exclusion automatique du SIPSIR v3       =
+# =        Script d'exclusion automatique 		     =
 # =                                                          =
-# =       Ce fichier ne doit pas etre modifie !!!!           =
-# = Pour toute personnalisation, il faut utiliser le fichier =
-# =                 /etc/rear/local.conf                     =
+# =     
 # =                                                          =
 # = v1.0 Version intiale                                     =
 # = v1.1 Prise en charge de l'exclusion de type de FS        =
