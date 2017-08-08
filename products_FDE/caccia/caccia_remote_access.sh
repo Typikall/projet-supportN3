@@ -1,19 +1,9 @@
 #!/bin/ksh
-#
 #----------------------------------------------------------------------
-# @(#) $Id: caccia_remote_access.sh,v 1.23 2013/08/07 11:56:20 YC023405 Exp $
-#----------------------------------------------------------------------
-# @(#) Application              : CACCIA
-# @(#) Fonction                 : Modification des systemes Linux pour interdire les connexions
-#                                 distantes rlogin,telnet et ftp aux comptes generiques
-# @(#) Version                  : $Revision: 1.23 $
-# @(#) Auteur                   : Mohamed BAAOUI - ITS GROUP
-# @(#) Date de creation         : Juil 2007
-# @(#) Utilisateur              : infogerant/caccia
-# @(#) Modification             : Mikael YALINIZ Oct 2008
-# @(#) Parametres d'entree      : -l 'user1 user2 ...' [pour interdire les accès distants]
-# @(#)                          : -u 'user1 user2 ...' [pour autoriser les accès distants]
-# @(#)                          : Les comptes $DEFAULT_REMOTE_USERS ne doivent jamais être vérrouillés
+# @(#) Utilisateur    
+# @(#) Parametres d'entree      : -l 'user1 user2 ...' [pour interdire les accÃ¨s distants]
+# @(#)                          : -u 'user1 user2 ...' [pour autoriser les accÃ¨s distants]
+# @(#)                          : Les comptes $DEFAULT_REMOTE_USERS ne doivent jamais Ãªtre vÃ©rrouillÃ©s
 # @(#) Retour                   : aucun
 #----------------------------------------------------------------------
 #
@@ -43,11 +33,11 @@ usage() {
 echo
 echo " Usage: $(basename $0) [ -l 'user1 user2 ...' ] [ -u 'user1 user2 ...' ]"
 echo
-echo "      -l 'user1 user2 ...' : verrouille les comptes spécifiés"
-echo "      -u 'user1 user2 ...' : déverrouille les comptes spécifiés"
-echo "      La liste des comptes concernés, doit être entre guillemets et séparés par un espace."
+echo "      -l 'user1 user2 ...' : verrouille les comptes spÃ©cifiÃ©s"
+echo "      -u 'user1 user2 ...' : dÃ©verrouille les comptes spÃ©cifiÃ©s"
+echo "      La liste des comptes concernÃ©s, doit Ãªtre entre guillemets et sÃ©parÃ©s par un espace."
 echo
-echo "      Les comptes \"$DEFAULT_REMOTE_USERS\" seront toujours déverrouillés par defaut."
+echo "      Les comptes \"$DEFAULT_REMOTE_USERS\" seront toujours dÃ©verrouillÃ©s par defaut."
 echo
 
 exit 0
@@ -68,14 +58,14 @@ change_passwd() {
 	USER=$1
 	test -z "$USER" && return 0
 	checkuser $USER || return 0
-	echo " Pour déverrouiller le compte $USER, entrer le nouveau mot de passe :"
+	echo " Pour dÃ©verrouiller le compte $USER, entrer le nouveau mot de passe :"
 	passwd $USER 2>&1
 }
 
 passwd_remote_deny() {
 	USER=$1
 	test -z "$USER" && return 0
-	echo "  Accès distant INTERDIT pour le compte		: $USER"
+	echo "  AccÃ¨s distant INTERDIT pour le compte		: $USER"
  	(checkuser $USER && passwd -N $user) 2>/dev/null >/dev/null
 }
 
@@ -84,7 +74,7 @@ passwd_remote_deny() {
 ftp_deny() {
 	USER=$1
 	test -z "$USER" && return 0
-	echo "  Accès ftp INTERDIT pour le compte		: $USER"
+	echo "  AccÃ¨s ftp INTERDIT pour le compte		: $USER"
 	# Blocage ftp
 	if [ ! -r $FTPUSERS ];then
 		touch $FTPUSERS
@@ -98,7 +88,7 @@ ftp_deny() {
 ftp_allow() {
 	USER=$1
 	test -z "$USER" && return 0
-	echo "  Accès ftp AUTORISE pour le compte		: $USER"
+	echo "  AccÃ¨s ftp AUTORISE pour le compte		: $USER"
 	if [ ! -r $FTPUSERS ];then
 		touch $FTPUSERS
 		chmod 444 $FTPUSERS
@@ -112,7 +102,7 @@ raccess_allow() {
 	#set -x
 	USER=$1
 	test -z "$USER" && return 0
-	echo "  Accès distant AUTORISE pour le compte		: $USER"
+	echo "  AccÃ¨s distant AUTORISE pour le compte		: $USER"
 	$GREP -E "^\+[[:space:]]*:.+:[[:space:]]*ALL$" $ACCESS_FILE | $GREP -wq "$USER"
 	[ $? -eq 0 ] && return 0
 
@@ -161,7 +151,7 @@ raccess_deny() {
 	#set -x
 	USER=$1
 	test -z "$USER" && return 0
-	echo "  Accès distant INTERDIT pour le compte		: $USER"
+	echo "  AccÃ¨s distant INTERDIT pour le compte		: $USER"
 	$GREP -E "^\+[[:space:]]*:.+:[[:space:]]*ALL$" $ACCESS_FILE | $GREP -wq "$USER"
 	[ $? -ne 0 ] && return 0
 
@@ -200,7 +190,7 @@ checkos() {
 # Version de l'os
 
 	# Determination de la distribution Linux
-	echo " * Vérification de l'OS"
+	echo " * VÃ©rification de l'OS"
 	SYSTEM=${DIST}_${OSLEVEL}
 	if [ "$OS" = "Linux" ] ; then
 		if [ -f /etc/redhat-release ] ; then
@@ -297,7 +287,7 @@ echo "   GESTION DES ACCES DISTANTS POUR LES COMPTES LOCAUX"
 echo "   --------------------------------------------------\n"
 
 # Seul root peut executer ce script
-#echo " * Vérification de votre identité."
+#echo " * VÃ©rification de votre identitÃ©."
 if [ "$($ID -u 2>/dev/null)" != '0' ] ; then
 	echo " ! ERREUR: Seul root peut executer ce script.\n"
 	exit 1
@@ -305,7 +295,7 @@ if [ "$($ID -u 2>/dev/null)" != '0' ] ; then
 fi
 
 #
-echo " * La liste des comptes déverrouillés par défaut : $DEFAULT_REMOTE_USERS\n"
+echo " * La liste des comptes dÃ©verrouillÃ©s par dÃ©faut : $DEFAULT_REMOTE_USERS\n"
 #
 
 # Verification de l'OS
@@ -354,7 +344,7 @@ if [ X"$RUSERS_TO_LOCK" != "X" ]; then
 		# on ne traite pas
 		echo $DEFAULT_REMOTE_USERS | $GREP -iqw $user
 		if [ $? -eq 0 ]; then
-       			echo "  ! WARNING: Le compte $user est déverrouillé par défaut\n"
+       			echo "  ! WARNING: Le compte $user est dÃ©verrouillÃ© par dÃ©faut\n"
 			continue
 		fi
 
