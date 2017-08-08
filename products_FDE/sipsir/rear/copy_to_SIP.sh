@@ -2,16 +2,15 @@
 # ============================================================
 # =     Script de copie de la configuration necessaire       =
 # =       pour la restauration de la structure des           =
-# =         disques et filesystems pour le                   =
-# =                       SIPSIR v3                          =
-# =       Ce fichier ne doit pas etre modifie !!!!           =
+# =         disques et filesystems                    
+# =               =
 # =         Version 1.3 du 10/03/2014 pour rear 1.15         =
 # = 							     =
 # = v1.0 Version intiales				     =
 # = v1.1 Ajout de la variable LOGFILE dans 		     =
 # = 	/usr/share/rear/conf/default.conf car impossible     =
 # = 	via une configuration standard		             =
-# = v1.2 Ajout du nom et de la taille de la sauvegarde SIP   =
+# = v1.2 Ajout du nom et de la taille de la sauvegarde   =
 # = v1.3 Prise en charge du multipath			     =
 # ============================================================
 PATH='/bin:/usr/bin:/sbin:/usr/sbin'
@@ -20,7 +19,7 @@ REAR_LOG_FILE=$(ls -rt /tmp/rear-backup_*|tail -1)
 echo $(date)" : Montage du SIP pour copie des donnees de REAR" >>${REAR_LOG_FILE}
 /bin/mount -t nfs4 SIP:/ /mnt/cdrom 
 if [ $? -ne 0 ]; then
-	echo $(date)" Erreur : Impossible de monter le FS depuis le SIP" >>${REAR_LOG_FILE}
+	echo $(date)" Erreur : Impossible de monter le FS depuis SIP {REAR_LOG_FILE}
 	exit 1
 fi
 echo $(date)" : Copie des donnees de REAR" >>${REAR_LOG_FILE}
